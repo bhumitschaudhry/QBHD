@@ -4,7 +4,7 @@ The **UEVENT** Statement uses ON, OFF or STOP to enable, turn off or suspend use
   
 > UEVENT {ON|STOP|OFF}
  
-* **[Keywords currently not supported](Keywords-currently-not-supported-by-QB64)**
+* **[Keywords currently not supported](Keywords-currently-not-supported-by-QBHD)**
 
 * UEVENT ON enables user defined event-trapping as defined by the [ON UEVENT](ON-UEVENT) statement.
 

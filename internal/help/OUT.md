@@ -11,8 +11,8 @@
 
 ## Description
 
-* **QB64 has limited access to registers. VGA memory and registers are emulated.**
-* OUT can be used to change color port and a limited number of other port settings in QB64.
+* **QBHD has limited access to registers. VGA memory and registers are emulated.**
+* OUT can be used to change color port and a limited number of other port settings in QBHD.
 * Some settings may be set in a specific order to gain access to settings and [INP](INP) reads.
 * [SCREEN](SCREEN) modes determine the number of available color palette attributes from 2 to 256 in SCREEN 13.
 * Windows NT may block access to Parallel printer and Serial ports. See [Port Access Libraries](Port-Access-Libraries) or other DLLs.
@@ -80,7 +80,7 @@ OUT &H3C0, 2 ^ 3 'reenables blinking and disables high intensity backgrounds  (c
 
 ```
 
-> Note: In QB64, the recommended practice is to use the [_BLINK](_BLINK) {ON|OFF} statement.
+> Note: In QBHD, the recommended practice is to use the [_BLINK](_BLINK) {ON|OFF} statement.
 
 Restoring colors to a bitmap from the Red, Green and Blue [BSAVE](BSAVE)d indexed array of color values.
 

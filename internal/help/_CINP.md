@@ -8,7 +8,7 @@ The [_CINP](_CINP) function returns keyboard key press codes from a [$CONSOLE]($
 
 * Return values are the same as the ones for [INP](INP) when used to read keyboard input. See table below.
   * **Negative** [LONG](LONG) values returned indicate that a key was released or a lock function key has been turned off.
-* [Keywords currently not supported](Keywords-currently-not-supported-by-QB64).
+* [Keywords currently not supported](Keywords-currently-not-supported-by-QBHD).
 
 ```text
 

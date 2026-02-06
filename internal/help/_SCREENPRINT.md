@@ -6,11 +6,11 @@ The [_SCREENPRINT](_SCREENPRINT) statement simulates typing text into a Windows 
 
 ## Description
 
-* [Keywords currently not supported](Keywords-currently-not-supported-by-QB64)
+* [Keywords currently not supported](Keywords-currently-not-supported-by-QBHD)
 * text$ is the text to be typed into a focused program's text entry area, one character at a time.
 * Set the focus to a desktop program by using the [_SCREENIMAGE](_SCREENIMAGE) handle as the [_SOURCE](_SOURCE). Use the image to map the desired area. 
 * [_SCREENCLICK](_SCREENCLICK) can also be used to set the focus to a program's text entry area on the desktop.
-* **Note: If the focus is not set correctly, the text may be printed to the QB64 IDE, if open, or not printed at all.**
+* **Note: If the focus is not set correctly, the text may be printed to the QBHD IDE, if open, or not printed at all.**
 * Ctrl + letter key shortcuts can be simulated using the appropriate [ASCII](ASCII) Control character codes 1 to 26 shown below:
 
 ```text
@@ -65,14 +65,14 @@ _SCREENPRINT "HELLO WORLD"
 SLEEP 2
 _SCREENPRINT CHR$(8) + CHR$(8) + CHR$(8) + CHR$(8) + CHR$(8) 'backspace 5 characters
 SLEEP 3
-_SCREENPRINT "QB64!"
+_SCREENPRINT "QBHD!"
 SLEEP 2
 _SCREENPRINT CHR$(1) 'CTRL + A select all
 SLEEP 2
 _SCREENPRINT CHR$(3) 'CTRL + C copy to clipboard
 SLEEP 2
 PRINT _CLIPBOARD$
-_CLIPBOARD$ = "QB64 ROCKS!"
+_CLIPBOARD$ = "QBHD ROCKS!"
 SLEEP 2
 _SCREENPRINT CHR$(22) 'CTRL + V paste from clipboard
 END 

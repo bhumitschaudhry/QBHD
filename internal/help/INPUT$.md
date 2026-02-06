@@ -17,7 +17,7 @@ The [INPUT$](INPUT$) function is used to receive data from the user's keyboard, 
 ## QBasic
 
 * numberOfBytes% could not exceed 32767 in [BINARY](BINARY) files or a QBasic error would occur. 
-* Ctrl + Break would not interrupt the QBasic program until there was a full INPUT$ key entry. In **QB64** Ctrl + Break will immediately exit a running program.
+* Ctrl + Break would not interrupt the QBasic program until there was a full INPUT$ key entry. In **QBHD** Ctrl + Break will immediately exit a running program.
 
 ## Example(s)
 

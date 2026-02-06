@@ -44,7 +44,7 @@ SCREEN i&
 ```vb
 
 SCREEN _NEWIMAGE(800, 600, 32)
-img& = _LOADIMAGE("QB64.PNG")                           'load the image file to be drawn
+img& = _LOADIMAGE("QBHD.PNG")                           'load the image file to be drawn
 
 wide% = _WIDTH(img&): deep% = _HEIGHT(img&)
 TLC$ = "BL" + STR$(wide% \ 2) + "BU" + STR$(deep% \ 2)  'start draw at top left corner
@@ -72,9 +72,9 @@ LOOP UNTIL INKEY$ > ""
 
 ### More examples
 
-* [SAVEIMAGE](SAVEIMAGE) (QB64 Image to Bitmap SUB by Galleon)
+* [SAVEIMAGE](SAVEIMAGE) (QBHD Image to Bitmap SUB by Galleon)
 * [Program ScreenShots](Program-ScreenShots) (Member-contributed program for legacy screen modes)
-* [ThirtyTwoBit SUB](ThirtyTwoBit-SUB) (QB64 Image area to bitmap)
+* [ThirtyTwoBit SUB](ThirtyTwoBit-SUB) (QBHD Image area to bitmap)
 
 ## See Also
 

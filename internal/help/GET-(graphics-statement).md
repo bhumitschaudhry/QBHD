@@ -2,7 +2,7 @@ The [GET (graphics statement)](GET-(graphics-statement)) statement is used in gr
 
 ## Legacy Support
 
-* **QB64 can manipulate parts of an image using [_PUTIMAGE](_PUTIMAGE). For that reason, GET isn't recommended practice anymore and is supported to maintain compatibility with legacy code.**
+* **QBHD can manipulate parts of an image using [_PUTIMAGE](_PUTIMAGE). For that reason, GET isn't recommended practice anymore and is supported to maintain compatibility with legacy code.**
 
 ## Syntax
  
@@ -19,20 +19,20 @@ The [GET (graphics statement)](GET-(graphics-statement)) statement is used in gr
 
 * The [STEP](STEP) keyword can be used to for coordinates relative to the last graphic coordinates used.
 * A graphic screen mode must be used. See the [SCREEN](SCREEN) statement for graphic screen dimensions.
-* **QB64** GET statements can use coordinates off of the screen when an 'offscreenColor is designated. [STEP](STEP) can be used for relative coordinates.
+* **QBHD** GET statements can use coordinates off of the screen when an 'offscreenColor is designated. [STEP](STEP) can be used for relative coordinates.
 * The GET box coordinates are set just like a [LINE](LINE) box statement is placed. You can use a box to find the correct GET area.
 * Once GET has placed the pixel image data in the array, PUT the image or BSAVE it to a file.
 * Once the image is stored in an array [PUT (graphics statement)](PUT-(graphics-statement)) can be used to place the image on the screen.
 * A [_SOURCE](_SOURCE) [handle](handle) can be set to GET image areas other than the ones on the current screen. Use [_DEST](_DEST) to [PUT (graphics statement)](PUT-(graphics-statement)) images there.
 * To GET more than one image to the same array, designate an offset index that is not being used and is large enough to hold the data.
-* The [INTEGER](INTEGER) array size can be calculated as slightly larger than the box area width times the height. A closer estimate can be done by reading the array indices from [UBOUND](UBOUND) to [LBOUND](LBOUND) after a [GET (graphics statement)](GET-(graphics-statement)) of a white box area. In QB64, a [LONG](LONG) array can be used for large or full screen images.
+* The [INTEGER](INTEGER) array size can be calculated as slightly larger than the box area width times the height. A closer estimate can be done by reading the array indices from [UBOUND](UBOUND) to [LBOUND](LBOUND) after a [GET (graphics statement)](GET-(graphics-statement)) of a white box area. In QBHD, a [LONG](LONG) array can be used for large or full screen images.
 * RGB color settings can be embedded at the beginning of the array for transferring custom colors. Specify an *index* for GET image data to be stored after any extra information added to the beginning of the array.
-* **In QB64, [_PUTIMAGE](_PUTIMAGE) is recommended over PUT as it can also do the [GET (graphics statement)](GET-(graphics-statement)) operation directly from the image source without requiring an array.**
+* **In QBHD, [_PUTIMAGE](_PUTIMAGE) is recommended over PUT as it can also do the [GET (graphics statement)](GET-(graphics-statement)) operation directly from the image source without requiring an array.**
 * **[PUT](PUT) and [GET](GET) file statements can also write and read image array data using [BINARY](BINARY) files instead of using [BSAVE](BSAVE) or [BLOAD](BLOAD).**
 
 ## QBasic
 
-* SCREEN 12 could only GET 1/3 of a full SCREEN 12 image. Rows would increment 160 each GET. **QB64** can save entire screen at once.
+* SCREEN 12 could only GET 1/3 of a full SCREEN 12 image. Rows would increment 160 each GET. **QBHD** can save entire screen at once.
 
 ## Example(s)
 

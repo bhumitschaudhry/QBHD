@@ -105,7 +105,7 @@ LOOP UNTIL INP(&H60) = 1 'escape exit
 
 ## See Also
 
-* [_PI](_PI) (QB64 function)
+* [_PI](_PI) (QBHD function)
 * [SIN](SIN) (sine)
 * [ATN](ATN) (arctangent)
 * [TAN](TAN) (tangent)

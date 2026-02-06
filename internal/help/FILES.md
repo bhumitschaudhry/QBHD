@@ -11,7 +11,7 @@ The [FILES](FILES) statement is used to print a list of files in the current dir
   - `*` denotes one or more wildcard characters in a filename or path specification as any legal file name  character(s).
   - `?` denotes one wildcard letter in a filename or path specification as any legal filename character. 
 * If fileSpec$ is omitted, it is assumed to be **"*.*"** (all files and folders in the current directory).
-* Illegal filename characters in **QB64** include * > < : " | \ / with any amount of dot extensions being allowed in Windows.
+* Illegal filename characters in **QBHD** include * > < : " | \ / with any amount of dot extensions being allowed in Windows.
 * FILES lists can make the screen roll up. Try using SHELL "DIR" with the /P option. [DIR command](http://www.computerhope.com/dirhlp.htm).
 
 ## QBasic
@@ -77,7 +77,7 @@ END FUNCTION
 
 ```
 
-> *Explanation:* The function will verify that a file exists (even if it is empty) by returning its name, or it returns an empty string if no file exists. It can return a list of file names by using an empty string parameter("") after sending a wildcard spec to get the first file name. The number of file names found is returned by using the SHARED variable, **DIRCount%**. Unlike the PDS DIR$ function, **it must use an empty string parameter as QB64 doesn't support optional parameters.** The function does not delete empty files.
+> *Explanation:* The function will verify that a file exists (even if it is empty) by returning its name, or it returns an empty string if no file exists. It can return a list of file names by using an empty string parameter("") after sending a wildcard spec to get the first file name. The number of file names found is returned by using the SHARED variable, **DIRCount%**. Unlike the PDS DIR$ function, **it must use an empty string parameter as QBHD doesn't support optional parameters.** The function does not delete empty files.
 
 *Alternative 2:*
 * The member-contributed [FILELIST$](FILELIST$) function uses the mouse and does not affect your program screens. It can verify that a file name exists or display a list of long and short file names to choose from. It also avoids program errors when a file name does not exist.

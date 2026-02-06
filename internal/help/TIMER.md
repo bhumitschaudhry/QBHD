@@ -4,22 +4,22 @@ The **TIMER** function returns the number of seconds past the previous midnite d
 
 > seconds! = TIMER
 
-##  QB64 Syntax 
+##  QBHD Syntax 
 
 > seconds# = TIMER[(*accuracy!*)]
 
 * TIMER return values range from 0 at midnight to 86399! A comparison value must stay within that range!
 * [INTEGER](INTEGER) or [LONG](LONG) second values range from 0 at midnight to 86399 seconds each day.
 * QBasic can return [SINGLE](SINGLE) values down to about .04 or 1/18th (one tick) of a second accurately. 
-* **QB64** can read [DOUBLE](DOUBLE) *accuracy* down to 1 millisecond. Example: start# = TIMER(.001) 
+* **QBHD** can read [DOUBLE](DOUBLE) *accuracy* down to 1 millisecond. Example: start# = TIMER(.001) 
 * Use [DOUBLE](DOUBLE) variables for millisecond accuracy as [SINGLE](SINGLE) values are only accurate to 100ths of a second later in the day!
 * TIMER loops should use a midnight adjustment to avoid non-ending loops in QBasic.
 * TIMER can also be used for timing program Events. See [ON TIMER(n)](ON-TIMER(n)) or the [TIMER (statement)](TIMER-(statement))
-* **QB64** can use a [_DELAY](_DELAY) down to .001(one millisecond) or [_LIMIT](_LIMIT) loops per second. Both help limit program CPU usage.
+* **QBHD** can use a [_DELAY](_DELAY) down to .001(one millisecond) or [_LIMIT](_LIMIT) loops per second. Both help limit program CPU usage.
 
 ## Example(s)
 
-Delay SUB with a midnight correction for when TIMER returns to 0. **QB64** can use [_DELAY](_DELAY) for delays down to .001.
+Delay SUB with a midnight correction for when TIMER returns to 0. **QBHD** can use [_DELAY](_DELAY) for delays down to .001.
 
 ```vb
 
@@ -73,7 +73,7 @@ END
 
 > *Explanation:* The [POKE](POKE) before the delay loop sets the tick count to 0. The [PEEK](PEEK) count increases until the tick count returns 18 ticks and ends the loop. The same thing could be approximated by using a delay loop with: second! = **TIMER** + 1
 
-Using a [DOUBLE](DOUBLE) variable for [TIMER](TIMER)(.001) millisecond accuracy in **QB64** throughout the day.
+Using a [DOUBLE](DOUBLE) variable for [TIMER](TIMER)(.001) millisecond accuracy in **QBHD** throughout the day.
 
 ```vb
 

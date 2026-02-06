@@ -22,7 +22,7 @@
   * [CONST](CONST) variables can also be used after the constant value is defined.
   * Fixed length strings may not be initialized with spaces and may contain only a series of CHR$(0) at program start.
 
-> **QB64 fixed length string type suffixes**
+> **QBHD fixed length string type suffixes**
 
 * A number after the string variable name $ suffix denotes the fixed string length: **X$2** denotes a 2 byte string.
 
@@ -38,7 +38,7 @@
 
 ## Example(s)
 
-Using a string type suffix with a fixed length byte size in QB64 only. The number designates the fixed string length.
+Using a string type suffix with a fixed length byte size in QBHD only. The number designates the fixed string length.
 
 ```vb
 
@@ -76,7 +76,7 @@ I am "10" years old. How old are you?
 
 > *Note:* Since quotation marks are used to denote the ends of literal strings, [CHR$](CHR$)(34) must be used to place quotes inside them.
 
-How QB64 string type suffixes can fix the length by adding a number of bytes after it.
+How QBHD string type suffixes can fix the length by adding a number of bytes after it.
 
 ```vb
 

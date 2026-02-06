@@ -1,6 +1,6 @@
 An **argument** or parameter is information that a [statement](statement), [sub (explanatory)](sub-(explanatory)), [function (explanatory)](function-(explanatory)) or [metacommand](metacommand) needs to carry out the task it has been given. Sometimes a argument can be optional and is not needed for the task to be carried out, in such case it will use a default instead of the argument when carrying out the task.
 
-It is currently not possible to make arguments optional in user-defined [SUB](SUB)s or [FUNCTION](FUNCTION)s, but Galleon (the creator of QB64) is planning that functionality in the future.
+It is currently not possible to make arguments optional in user-defined [SUB](SUB)s or [FUNCTION](FUNCTION)s, but Galleon (the creator of QBHD) is planning that functionality in the future.
 
 Arguments that are optional will be enclosed with [ and ] brackets in syntax descriptions.
 

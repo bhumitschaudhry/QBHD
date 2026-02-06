@@ -12,18 +12,18 @@ The [VAL](VAL) Function returns the decimal numerical equivalent value of a [STR
 * If the first string character is not a number VAL returns 0. VAL may return erratic values with "%" or "&" starting characters. 
 * Hexadecimal [HEX$](HEX$) string values with the "[&H](&H)" prefix can be converted to a decimal value with digits 0 to 9 and letters A to F, like; dec = VAL("&H"+hexvar$). 
 * Octal [OCT$](OCT$) string values with the "[&O](&O)" prefix can be converted to a decimal value with digits from 0 to 7 only.
-* Presently VAL **cannot** convert QB64 binary [&B](&B) prefixed strings from binary to decimal in **QB64**.
+* Presently VAL **cannot** convert QBHD binary [&B](&B) prefixed strings from binary to decimal in **QBHD**.
 * For character values of [ASCII](ASCII) data use [ASC](ASC) to get the value. 
-* In QB64 use an [INTEGER](INTEGER) return variable to hold integer values  returned by VAL [HEX$](HEX$) strings: **value% = VAL("&HFFFF") = -1**
+* In QBHD use an [INTEGER](INTEGER) return variable to hold integer values  returned by VAL [HEX$](HEX$) strings: **value% = VAL("&HFFFF") = -1**
 
 ## Example(s)
 
-Differences in values returned with QBasic and QB64:
+Differences in values returned with QBasic and QBHD:
 
 ```vb
 
-PRINT VAL("&H") '203 in QB, 0 in QB64
-PRINT VAL("&HFFFF") ' -1 QB, 65535 in QB64
+PRINT VAL("&H") '203 in QB, 0 in QBHD
+PRINT VAL("&HFFFF") ' -1 QB, 65535 in QBHD
 PRINT VAL("&HFFFF&") '65535 in both 
 
 ```

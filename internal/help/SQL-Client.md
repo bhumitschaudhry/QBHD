@@ -2,9 +2,9 @@
 
 **IMPORTANT**
 
-> * 1) Make sure you are running QB64 V0.942 or higher
+> * 1) Make sure you are running QBHD V0.942 or higher
 > * 2) Download 'mysql.dll' and place it in your qb64 folder (not provided)
-> * 3) Create 'mysql_helper.h' in your QB64 folder (see below)
+> * 3) Create 'mysql_helper.h' in your QBHD folder (see below)
 > * 4) Run & enjoy browsing our sample database as a member with read-only privileges.
 
 >  *mysql_helper.h*
@@ -52,7 +52,7 @@ IF conn = 0 THEN PRINT "Could not init MYSQL client!": END
 
 '*** Open the db ***
 'PRINT mysql_real_connect(conn, "qb64db2.db.7445102.hostedresource.com", "", "", "qb64db2", 0, 0, 0)
-PRINT mysql_real_connect(conn, "qb64db2.db.7445102.hostedresource.com", "qb64guest", "QB64forever", "qb64db2", 0, 0, 0)
+PRINT mysql_real_connect(conn, "qb64db2.db.7445102.hostedresource.com", "qb64guest", "QBHDforever", "qb64db2", 0, 0, 0)
 
 '*** Write to the db (not possible as a guest!) ***
 GOTO skip_write '(guests can't do this anyway)
@@ -148,7 +148,7 @@ IF conn = 0 THEN PRINT "Could not init MYSQL client!": END
 
 '*** Open the db ***
 'PRINT mysql_real_connect(conn, "qb64db2.db.7445102.hostedresource.com", "", "", "qb64db2", 0, 0, 0)
-PRINT mysql_real_connect(conn, "qb64db2.db.7445102.hostedresource.com", "qb64guest", "QB64forever", "qb64db2", 0, 0, 0)
+PRINT mysql_real_connect(conn, "qb64db2.db.7445102.hostedresource.com", "qb64guest", "QBHDforever", "qb64db2", 0, 0, 0)
 
 '*** Write to the db (not possible as a guest!) ***
 GOTO skip_write '(guests can't do this anyway)
@@ -173,7 +173,7 @@ DIM ft AS MYSQL_FIELD_TYPE
 OFFSETtoMYSQL_FIELD ft, f%&, LEN(ft)
 PRINT offset_to_string(ft.name)
 PRINT offset_to_string(ft.org_name)
-x%& = ft.length: PRINT x%& '***PRINT ft.length doesn't work in QB64 yet, this needs to be addressed***
+x%& = ft.length: PRINT x%& '***PRINT ft.length doesn't work in QBHD yet, this needs to be addressed***
 
 END
 
@@ -538,7 +538,7 @@ This works in Linux (Ubuntu) too with minimal changes:
 1. Use the 'Synaptic Package Manager' to install 'mysql-client-5.1'
 2. Change: DECLARE DYNAMIC LIBRARY "mysql" to DECLARE DYNAMIC LIBRARY "mysqlclient:16.0.0" 
 
->  Or just copy this .so lib to your QB64 folder and rename it *libmysql.so*(do not use *.so* extension in [DECLARE LIBRARY](DECLARE-LIBRARY) name).
+>  Or just copy this .so lib to your QBHD folder and rename it *libmysql.so*(do not use *.so* extension in [DECLARE LIBRARY](DECLARE-LIBRARY) name).
 
 ## See Also
 

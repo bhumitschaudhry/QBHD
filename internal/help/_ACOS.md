@@ -6,7 +6,7 @@ The [_ACOS](_ACOS) function returns the angle measured in radians based on an in
 
 ## Description
 
-* The *cosine_value!* must be measured >= -1 and <= 1, or an error will be generated.  (PRINT _ACOS(1.2) would give the result of -1.#IND, which is basically QB64's way of telling us that the number doesn't exist, much like 1/0 would.) 
+* The *cosine_value!* must be measured >= -1 and <= 1, or an error will be generated.  (PRINT _ACOS(1.2) would give the result of -1.#IND, which is basically QBHD's way of telling us that the number doesn't exist, much like 1/0 would.) 
 * ARCCOSINE is the inverse function of [COS](COS)ine, which lets us turn a [COS](COS)ine value back into an angle.
 * Note: Due to rounding with floating point math, the _ACOS may not always give a perfect match for the COS angle which generated this.  You can reduce the number of rounding errors by increasing the precision of your calculations by using [DOUBLE](DOUBLE) or [_FLOAT](_FLOAT) precision variables instead of [SINGLE](SINGLE).
 

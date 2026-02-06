@@ -8,7 +8,7 @@ The [DIM](DIM) statement is used to declare a variable or a list of variables as
 > *To declare arrays:*
 > [DIM](DIM) [SHARED] *array([lowest% TO] highest%])*[{suffix| AS [_UNSIGNED] *type*}] [, *variable2*...]
 
-> 'QB64** Alternative Syntax:*
+> 'QBHD** Alternative Syntax:*
 > [DIM](DIM) [SHARED] AS [_UNSIGNED] *typevariable*  [, *variable2*...]
 > [DIM](DIM) [SHARED] AS [_UNSIGNED] *typearray([lowest% TO] highest%])* [, *array2(elements)*...]
 
@@ -23,7 +23,7 @@ The [DIM](DIM) statement is used to declare a variable or a list of variables as
   * [SINGLE](SINGLE) (or use variable suffix **!** or no suffix by default)
   * [DOUBLE](DOUBLE) (or use variable suffix **#**)
   * [STRING](STRING) (or use variable suffix **$**). An AS multiplier can set the string [LEN](LEN). Ex: `DIM *variable* AS STRING * 8`
-* **QB64** variable types: 
+* **QBHD** variable types: 
   * [_BIT](_BIT) (or use variable suffix **\`**). An AS multiplier can be used for multiple bits. Ex: `DIM *variable* AS _BIT * 8`
   * [_BYTE](_BYTE) (or use variable suffix **%%**)
   * [_INTEGER64](_INTEGER64) (or use variable suffix **&&**)
@@ -34,7 +34,7 @@ The [DIM](DIM) statement is used to declare a variable or a list of variables as
 * When using the **AS type variable-list** syntax, type symbols cannot be used.
 * When the [$DYNAMIC]($DYNAMIC) metacommand or [REDIM](REDIM) is used, array element sizes are changeable (not [$STATIC]($STATIC)).
 * Use [REDIM](REDIM) instead of DIM to dimension arrays as dynamic without the $DYNAMIC metacommand.
-* Use [REDIM](REDIM) [_PRESERVE](_PRESERVE) in **QB64** to retain previous array values when changing the size of an array. 
+* Use [REDIM](REDIM) [_PRESERVE](_PRESERVE) in **QBHD** to retain previous array values when changing the size of an array. 
 * [REDIM](REDIM) [_PRESERVE](_PRESERVE) cannot change the number of array dimensions. An [ERROR Codes](ERROR-Codes) will occur.
 * [$DYNAMIC]($DYNAMIC) arrays MUST be [REDIM](REDIM)ensioned if [ERASE](ERASE) or [CLEAR](CLEAR) are used, as the arrays are completely removed.
 * All numerical variable types **except** SINGLE, DOUBLE and _FLOAT can be dimensioned as [_UNSIGNED](_UNSIGNED) (suffix ~) or positive only.
@@ -83,7 +83,7 @@ DIM bit(8) AS _UNSIGNED _BIT
 
 ```
 
-QB64 is more flexible than QBasic when it comes to "Duplicate Definition" errors. The following code does not error:
+QBHD is more flexible than QBasic when it comes to "Duplicate Definition" errors. The following code does not error:
 
 ```vb
 
@@ -96,7 +96,7 @@ PRINT x
 
 > *Explanation:* The [SINGLE](SINGLE) variable can be differentiated from the [LONG](LONG) x variable by using suffixes like x! or x& in later code.
 
-The following code will create a "Name already in use" **status error** in QB64 when the variable types are the same.
+The following code will create a "Name already in use" **status error** in QBHD when the variable types are the same.
 
 ```vb
 
@@ -107,9 +107,9 @@ PRINT x
 
 ```
 
-> *Explanation:* QB64 gives an error because the creation of the new variable would make referring to the existing one impossible.
+> *Explanation:* QBHD gives an error because the creation of the new variable would make referring to the existing one impossible.
 
-Using QB64's alternative syntax to declare multiple variables/arrays of the same type.
+Using QBHD's alternative syntax to declare multiple variables/arrays of the same type.
 
 ```vb
 

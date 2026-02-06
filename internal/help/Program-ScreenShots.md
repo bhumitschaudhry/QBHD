@@ -5,13 +5,13 @@
 > EightBit Minimum_Column%, Minimum_Row%, Maximum_Column%, Maximum_Row%, NewFileName$
 
 * The values of x1%, y%1, x2% and y2% can be any ON SCREEN area coordinates in the screen mode used.
-* You MUST subtract one when using the **QB64**  FULL SCREEN [_WIDTH](_WIDTH) and [_HEIGHT](_HEIGHT) values! Otherwise [POINT](POINT) will return an [ERROR Codes](ERROR-Codes)! The maximum is one pixel less than the [SCREEN (statement)](SCREEN-(statement)) resolution or the screen dimensions.
-* Both [SUB](SUB)s can be used in **QB64** or QBasic! The FourBit SUB takes about 8 seconds in QB.
+* You MUST subtract one when using the **QBHD**  FULL SCREEN [_WIDTH](_WIDTH) and [_HEIGHT](_HEIGHT) values! Otherwise [POINT](POINT) will return an [ERROR Codes](ERROR-Codes)! The maximum is one pixel less than the [SCREEN (statement)](SCREEN-(statement)) resolution or the screen dimensions.
+* Both [SUB](SUB)s can be used in **QBHD** or QBasic! The FourBit SUB takes about 8 seconds in QB.
 * FourBit SUB creates 4 BPP(16 color) and EightBit SUB creates 8 BPP(256 color) bitmaps.
 
-**QB64 Custom Screens**
+**QBHD Custom Screens**
 
-* See the [ThirtyTwoBit SUB](ThirtyTwoBit-SUB) routine to create QB64 screenshots of [_NEWIMAGE](_NEWIMAGE) screen pages or copy images loaded using  [_LOADIMAGE](_LOADIMAGE). Creates 256 or 24/32 bit color bitmaps using the QB64 image and page handles.
+* See the [ThirtyTwoBit SUB](ThirtyTwoBit-SUB) routine to create QBHD screenshots of [_NEWIMAGE](_NEWIMAGE) screen pages or copy images loaded using  [_LOADIMAGE](_LOADIMAGE). Creates 256 or 24/32 bit color bitmaps using the QBHD image and page handles.
 
 ```vb
 
@@ -235,7 +235,7 @@ NEXT n
 PUT #f%, 51, SigCOLORS&     
 
 CLOSE #f%
-'BEEP         'optional sound not needed in QB64 as speed is fast
+'BEEP         'optional sound not needed in QBHD as speed is fast
 END SUB   
 
 ```
@@ -245,8 +245,8 @@ END SUB
 ## See Example(s)
 
 
-* [SAVEIMAGE](SAVEIMAGE) (QB64 full screen Image to Bitmap SUB by Galleon)
-* [ThirtyTwoBit SUB](ThirtyTwoBit-SUB) (QB64 saves partial Image area to bitmap)
+* [SAVEIMAGE](SAVEIMAGE) (QBHD full screen Image to Bitmap SUB by Galleon)
+* [ThirtyTwoBit SUB](ThirtyTwoBit-SUB) (QBHD saves partial Image area to bitmap)
 * [Bitmaps](Bitmaps)
 
 ## See Also

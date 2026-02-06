@@ -27,7 +27,7 @@ The [PRINT (file statement)](PRINT-(file-statement)) statement prints numeric or
   * If a numeric literal is in scientific notation, the number is also written in scientific notation. [PRINT USING (file statement)](PRINT-USING-(file-statement)) can return actual rounded numerical values in string form.
   * The numerical value is always followed by a space character unless [STR$](STR$) is used to convert it to a string value.
 * Whenever [PRINT (file statement)](PRINT-(file-statement)) moves the file cursor to a new file row, a carriage return character (CHR$(13)) followed by a line feed character (CHR$(10)) is written. The combination are referred to as the "CRLF" character.
-* **Note: [RANDOM](RANDOM) and [BINARY](BINARY) files are not affected by PRINT # statements to them and will create a syntax error in QB64!**
+* **Note: [RANDOM](RANDOM) and [BINARY](BINARY) files are not affected by PRINT # statements to them and will create a syntax error in QBHD!**
 
 ## Example(s)
 

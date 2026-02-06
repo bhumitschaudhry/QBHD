@@ -23,7 +23,7 @@ The [INSTR](INSTR) function searches for the first occurence of a search [STRING
 
 ## QBasic
 
-* The start% position had to be at least 1 or greater when used or there will be an [ERROR Codes](ERROR-Codes) error. In **QB64**, a start% value of 0 or negative is interpreted as 1 and doesn't generate an error.
+* The start% position had to be at least 1 or greater when used or there will be an [ERROR Codes](ERROR-Codes) error. In **QBHD**, a start% value of 0 or negative is interpreted as 1 and doesn't generate an error.
 
 ## Example(s)
 

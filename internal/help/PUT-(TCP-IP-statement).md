@@ -7,7 +7,7 @@ The **PUT #** TCP/IP statement sends unformatted(raw) data to an open connection
 
 ## Parameters
 
-* The *handle* value is returned by the [_OPENCLIENT](_OPENCLIENT), [_OPENHOST](_OPENHOST) or [_OPENCONNECTION](_OPENCONNECTION) **QB64** functions.
+* The *handle* value is returned by the [_OPENCLIENT](_OPENCLIENT), [_OPENHOST](_OPENHOST) or [_OPENCONNECTION](_OPENCONNECTION) **QBHD** functions.
 * The *data* can be any variable type value. Literal values are not allowed.
 
 **Communicating using unformatted/raw streamed data:**

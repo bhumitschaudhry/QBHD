@@ -4,7 +4,7 @@
 
 > i = [INP](INP)(address)
 
-* **QB64 has limited access to registers. VGA memory and registers are emulated.**
+* **QBHD has limited access to registers. VGA memory and registers are emulated.**
 * Address can be a decimal or hexadecimal [INTEGER](INTEGER) value.
 * [INP](INP) reads directly from a register or port address.
 * It does not require a [DEF SEG](DEF-SEG) memory segment address like [PEEK](PEEK) or [POKE](POKE) do.

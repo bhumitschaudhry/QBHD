@@ -1,10 +1,10 @@
 **Bitmaps** are image files with the .BMP file name extension.
 
 * Bitmaps can use 1, 4, 8 or 24/32 bits per pixel(BPP) color palettes.
-* Unlike QBasic, QB64 is capable of working with 24 bit per pixel color(16 million) bitmaps and can create 32 bit screens to use them with the [_NEWIMAGE](_NEWIMAGE) function.
-* Text SCREEN mode 0 cannot be screen saved in QBasic or QB64.
+* Unlike QBasic, QBHD is capable of working with 24 bit per pixel color(16 million) bitmaps and can create 32 bit screens to use them with the [_NEWIMAGE](_NEWIMAGE) function.
+* Text SCREEN mode 0 cannot be screen saved in QBasic or QBHD.
 * The structure of the Bitmap header can be placed in a [TYPE](TYPE) definition as below. This information can be used to find out the bitmap's **Width** and **Height** dimensions, **Bits Per Pixel** used and the **offset** of the actual image pixel data.  
-* It should be noted that **QB64's** [_LOADIMAGE](_LOADIMAGE) function can load bitmaps and other type of images directly into a program and be placed simply by using [_PUTIMAGE](_PUTIMAGE). [_NEWIMAGE](_NEWIMAGE) can create 256 or 32 bit [SCREEN (statement)](SCREEN-(statement)) modes to display those images.
+* It should be noted that **QBHD's** [_LOADIMAGE](_LOADIMAGE) function can load bitmaps and other type of images directly into a program and be placed simply by using [_PUTIMAGE](_PUTIMAGE). [_NEWIMAGE](_NEWIMAGE) can create 256 or 32 bit [SCREEN (statement)](SCREEN-(statement)) modes to display those images.
 
 ## Bitmap Header
 
@@ -12,7 +12,7 @@
 
 'Bitmap.BI can be included at start of program
 
-TYPE BMPEntry              **' Description                          Bytes    QB64 Function** 
+TYPE BMPEntry              **' Description                          Bytes    QBHD Function** 
    ID AS STRING * 2        ' File ID("BM" text or 19778 AS Integer) 2      CVI("BM")
    Size AS LONG            ' Total Size of the file                 4      LOF
    Res1 AS INTEGER         ' Reserved 1 always 0                    2 
@@ -45,7 +45,7 @@ DIM SHARED BMP AS BMPHeader
 LINE INPUT "Enter a bitmap file name: ", file$ '<<<< enter a bitmap file name
 
 OPEN file$ FOR BINARY AS #1
-GET #1, 1, ENT   'get entry header(1 is first file byte in QB64 and Qbasic)
+GET #1, 1, ENT   'get entry header(1 is first file byte in QBHD and Qbasic)
 GET #1, , BMP    'get bitmap header information 
 
 PRINT "Size:"; ENT.Size; "bytes, Offset:"; ENT.Offset
@@ -115,7 +115,7 @@ The bitmap image is now stored in an [Arrays](Arrays) to [BSAVE](BSAVE) to a fil
  
 **Bits Per Pixel (BPP)**
 
-BPP returns **1 bit**(Black and white), **4 bit**(16 colors), **8 bit**(256 colors) or **24 bit**(16 million colors) for each pixel. In QBasic 24 bit can only be in greyscale, but QB64 can display them as True Color. 24 bit is also often referred to as 32 bit, but each pixel uses three bytes of information for the Red, Green and Blue color intensity settings. Intensity settings are read as [ASCII](ASCII) characters using [ASC](ASC).
+BPP returns **1 bit**(Black and white), **4 bit**(16 colors), **8 bit**(256 colors) or **24 bit**(16 million colors) for each pixel. In QBasic 24 bit can only be in greyscale, but QBHD can display them as True Color. 24 bit is also often referred to as 32 bit, but each pixel uses three bytes of information for the Red, Green and Blue color intensity settings. Intensity settings are read as [ASCII](ASCII) characters using [ASC](ASC).
 
 
 **Palette Data (4 and 8 Bit Only)**
@@ -221,7 +221,7 @@ FOR Colr = 0 TO 15        'read palette data for intensities
     GET #1, , a$: Red = ASC(a$) \ 4
     OUT &H3C9, Red          'NOTE: RGB settings could also be sent directly to an
     OUT &H3C9, Grn          'array when the data is to be stored by a file using 
-    OUT &H3C9, Blu          'BSAVE or with one PUT # to a BINARY file in QB64
+    OUT &H3C9, Blu          'BSAVE or with one PUT # to a BINARY file in QBHD
     GET #1, , a$          '--- skip unused spacer byte
 NEXT Colr
 o$ = " "
@@ -255,7 +255,7 @@ Each half of a byte of image pixel data stores a color attribute value from 0 to
 
 > [AND](AND) 15 will return any lower byte value while integer division by 16 will return any byte value over 15 as attributes 0 to 15.
 
-> **QB64** can [GET (graphics statement)](GET-(graphics-statement)) a full Screen 12 image into one [BINARY](BINARY) file with [PUT](PUT) using an 80K [INTEGER](INTEGER) array instead of using 3 in QBasic!
+> **QBHD** can [GET (graphics statement)](GET-(graphics-statement)) a full Screen 12 image into one [BINARY](BINARY) file with [PUT](PUT) using an 80K [INTEGER](INTEGER) array instead of using 3 in QBasic!
 
 ## Eight Bit:
 
@@ -295,7 +295,7 @@ END SUB
 
 ## Twenty Four Bit:
 
-For screen modes created by [_NEWIMAGE](_NEWIMAGE) using 24 or 32 bit bitmaps. **Image data** starts immediately after the bitmap header. There is no palette data! Each BGR **color intensity** is one byte of the [ASCII](ASCII) code value directly. Values range from 0 to 255 using **QB64's** [_RGB](_RGB) or [_RGB32](_RGB32) functions to set the [PSET](PSET) colors as below:
+For screen modes created by [_NEWIMAGE](_NEWIMAGE) using 24 or 32 bit bitmaps. **Image data** starts immediately after the bitmap header. There is no palette data! Each BGR **color intensity** is one byte of the [ASCII](ASCII) code value directly. Values range from 0 to 255 using **QBHD's** [_RGB](_RGB) or [_RGB32](_RGB32) functions to set the [PSET](PSET) colors as below:
 
 ```vb
 
@@ -356,7 +356,7 @@ The actual 4 bit or 8 bit image is read as [ASCII](ASCII) color attributes from 
 * [SAVEIMAGE](SAVEIMAGE) (Galleon's Full Image Bitmap creator)
 * [SaveIcon32](SaveIcon32) (Creates Icons from any image)
 * [Program ScreenShots](Program-ScreenShots) (Member program for Qbasic's legacy screen modes)
-* [ThirtyTwoBit SUB](ThirtyTwoBit-SUB) (QB64 32 bit Image area to bitmap)
+* [ThirtyTwoBit SUB](ThirtyTwoBit-SUB) (QBHD 32 bit Image area to bitmap)
 
 ## See Also
 

@@ -58,7 +58,7 @@
 | _UNSIGNED _OFFSET | ~%& | 0 | 18,446,744,073,709,551,615 |
 | _MEM | none | combined memory variable type | N/A |
 
-*Note: For the floating-point numeric types [SINGLE](SINGLE) (default when not assigned), [DOUBLE](DOUBLE) and [_FLOAT](_FLOAT), the minimum values represent the smallest values closest to zero, while the maximum values represent the largest values closest to ±infinity. OFFSET dot values are used as a part of the [_MEM](_MEM) variable type in QB64 to return or set the position in memory.*
+*Note: For the floating-point numeric types [SINGLE](SINGLE) (default when not assigned), [DOUBLE](DOUBLE) and [_FLOAT](_FLOAT), the minimum values represent the smallest values closest to zero, while the maximum values represent the largest values closest to ±infinity. OFFSET dot values are used as a part of the [_MEM](_MEM) variable type in QBHD to return or set the position in memory.*
 
 ### String Text Type
 
@@ -143,7 +143,7 @@ PUT #1, 5, Contact  'place contact info into fifth record position
 
 > *Explanation:* Use the assigned type variable to find the RANDOM record length which is 118 bytes.
 
-Defining a TYPE variable as another variable type from a previous TYPE definition in QB64.
+Defining a TYPE variable as another variable type from a previous TYPE definition in QBHD.
 
 ```vb
 
@@ -172,14 +172,14 @@ A bitmap header information TYPE [$INCLUDE]($INCLUDE) File.
 ' ********
 'Bitmap.BI can be included at start of program
 
- TYPE BMPHeaderType        ' Description                  Bytes      **QB64**
+ TYPE BMPHeaderType        ' Description                  Bytes      **QBHD**
   ID AS STRING * 2        ' File ID is "BM"                2 
   Size AS LONG            ' Size of the data file          4 
   Res1 AS INTEGER         ' Reserved 1 should be 0         2 
   Res2 AS INTEGER         ' Reserved 2 should be 0         2 
   Offset AS LONG          ' Start position of pixel data   4 
   Hsize AS LONG           ' Information header size        4 
-  PWidth AS LONG          ' Image width                    4       _WIDTH (QB64) 
+  PWidth AS LONG          ' Image width                    4       _WIDTH (QBHD) 
   PDepth AS LONG          ' Image height                   4       _HEIGHT
   Planes AS INTEGER       ' Number of planes               2 
   BPP AS INTEGER          ' Bits per pixel(palette)        2       _PIXELSIZE

@@ -66,7 +66,7 @@ L = LEN(text$)
 DIM Code(L)                         'place ASCII code solution into an array
 COLOR 14: LOCATE 22, 5
 FOR i = 1 TO L
-  Code(i) = ASC(UCASE$(text$), i)   'in QB64, ASC can read by character position
+  Code(i) = ASC(UCASE$(text$), i)   'in QBHD, ASC can read by character position
   IF Code(i) >= 65 AND Code(i) <= 90 THEN PRINT Letter$(Code(i)); ELSE PRINT CHR$(Code(i));
 NEXT
 END 

@@ -5,8 +5,8 @@
 >  [DIM](DIM) variable AS [LONG](LONG)
 
 * [LONG](LONG) integer values range from -2147483648 to 2147483647.
-* **QB64**'s [_UNSIGNED](_UNSIGNED) [LONG](LONG) integer values range from 0 to 4294967295.
-* **QB64** [_UNSIGNED](_UNSIGNED) [_INTEGER64](_INTEGER64) values range from 0 to 18446744073709551615.
+* **QBHD**'s [_UNSIGNED](_UNSIGNED) [LONG](LONG) integer values range from 0 to 4294967295.
+* **QBHD** [_UNSIGNED](_UNSIGNED) [_INTEGER64](_INTEGER64) values range from 0 to 18446744073709551615.
 * Decimal point values assigned to a [LONG](LONG) variable will be rounded to the nearest whole number.
 * The LONG variable type suffix is & or ~& for [_UNSIGNED](_UNSIGNED). Suffix can also be placed after a literal or hexadecimal numerical value.
 * [_INTEGER64](_INTEGER64) uses the **&&** or **~&&** [_UNSIGNED](_UNSIGNED) suffix.

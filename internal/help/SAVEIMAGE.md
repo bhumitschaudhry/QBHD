@@ -2,14 +2,14 @@
 
 **Bitmaps** are image files with the .BMP file name extension.
 
-* Bitmaps can be 1, 4, 8 or 24/32 bits per pixel(BPP) color palettes. QB64 is capable of working with high color bitmaps.
+* Bitmaps can be 1, 4, 8 or 24/32 bits per pixel(BPP) color palettes. QBHD is capable of working with high color bitmaps.
 * Screen or Image width and height calculations are automatically made using the image handle value.
 * Use an image handle value of 0(zero) to get a screen shot of the entire active program screen. 
-* **Note: SCREEN 0 text mode cannot be screen saved in QBasic or QB64.**
+* **Note: SCREEN 0 text mode cannot be screen saved in QBasic or QBHD.**
 
 ## Example(s)
 
-*The following example uses a SUB program created to save a 32 bit JPEG image as a bitmap using QB64's graphic functions:*
+*The following example uses a SUB program created to save a 32 bit JPEG image as a bitmap using QBHD's graphic functions:*
 
 >  Module Demo Code: Change the _LOADIMAGE filename to an image file you can access.
 
@@ -30,7 +30,7 @@ IF bytesperpixel& = 0 THEN PRINT "Text modes unsupported!": END
 IF bytesperpixel& = 1 THEN bpp& = 8 ELSE bpp& = 24
 x& = _WIDTH(image&)
 y& = _HEIGHT(image&)
-b$="BM????QB64????"+MKL$(40)+MKL$(x&)+MKL$(y&)+MKI$(1)+MKI$(bpp&)+MKL$(0)+"????"+STRING$(16, 0) 'partial BMP header info(???? to be filled later)
+b$="BM????QBHD????"+MKL$(40)+MKL$(x&)+MKL$(y&)+MKI$(1)+MKI$(bpp&)+MKL$(0)+"????"+STRING$(16, 0) 'partial BMP header info(???? to be filled later)
 IF bytesperpixel& = 1 THEN
   FOR c& = 0 TO 255 ' read BGR color settings from JPG image + 1 byte spacer(CHR$(0))
     cv& = _PALETTECOLOR(c&, image&) ' color attribute to read. 
@@ -72,7 +72,7 @@ After the header, the [RGB](RGB) color settings are created using [ASCII](ASCII)
 
 The actual image is read as pixel attributes from the image bottom to the top for proper formatting with zero padding when necessary.
 
-*** Note:** 32-bit images will be saved as 24-bit BMP files. All palette indexed images/modes will be saved as 256 color BMP files. Text modes cannot be saved. As QB64 has no official _SAVEIMAGE command yet and QBasic programs to save screen-shots don't work in QB64 yet this is a very useful alternative.
+*** Note:** 32-bit images will be saved as 24-bit BMP files. All palette indexed images/modes will be saved as 256 color BMP files. Text modes cannot be saved. As QBHD has no official _SAVEIMAGE command yet and QBasic programs to save screen-shots don't work in QBHD yet this is a very useful alternative.
 
 ## See Also
 

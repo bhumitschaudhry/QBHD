@@ -6,7 +6,7 @@
 
 ## Description
 
-* With [OPTION _EXPLICIT](OPTION--EXPLICIT) you can avoid typos by having QB64 immediately warn in the **Status area** of new variables used without previous declaration.
+* With [OPTION _EXPLICIT](OPTION--EXPLICIT) you can avoid typos by having QBHD immediately warn in the **Status area** of new variables used without previous declaration.
 * Enable [OPTION _EXPLICIT](OPTION--EXPLICIT) temporarily even if a program source file doesn't contain the directive by specifying the **-e** switch when compiling via command line (*qb64 -c file.bas -e*).
 
 ## Error(s)
@@ -15,7 +15,7 @@
 
 ## Example(s)
 
-Avoiding simple typos with [OPTION _EXPLICIT](OPTION--EXPLICIT) results shown in the QB64 IDE Status area.
+Avoiding simple typos with [OPTION _EXPLICIT](OPTION--EXPLICIT) results shown in the QBHD IDE Status area.
 
 ```vb
 
@@ -29,7 +29,7 @@ PRINT myVariabe
 
 ```
 
-*QB64 IDE Status will show:*
+*QBHD IDE Status will show:*
 **Variable 'myVariabe' (SINGLE) not defined on line 4**
 
 ## See Also

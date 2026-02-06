@@ -68,7 +68,7 @@ The [INKEY$](INKEY$) function returns user input as [ASCII](ASCII) [STRING](STRI
                     CHR$(0) + CHR$(72)         [↑] Arrow            "H"
                     CHR$(0) + CHR$(73)         [Page Up]            "I"
                     CHR$(0) + CHR$(75)         [←] Arrow            "K"
-                    CHR$(0) + CHR$(76)         [5 NumberPad]        "L" (NumLock off in QB64)
+                    CHR$(0) + CHR$(76)         [5 NumberPad]        "L" (NumLock off in QBHD)
                     CHR$(0) + CHR$(77)         [→] Arrow            "M"
                     CHR$(0) + CHR$(79)         [End]                "O"
                     CHR$(0) + CHR$(80)         [↓] Arrow            "P"
@@ -92,7 +92,7 @@ The [INKEY$](INKEY$) function returns user input as [ASCII](ASCII) [STRING](STRI
 
 ```
 
-> In **QB64**, [CVI](CVI) can be used to get the [_KEYDOWN](_KEYDOWN) 2-byte code value. Example: **status = _KEYDOWN(CVI(CHR$(0) + "P"))**
+> In **QBHD**, [CVI](CVI) can be used to get the [_KEYDOWN](_KEYDOWN) 2-byte code value. Example: **status = _KEYDOWN(CVI(CHR$(0) + "P"))**
 
 ## Example(s)
 
@@ -183,7 +183,7 @@ END
 
 ```
 
-Using INKEY$ with the arrow or WASD keys to move the QB64 bee image sprite with [_PUTIMAGE](_PUTIMAGE):
+Using INKEY$ with the arrow or WASD keys to move the QBHD bee image sprite with [_PUTIMAGE](_PUTIMAGE):
 
 ```vb
 
@@ -196,7 +196,7 @@ SCREEN _NEWIMAGE(800, 600, 32)
 
 x = 0
 y = 0
-image = _LOADIMAGE("QB64bee.png") 'Here I actually used the QB64 icon
+image = _LOADIMAGE("QBHDbee.png") 'Here I actually used the QBHD icon
 
 DO
   _PUTIMAGE (x, y), image

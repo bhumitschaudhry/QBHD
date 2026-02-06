@@ -9,7 +9,7 @@ The [CHDIR](CHDIR) statement changes the program's location from one working dir
 * path$ is the new directory path the program will work in.
 * path$ can be an absolute path (starting from the root folder) or relative path (starting from the current program location).
 * If path$ specifies a non-existing path, a [ERROR Codes](ERROR-Codes) error will occur.
-* **A QB64 [SHELL](SHELL) statement cannot use "CD " or "CHDIR " + path$ to change directories.**
+* **A QBHD [SHELL](SHELL) statement cannot use "CD " or "CHDIR " + path$ to change directories.**
 
 ## Example(s)
 
@@ -23,7 +23,7 @@ CHDIR "..\"      'change back to previous folder one up
 
 ```
 
-> *Details:* **QB64** can use long or short (8.3 notation) file and path names.
+> *Details:* **QBHD** can use long or short (8.3 notation) file and path names.
 
 Using the Windows API to find the current program's name and root path. The PATH$ is a shared function value.
 

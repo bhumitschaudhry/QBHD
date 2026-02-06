@@ -12,7 +12,7 @@
 
 * Used to find **[Ctrl], [Alt], [Shift], [Caps Lock], [Scroll Lock], [Num Lock] and [F]unction key controls.**
 * The keyboard input is stored at decimal register 96 or &H60 hexadecimal.
-* Returns values from 0 to 127 for keypresses. 129 to 255 for key releases. **Codes 91 to 93 are available in QB64 only**.
+* Returns values from 0 to 127 for keypresses. 129 to 255 for key releases. **Codes 91 to 93 are available in QBHD only**.
 * Every key (except Prt Scr/Sys Rq) has an identifying code that will not change with Caps Lock or Shift. 
 * Release codes are the original key press code `+ 128`. Example: [Esc] key press = 1 and  release = 129.
 * Extended (added) keys on modern keyboards may alternate codes with Left Shift codes 42 and 170 because of Num Lock mode.
@@ -37,10 +37,10 @@
 '  **Ctrl Win Alt    Spacebar    Alt Win Menu Ctrl     ◄-  ▼   -►      0/Insert    ./Del r**
 '   29  91  56        57       56  92   93  29       75  80  77       82          83   28 
 '
-'   QB64 codes only! **Release codes = Press code + 128. Pause/Break may lock code returns.**
+'   QBHD codes only! **Release codes = Press code + 128. Pause/Break may lock code returns.**
 
 ```
-<sub>NOTE: The above commented table can be copied and pasted directly into the QB64 IDE</sub>
+<sub>NOTE: The above commented table can be copied and pasted directly into the QBHD IDE</sub>
 
 ## QBasic
 
@@ -62,9 +62,9 @@ LOOP UNTIL scancode% = 1  ' [Esc] key exit
 
 ```
 
-*Explanation:* Green is a press code and red is the release code. Num Lock mode may display the Left Shift key press(42) and release(170) codes, plus code 224, but the designated codes are returned also. **QB64** does not return those extra codes.
+*Explanation:* Green is a press code and red is the release code. Num Lock mode may display the Left Shift key press(42) and release(170) codes, plus code 224, but the designated codes are returned also. **QBHD** does not return those extra codes.
 
-Unlike QBasic, INP(&H60) in **QB64** reads from a queue so you never miss a key press.
+Unlike QBasic, INP(&H60) in **QBHD** reads from a queue so you never miss a key press.
 
 ```vb
  
@@ -97,7 +97,7 @@ END
 ```
 <sub>Code by Galleon</sub>
 
-*Explanation:* INP does not clear the keyboard buffer so it may beep. To eliminate the problem use INKEY$ before or after reading with INP(96). INP will still return the press code. The array can hold more than one code return. QBasic users may note that the arrow pad and Home pad keypresses also alternate codes 42 and 170 due to Number Lock setting. That will not happen in **QB64**.
+*Explanation:* INP does not clear the keyboard buffer so it may beep. To eliminate the problem use INKEY$ before or after reading with INP(96). INP will still return the press code. The array can hold more than one code return. QBasic users may note that the arrow pad and Home pad keypresses also alternate codes 42 and 170 due to Number Lock setting. That will not happen in **QBHD**.
 
 A simple MULTIKEY demo using the SC Array to hold multiple key presses for diagonal arrow key moves.
 

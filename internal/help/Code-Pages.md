@@ -1,7 +1,7 @@
 __NOTOC__
 **UNICODE CODE PAGES**
 
-This is a list of the current Code Pages supported by the **QB64 IDE**. The data can be copied to a file or made into a [DATA](DATA) field. Each section has a description of the Code Page, the data required for **characters 128 TO 255**, and a LINK to the Code Table.
+This is a list of the current Code Pages supported by the **QBHD IDE**. The data can be copied to a file or made into a [DATA](DATA) field. Each section has a description of the Code Page, the data required for **characters 128 TO 255**, and a LINK to the Code Table.
 
 > ::**NOTE: When copying data to create a CSV file, make sure the cursor ends up below last line at home!**
 **See: [Code Pages](Code-Pages)**
@@ -9,7 +9,7 @@ This is a list of the current Code Pages supported by the **QB64 IDE**. The data
 Unicode characters can be inserted in Windows by holding down the **Alt key** and entering a **zero** followed by the character's **three-digit decimal code on the number pad**. By omitting the zero, characters from older code pages can be entered like code page 437 in the US and England or code page 850 in Western Europe. In some versions of Windows it is necessary to change the regional settings to another language before entering that region's page codes.
 
 
-**Setting up a typing language in the QB64 IDE:**
+**Setting up a typing language in the QBHD IDE:**
 > ::Step 1: In the OPTIONS menu select **DISPLAY**, then check the CUSTOM FONT check-box.
 > ::Step 2: In the OPTIONS menu select **LANGUAGE**, then select a Code Page (CP850 for example) and click OK.
 
@@ -808,7 +808,7 @@ Microsoft_pc_cp863
 
 ```
 
-**QB64 BAS module:**
+**QBHD BAS module:**
 
 ```vb
 

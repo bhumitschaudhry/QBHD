@@ -91,7 +91,7 @@ END SUB
 
 > *Explanation:* The bit values of an [INTEGER](INTEGER) are 2 [_BYTE](_BYTE)s and each bit is an exponent of 2 from 15 to 0 (16 bits). Thus comparing the numerical value with those exponents using [AND](AND) reveals the bit values as "1" for bits on or "0" for bits off as text. 
 
->  QB64 can use [&B](&B) to convert the above [_BIT](_BIT) values back to [INTEGER](INTEGER) or [_BYTE](_BYTE) values as shown below:
+>  QBHD can use [&B](&B) to convert the above [_BIT](_BIT) values back to [INTEGER](INTEGER) or [_BYTE](_BYTE) values as shown below:
 
 ```vb
 

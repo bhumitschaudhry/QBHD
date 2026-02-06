@@ -8,7 +8,7 @@ The [_SCREENX](_SCREENX) function returns the current column pixel coordinate of
 
 * Function returns the current program window's upper left corner column position on the desktop.
 * Use [_DESKTOPWIDTH](_DESKTOPWIDTH) and [_DESKTOPHEIGHT](_DESKTOPHEIGHT) to find the current Windows desktop resolution to adjust the position with [_SCREENMOVE](_SCREENMOVE).
-* [Keywords currently not supported](Keywords-currently-not-supported-by-QB64)
+* [Keywords currently not supported](Keywords-currently-not-supported-by-QBHD)
 
 ## Example(s)
 

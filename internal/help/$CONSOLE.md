@@ -1,4 +1,4 @@
-The [$CONSOLE]($CONSOLE) [metacommand](metacommand) creates a console window that can be used throughout a QB64 program module.
+The [$CONSOLE]($CONSOLE) [metacommand](metacommand) creates a console window that can be used throughout a QBHD program module.
 
 ## Syntax
 
@@ -15,7 +15,7 @@ The [$CONSOLE]($CONSOLE) [metacommand](metacommand) creates a console window tha
 * [_CONSOLETITLE](_CONSOLETITLE) can be used to change the title of the console window.
 * **Note:** Text can be copied partially or totally from console screens in Windows by highlighting and using the title bar menu. 
 > To copy console text output, right click the title bar and select *Edit* for *Mark* to highlight and repeat to *Copy* 
-* QB64 [Metacommand](Metacommand)s are not commented out with ' or REM, differently from QBasic metacommands.
+* QBHD [Metacommand](Metacommand)s are not commented out with ' or REM, differently from QBasic metacommands.
 
 ## Example(s)
 
@@ -85,6 +85,6 @@ Max hex _INTEGER64 = FFFFFFFFFFFFFFFF with 16 digits =-1
 ## See Also
 
 * [_CONSOLE](_CONSOLE)
-* [$SCREENHIDE]($SCREENHIDE), [$SCREENSHOW]($SCREENSHOW) (QB64 [Metacommand](Metacommand)s)
+* [$SCREENHIDE]($SCREENHIDE), [$SCREENSHOW]($SCREENSHOW) (QBHD [Metacommand](Metacommand)s)
 * [_SCREENHIDE](_SCREENHIDE), [_SCREENSHOW](_SCREENSHOW)
 * [C Libraries](C-Libraries)

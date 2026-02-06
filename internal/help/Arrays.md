@@ -12,14 +12,14 @@ Standard QBasic/QuickBASIC types:
 * [SINGLE](SINGLE) = 4 bytes (up to 7 digit floating decimal point values)
 * [DOUBLE](DOUBLE) = 8 bytes (up to 15 digit floating point values)
 
-New types introduced by QB64
+New types introduced by QBHD
 
 * [_BIT](_BIT) * 8 = 1 byte(signed Integer values of -1 or 0)
 * [_BYTE](_BYTE) = 1 byte (signed Integer values from -128 to 127)
 * [_INTEGER64](_INTEGER64) = 8 bytes (signed values from -9223372036854775808 to 9223372036854775807
 * [_FLOAT](_FLOAT) = 10 bytes (better than Double accuracy)
 
-While QBasic uses signed values **QB64** can use signed or [_UNSIGNED](_UNSIGNED) values for [_BIT](_BIT), [_BYTE](_BYTE), [INTEGER](INTEGER), [LONG](LONG) or [_INTEGER64](_INTEGER64) variable type values. 
+While QBasic uses signed values **QBHD** can use signed or [_UNSIGNED](_UNSIGNED) values for [_BIT](_BIT), [_BYTE](_BYTE), [INTEGER](INTEGER), [LONG](LONG) or [_INTEGER64](_INTEGER64) variable type values. 
 
 The array's variable type must be determined when the array is created. If no type is used, the default type is [SINGLE](SINGLE).
 
@@ -29,7 +29,7 @@ The array's variable type must be determined when the array is created. If no ty
 
 Arrays can be created to hold values until they are needed. They can hold image or file data too! There are many possible uses! 
 
-The only drawback is that the data is lost when the program ends, but array data can be permanently stored in files when you want to save the data. All that you need is a simple loop to transfer the data sequencially or save the entire array to a [BINARY](BINARY) file using **QB64** with a simple [PUT](PUT) statement. You also can retrieve the array data using one [GET](GET).
+The only drawback is that the data is lost when the program ends, but array data can be permanently stored in files when you want to save the data. All that you need is a simple loop to transfer the data sequencially or save the entire array to a [BINARY](BINARY) file using **QBHD** with a simple [PUT](PUT) statement. You also can retrieve the array data using one [GET](GET).
 
 ### Creating Array Variables
 
@@ -39,7 +39,7 @@ How good are you at counting from zero? This might seem like a simple question, 
 
 [OPTION BASE](OPTION-BASE) 1 will cause all array dimensions to begin at 1, [OPTION BASE](OPTION-BASE) 0 will cause all dimensions to begin at 0. The default when just using the maximum array size is 0. Use whatever option you are comfortable with.
 
-Arrays in QuickBASIC 4.5 and QBasic are limited to 32767 elements, while arrays in **QB64** are limited to 2147483647 elements (over 2 billion). When the 64-bit version of QB64 is implemented 9223372036854775807 elements will be the limit (but only on 64-bit systems).
+Arrays in QuickBASIC 4.5 and QBasic are limited to 32767 elements, while arrays in **QBHD** are limited to 2147483647 elements (over 2 billion). When the 64-bit version of QBHD is implemented 9223372036854775807 elements will be the limit (but only on 64-bit systems).
 
 [DIM](DIM) reserves the array's name, variable type and number of elements in memory before the array is used. DIM reserves a [STATIC](STATIC) (unchangeable) array unless the [$DYNAMIC]($DYNAMIC) (changeable) metacommand is used at the program's start or [REDIM](REDIM) was used to dimension the array originally.
 
@@ -53,7 +53,7 @@ DIM Array(100) AS INTEGER
 
 An array starts at element 0 unless changed by [OPTION BASE](OPTION-BASE) 1 (which can set the start at 1), you can also define the start and end area by [DIM](DIM)ensioning within a range.
 
-[DIM](DIM)ensioning with a range is possible also by using TO between the minimum and  highest elements. Arrays can start and end at any element(index) value up to 32767. **QB64** allows larger array sizes! 
+[DIM](DIM)ensioning with a range is possible also by using TO between the minimum and  highest elements. Arrays can start and end at any element(index) value up to 32767. **QBHD** allows larger array sizes! 
 
 dimensions an Integer array that can hold 100 values in indices 1 to 100.
 
@@ -76,7 +76,7 @@ REDIM Array$(1000)      ' REDIM creates a dynamic array
 
 ```
 
-**QB64** has a REDIM [_PRESERVE](_PRESERVE) action which can be used in a REDIM statement in order to preserve the data information in the array. 
+**QBHD** has a REDIM [_PRESERVE](_PRESERVE) action which can be used in a REDIM statement in order to preserve the data information in the array. 
 
 REDIM without the _PRESERVE action erases the array contents
 
@@ -136,7 +136,7 @@ NOTE: If [OPTION BASE](OPTION-BASE) 1 is used change the 0 to 1. The array start
 
 ### Multi-Dimensional Arrays
 
-Multiple dimensions are possible to create tables of values. QuickBASIC can use up to 60 dimensions. In **QB64** the number of dimensions possible depends on your system memory (a lot more than 60 dimensions). Array data can be saved and restored using file data. 
+Multiple dimensions are possible to create tables of values. QuickBASIC can use up to 60 dimensions. In **QBHD** the number of dimensions possible depends on your system memory (a lot more than 60 dimensions). Array data can be saved and restored using file data. 
 
 **Otherwise the data is lost when a program closes.**
 
@@ -192,7 +192,7 @@ Dimensioning using index ranges.
 
 Once an array is created, you have to put something in it. As you may have noticed, each element or index has an integer value associated with it. Array(number%) refers to just one element of the array no matter what type it is. **Arrays CAN have negative numbered elements!**
 
-You can place data into an array using several methods. The slowest method is directly placing data from the user. You can even use the array as the [INPUT](INPUT) variable. It is recommended that ANY program user entries be limited to text as INPUT will give Redo from start errors if a user enters a string value when a numerical input was desired. Numerical string data can be converted from strings simply by using [VAL](VAL). This creates less user errors! NOTE: **QB64** does not return a "Redo from start" error as [INPUT](INPUT) monitors entries.
+You can place data into an array using several methods. The slowest method is directly placing data from the user. You can even use the array as the [INPUT](INPUT) variable. It is recommended that ANY program user entries be limited to text as INPUT will give Redo from start errors if a user enters a string value when a numerical input was desired. Numerical string data can be converted from strings simply by using [VAL](VAL). This creates less user errors! NOTE: **QBHD** does not return a "Redo from start" error as [INPUT](INPUT) monitors entries.
 
 ```vb
 
@@ -225,7 +225,7 @@ Arrays can be sorted numerically or alphabetically using various sorting routine
 
 Since variables and arrays exist in memory, data is lost when a program closes. To preserve program data you must either create a permanent [DATA](DATA) field or save the data to files.
 
-The next time a program is used, it can [OPEN](OPEN) that file and quickly restore all of the array data using a loop or **QB64** can [GET](GET) the entire file's data in one GET. Use [LINE INPUT (file statement)](LINE-INPUT-(file-statement)) # to set the array sizes by counting the number of data rows in a file if you used a [WRITE](WRITE) **CSV**(comma separated values) or a [PRINT (file statement)](PRINT-(file-statement)) # sequencial file. The number of records in a [TYPE](TYPE) or [FIELD](FIELD) defined [RANDOM](RANDOM) access file can be found by dividing the record size into the [LOF](LOF). You may want to make the array slightly larger for new entries.
+The next time a program is used, it can [OPEN](OPEN) that file and quickly restore all of the array data using a loop or **QBHD** can [GET](GET) the entire file's data in one GET. Use [LINE INPUT (file statement)](LINE-INPUT-(file-statement)) # to set the array sizes by counting the number of data rows in a file if you used a [WRITE](WRITE) **CSV**(comma separated values) or a [PRINT (file statement)](PRINT-(file-statement)) # sequencial file. The number of records in a [TYPE](TYPE) or [FIELD](FIELD) defined [RANDOM](RANDOM) access file can be found by dividing the record size into the [LOF](LOF). You may want to make the array slightly larger for new entries.
 
 ### Image Arrays
 
@@ -247,7 +247,7 @@ END
 
 ```
 
-**Note: QB64 can [GET (graphics statement)](GET-(graphics-statement)) the entire SCREEN 12 area into one array!**
+**Note: QBHD can [GET (graphics statement)](GET-(graphics-statement)) the entire SCREEN 12 area into one array!**
 
 See also: [Creating Sprite Masks](Creating-Sprite-Masks)
 
@@ -261,7 +261,7 @@ Arrays can also be [SHARED](SHARED) by all procedures by using [DIM](DIM) [SHARE
 
 [COMMON SHARED](COMMON_SHARED) allows data to be shared between both modules and SUB or FUNCTION procedures.
 
-Arrays can be created inside of [SUB](SUB) or [FUNCTION](FUNCTION) procedures by using [DIM](DIM) or [REDIM](REDIM). Also [SHARED](SHARED)(without DIM) can be used inside of a sub-procedure to share variable data with the Main program module ONLY. Other sub-procedures cannot reference the data. To share array data with other sub-procedures, array FUNCTIONS can be created that use the internal array elements as a parameter. **QB64 may allow sub-procedures to share values with other procedures soon!**
+Arrays can be created inside of [SUB](SUB) or [FUNCTION](FUNCTION) procedures by using [DIM](DIM) or [REDIM](REDIM). Also [SHARED](SHARED)(without DIM) can be used inside of a sub-procedure to share variable data with the Main program module ONLY. Other sub-procedures cannot reference the data. To share array data with other sub-procedures, array FUNCTIONS can be created that use the internal array elements as a parameter. **QBHD may allow sub-procedures to share values with other procedures soon!**
 
 Arrays can be set as [STATIC](STATIC) to retain the values when a sub-procedure is exited. The values will be retained until changed inside of the procedure. If the procedure creates it's own array, you can use a STATIC True or False variable to determine when to [DIM](DIM) or [REDIM](REDIM) a STATIC array so that values are not lost every call. The *Ready%* variable below DIMs the array when the function is first used:
 

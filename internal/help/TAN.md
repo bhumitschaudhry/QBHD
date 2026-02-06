@@ -82,7 +82,7 @@ END SUB
 
 ## See Also
 
-* [_PI](_PI) (QB64 function)
+* [_PI](_PI) (QBHD function)
 * [SIN](SIN), [COS](COS)
 * [ATN](ATN) (arctangent)
 * [Mathematical Operations](Mathematical-Operations)

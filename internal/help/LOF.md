@@ -10,7 +10,7 @@ The [LOF](LOF) function is used to find the length of an [OPEN](OPEN) file in by
 * fileNumber is the number of the opened file. **#** is not required.
 * Often used to determine the number of records in a [RANDOM](RANDOM) access file.
 * Can also be used to avoid reading an empty file, which would create an error.
-* LOF in **QB64** can return up to 9 GB (9,223,372,036 bytes) file sizes.
+* LOF in **QBHD** can return up to 9 GB (9,223,372,036 bytes) file sizes.
 
 ## Example(s)
 

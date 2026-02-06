@@ -6,7 +6,7 @@ The [_ASIN](_ASIN) function returns the angle measured in radians based on an in
 
 ## Description
 
-* The sine_value! must be measured >= -1 and <= 1, or else it will generate a return value of **-1.#IND**, which is basically QB64's way of telling us that the number doesn't exist. 
+* The sine_value! must be measured >= -1 and <= 1, or else it will generate a return value of **-1.#IND**, which is basically QBHD's way of telling us that the number doesn't exist. 
 * ARCSINE is the inverse function of [SIN](SIN)e, and turns a [SIN](SIN)e value back into an angle.
 * Note: Due to rounding with floating point math, the [_ASIN](_ASIN) may not always give a perfect match for the [SIN](SIN) angle which generated this. You can reduce the number of rounding errors by increasing the precision of your calculations by using [DOUBLE](DOUBLE) or [_FLOAT](_FLOAT) precision variables instead of [SINGLE](SINGLE).
 

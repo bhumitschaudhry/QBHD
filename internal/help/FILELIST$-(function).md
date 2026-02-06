@@ -1,4 +1,4 @@
-The **FILELIST$** function can be used in place of the old QBasic [FILES](FILES) statement to view a list of files. Displays long and short(8.3) DOS filenames with the last modified information. Function name returns the short filename while **SHARED** string variables **LFN$** and **Path$** return the long name and absolute path from the current root drive. The leading underscore should make it compatible with most older QBasic program code run in **QB64**. The function allows mouse click file selection, letter press searches, file name exist verification without a screen display, and many of the DIR options available in DOS. Including sorting by name, extension, attributes and more! **Your program screens are not changed after a display and the function can be integrated into a program using Putimage!**
+The **FILELIST$** function can be used in place of the old QBasic [FILES](FILES) statement to view a list of files. Displays long and short(8.3) DOS filenames with the last modified information. Function name returns the short filename while **SHARED** string variables **LFN$** and **Path$** return the long name and absolute path from the current root drive. The leading underscore should make it compatible with most older QBasic program code run in **QBHD**. The function allows mouse click file selection, letter press searches, file name exist verification without a screen display, and many of the DIR options available in DOS. Including sorting by name, extension, attributes and more! **Your program screens are not changed after a display and the function can be integrated into a program using Putimage!**
 
 ```text
 
@@ -36,7 +36,7 @@ The **FILELIST$** function can be used in place of the old QBasic [FILES](FILES)
 
 **[Screenshot](http://i301.photobucket.com/albums/nn53/burger2227/FILE-ss2.jpg)**
 
-**The function is NOT a QB64 authorized function!** This program code is free to use in your programs! No claims are made as to the suitability of the code and the user is responsible for any damages. You are free to alter the code as you see fit.
+**The function is NOT a QBHD authorized function!** This program code is free to use in your programs! No claims are made as to the suitability of the code and the user is responsible for any damages. You are free to alter the code as you see fit.
 
 **NOTE: IF [$STATIC]($STATIC) Metacommand is required, change function Arrays to [STATIC](STATIC) and [ERASE](ERASE) them at start and every loop!**
 

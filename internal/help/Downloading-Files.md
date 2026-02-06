@@ -34,7 +34,7 @@ cache-control: max-age=0
 
 IF Download("www.qb64.net/qb64.png", "qb64logo.png", 10) THEN ' timelimit = 10 seconds
  SCREEN _LOADIMAGE("qb64logo.png",32)
-ELSE: PRINT "Couldn't download QB64 logo."
+ELSE: PRINT "Couldn't download QBHD logo."
 END IF
 SLEEP
 SYSTEM
@@ -173,7 +173,7 @@ IF Host THEN
   PRINT "> Server started succesfully."
 
   '// Change this to the file's public link
-  IP_File$ = "dl.dropbox.com/u/8440706/QB64.INI" 'a Drop Box link
+  IP_File$ = "dl.dropbox.com/u/8440706/QBHD.INI" 'a Drop Box link
   URL$ = LEFT$(IP_File$, INSTR(IP_File$, "/") - 1)
   Path$ = MID$(IP_File$, INSTR(IP_File$, "/"))
   Client& = _OPENCLIENT("TCP/IP:80:" + URL$)

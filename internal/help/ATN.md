@@ -38,7 +38,7 @@ PRINT Pi, Pi#
 
 ```
 
-> *Note:* You can use QB64's native [_PI](_PI) function.
+> *Note:* You can use QBHD's native [_PI](_PI) function.
 
 Finds the angle from the center point to the mouse pointer.
 
@@ -86,7 +86,7 @@ END FUNCTION
 
 ## See Also
 
-* [_PI](_PI) (QB64 function)
+* [_PI](_PI) (QBHD function)
 * [TAN](TAN) (tangent function)
 * [SIN](SIN), [COS](COS)
 * [Mathematical Operations](Mathematical-Operations)

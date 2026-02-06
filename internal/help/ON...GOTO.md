@@ -12,7 +12,7 @@
 
 ## QBasic
 
-* In QuickBASIC 4.5 the list could contain a maximum of 60 line numbers or labels, while **QB64** has no limit.
+* In QuickBASIC 4.5 the list could contain a maximum of 60 line numbers or labels, while **QBHD** has no limit.
 
 ## Example(s)
 

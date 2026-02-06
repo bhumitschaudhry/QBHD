@@ -8,7 +8,7 @@ The [_SCREENY](_SCREENY) function returns the current row pixel coordinate of th
 
 * Function returns the current program window's upper left corner row position on the desktop.
 * Use [_DESKTOPWIDTH](_DESKTOPWIDTH) and [_DESKTOPHEIGHT](_DESKTOPHEIGHT) to find the current user's Windows desktop resolution to adjust the position with [_SCREENMOVE](_SCREENMOVE).
-* [Keywords currently not supported](Keywords-currently-not-supported-by-QB64)
+* [Keywords currently not supported](Keywords-currently-not-supported-by-QBHD)
 
 ## Example(s)
 

@@ -64,7 +64,7 @@ GO TO: [Keyboard scancodes](Keyboard-scancodes),
 '  **Ctrl Win Alt    Spacebar    Alt Win Menu Ctrl     ◄-  ▼   -►      0/Insert    ./Del r**
 '   29  91  56        57       56  92   93  29       75  80  77       82          83   28 
 '
-'   QB64 codes only! **Release codes = Press code + 128. Pause/Break may lock code returns.**
+'   QBHD codes only! **Release codes = Press code + 128. Pause/Break may lock code returns.**
 '
 
 ```
@@ -101,7 +101,7 @@ GO TO:[Keyboard Scancodes](Keyboard-Scancodes), [Keyboard Scancodes](Keyboard-Sc
 '  **Ctrl Win Alt    Spacebar    Alt Win Menu Ctrl     ◄-  ▼   -►      0/Insert    ./Del r**
 '  4/29  91 8/56      57       56  92   93  29       75  80  77       82          83   28 
 '
-'   **Keyflag:** Function(0, 1, 2, 4, 8, 32, 64), Extended(128) **Scan Code: **1-88, QB64 only(91-93)
+'   **Keyflag:** Function(0, 1, 2, 4, 8, 32, 64), Extended(128) **Scan Code: **1-88, QBHD only(91-93)
 '
 '        Reserved and function key combinations can be made using the scan code instead.
 '             Add function and/or extended flag values for more key combinations.
@@ -120,7 +120,7 @@ GO TO:[Keyboard Scancodes](Keyboard-Scancodes), [Keyboard scancodes](Keyboard-sc
 
 ```text
 
-'                            **QB64 _KEYHIT and _KEYDOWN Values**
+'                            **QBHD _KEYHIT and _KEYDOWN Values**
 '
 **'Esc  F1    F2    F3    F4    F5    F6    F7    F8    F9    F10   F11   F12   Sys  ScL Pause**                  
 ' 27 15104 15360 15616 15872 16128 16384 16640 16896 17152 17408 34048 34304 +316 +302 +019
@@ -333,7 +333,7 @@ END SUB
 **The Scankey Function array can be cleared by sending 0 as the *scancode%* or press the *Print Scrn/SysReq* key.**
 
 
-How to get Control, Alt and shift key entries from a user using [PEEK](PEEK) in QB64 or QBasic:
+How to get Control, Alt and shift key entries from a user using [PEEK](PEEK) in QBHD or QBasic:
 
 ```vb
 
@@ -354,7 +354,7 @@ DO
 LOOP UNTIL x$ = CHR$(27) 'Escape key exit
 
 ``` <sub>Derived from code by eoredson</sub>
->  Note: Each key must be read individually or sequentially. For combinations use the QB64 [_KEYDOWN](_KEYDOWN) function.
+>  Note: Each key must be read individually or sequentially. For combinations use the QBHD [_KEYDOWN](_KEYDOWN) function.
 
 
 

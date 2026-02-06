@@ -11,7 +11,7 @@ The **PRINT #, USING** statement is used to [PRINT](PRINT) formatted text data t
 * A [semicolon](semicolon) or [comma](comma) may follow the *text* to stop or tab the print cursor before the *template* [PRINT](PRINT).
 * The literal or variable [STRING](STRING) *template* should use the template symbols to display each variable [Variable Types](Variable-Types) in the list following it.
 * The list of data *variables* used in the *template* are **separated by semicolons** after the template string value. 
-* In **QB64** ONE [semicolon](semicolon) or [comma](comma) may follow the variable list to stop the print cursor for pending prints. QB only allowed a semicolon.
+* In **QBHD** ONE [semicolon](semicolon) or [comma](comma) may follow the variable list to stop the print cursor for pending prints. QB only allowed a semicolon.
 
 ## Usage
 

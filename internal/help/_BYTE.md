@@ -8,7 +8,7 @@ A [_BYTE](_BYTE) variable can hold signed variable values from -128 to 127 (one 
 
 * Signed _BYTE values can range from -128 to 127.
 * [_UNSIGNED](_UNSIGNED) _BYTEs can hold values from 0 to 255. [_UNSIGNED](_UNSIGNED) expands the range of positive values.
-* Can be defined in a **QB64** [_DEFINE](_DEFINE) statement using a starting letter range of variable names.
+* Can be defined in a **QBHD** [_DEFINE](_DEFINE) statement using a starting letter range of variable names.
 * Also can be used in a subroutine parameter [AS](AS) _BYTE variable definitions.
 * Define a byte using the suffix %% after the variable name: variable%% = -54
 * Define an unsigned byte by adding the suffix ~%% after the variable name: variable~%% = 54

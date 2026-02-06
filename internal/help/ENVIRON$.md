@@ -23,7 +23,7 @@ The [ENVIRON$](ENVIRON$) function returns a [STRING](STRING) environmental value
   * "TEMP" or "TMP" = path to TEMP folder. "C:\TEMP" or the user specific temp folder on later versions.
   * "USERNAME" = current Administrator name or "OWNER".
 >  *Note:* There are other possible system settings that are not listed or never used on older versions. Run *Example 1* below for a complete list in your system.
-* *Note:* **QB64** may not return the same environment list as QBasic or SET did in DOS.
+* *Note:* **QBHD** may not return the same environment list as QBasic or SET did in DOS.
 
 ## Example(s)
 
@@ -68,16 +68,16 @@ USERPROFILE=C:\Users\Ted
 
 ```
 
-> *Note:* Windows environmental settings are listed alphabetically, 20 at a time. **QB64 may not read all of them or may return an empty string.** The settings above were returned with SET in DOS. PROMPT returned nothing where SET returned $P$G. 
+> *Note:* Windows environmental settings are listed alphabetically, 20 at a time. **QBHD may not read all of them or may return an empty string.** The settings above were returned with SET in DOS. PROMPT returned nothing where SET returned $P$G. 
 
-Creating a shortcut on a user's desktop for QB64.EXE using the program's icon. Must be run in program's folder to work!
+Creating a shortcut on a user's desktop for QBHD.EXE using the program's icon. Must be run in program's folder to work!
 
 ```vb
 
 '=== Enter the EXE file and ICON or BMP image for the shortcut.
 
-Program$ = "QB64.EXE"  '<<<<<<<<<< Enter the **exact** program name for shortcut
-ICON$ = "QB64ICON.BMP" '<<<<<<<<<< Enter icon or bitmap to use from program's folder
+Program$ = "QBHD.EXE"  '<<<<<<<<<< Enter the **exact** program name for shortcut
+ICON$ = "QBHDICON.BMP" '<<<<<<<<<< Enter icon or bitmap to use from program's folder
 
 DeskTopShortcut Program$, ICON$
 

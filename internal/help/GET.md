@@ -12,7 +12,7 @@ The [GET #](GET-#) statement reads data from a file or port device by bytes or r
 * The targetVariable [Data types](Data-types) or [FIELD](FIELD) *variable* size determines the byte size and the next position in the file.
 * The first byte position in a file is 1. <!-- giving the previous information is enough: This may require adding one to an offset value when documentation uses that position as 0. -->
 * GET does not require a byte or record position or targetVariable (or comma) when using a [FIELD](FIELD) statement.
-* **QB64** can [PUT](PUT) the entire contents of an array to a file and later GET those contents to a targetArray() (include brackets).
+* **QBHD** can [PUT](PUT) the entire contents of an array to a file and later GET those contents to a targetArray() (include brackets).
 * **GET may ignore the end of a file and return bad data. If the [EOF](EOF) function returns -1 after a GET operation, it indicates that the data has ended.**
 
 ```text
@@ -110,7 +110,7 @@ END SUB
 
 ```
 
-> *Note:* Use empty brackets in QB64 when using [GET](GET) to create an array or [PUT](PUT) to create a [BINARY](BINARY) data file.
+> *Note:* Use empty brackets in QBHD when using [GET](GET) to create an array or [PUT](PUT) to create a [BINARY](BINARY) data file.
 
 ## See Also
 

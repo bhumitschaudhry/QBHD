@@ -1,4 +1,4 @@
-**SOUND** sets frequency and duration of sounds from the internal PC speaker if the computer has one or the sound card in QB64.
+**SOUND** sets frequency and duration of sounds from the internal PC speaker if the computer has one or the sound card in QBHD.
 
 ## Syntax
 
@@ -8,13 +8,13 @@
 
 * *Frequency* is any literal or variable value from 37 to 32767, but 0 is allowed for delays.
 * *Duration* is any literal or variable number of [TIMER](TIMER) ticks with a duration of 1/18th second. 18 = one second.
-* In **QB64** the sound comes from the soundcard and the volume can be adjusted through the OS.
+* In **QBHD** the sound comes from the soundcard and the volume can be adjusted through the OS.
 
 ## Error(s)
 
 * Low *frequency* values between 0 and 37 will create an [ERROR Codes](ERROR-Codes).
 * **Warning:** SOUND may not work when the program is not in focus. Use SOUND 0, 0 at sound procedure start to set focus. 
-* **Note:** SOUND 0, 0 will not stop previous **QB64** sounds like it did in QBasic!
+* **Note:** SOUND 0, 0 will not stop previous **QBHD** sounds like it did in QBasic!
 * SOUND may have clicks or pauses between the sounds generated. [PLAY](PLAY) can be used for musical sounds.
 
 ```text

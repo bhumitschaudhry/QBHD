@@ -16,7 +16,7 @@
 * Use holding variables for each file number returned by [FREEFILE](FREEFILE) so that the file reference is known.
 * Will not return an error if a filenumber is already closed or was never opened. It does not verify that a file was closed.
 * [CLEAR](CLEAR) can be used to close all open files.
-* [CLOSE](CLOSE) can also be used to close an open TCP/IP connection using a handle returned by **QB64**.
+* [CLOSE](CLOSE) can also be used to close an open TCP/IP connection using a handle returned by **QBHD**.
 
 ## See Also
 

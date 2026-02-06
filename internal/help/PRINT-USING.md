@@ -10,7 +10,7 @@ The [PRINT USING](PRINT-USING) statement is used to [PRINT](PRINT) formatted dat
 * A [semicolon](semicolon) or [comma](comma) may follow the *text* to stop or tab the print cursor before the *template* [PRINT](PRINT).
 * The literal or variable [STRING](STRING) *template* should use the template symbols to display each variable [Variable Types](Variable-Types) in the list following it.
 * The list of data *variables* used in the *template* are separated by semicolons after the template string value.
-* In QB64 one [semicolon](semicolon) or [comma](comma) may follow the variable list to stop the print cursor for pending prints. QB only allowed a semicolon.
+* In QBHD one [semicolon](semicolon) or [comma](comma) may follow the variable list to stop the print cursor for pending prints. QB only allowed a semicolon.
 
 ## Description
 
@@ -42,7 +42,7 @@ Template is a literal or variable [string](STRING) using the following formattin
 * Any # decimal point position may be specified. The exponent is adjusted with significant digits left-justified.
 ## QBasic
 
-* QBasic limited the number of specified digit positions to 24; QB64 has no such restriction.
+* QBasic limited the number of specified digit positions to 24; QBHD has no such restriction.
 
 ## Example(s)
 

@@ -1,8 +1,8 @@
-[DEF SEG](DEF-SEG) is used to define the area in memory to access QB64's emulated conventional memory.
+[DEF SEG](DEF-SEG) is used to define the area in memory to access QBHD's emulated conventional memory.
 
 ## Legacy Support
 
-* **QB64 implements memory access using [_MEM](_MEM) and related functions. For that reason, [DEF SEG](DEF-SEG) isn't recommended practice anymore and is supported to maintain compatibility with legacy code.**
+* **QBHD implements memory access using [_MEM](_MEM) and related functions. For that reason, [DEF SEG](DEF-SEG) isn't recommended practice anymore and is supported to maintain compatibility with legacy code.**
 
 ## Syntax
 
@@ -15,7 +15,7 @@
 * Important segments using [PEEK](PEEK) and [POKE](POKE) include &HB800 (text segment) and &HA000 (graphics segment).
 * [BSAVE](BSAVE) and [BLOAD](BLOAD) require a VARSEG reference to the grahic array(0 index) used.
 * Always use DEF SEG when the procedure is completed, in order to reset the segment to QBasic's default value.
-* [DEF SEG](DEF-SEG), [VARSEG](VARSEG), [VARPTR](VARPTR), [PEEK](PEEK) and [POKE](POKE) access QB64's emulated 16 bit conventional memory block. **It is highly recommended to use QB64's [_MEM](_MEM) memory system to avoid running out of memory.**
+* [DEF SEG](DEF-SEG), [VARSEG](VARSEG), [VARPTR](VARPTR), [PEEK](PEEK) and [POKE](POKE) access QBHD's emulated 16 bit conventional memory block. **It is highly recommended to use QBHD's [_MEM](_MEM) memory system to avoid running out of memory.**
 
 ## See Also
  

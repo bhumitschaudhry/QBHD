@@ -19,7 +19,7 @@ The [ON KEY(n)](ON-KEY(n)) statement defines a line number or label to go to (or
 ```
 
 * See the [KEY n](KEY-n) page for user defined key or key combination presses and F function softkey assignments.
-* [GOSUB](GOSUB) with a linelabel or linenumber  or a [SUB](SUB) procedure (without the [CALL](CALL) keyword) can be triggered in **QB64**.
+* [GOSUB](GOSUB) with a linelabel or linenumber  or a [SUB](SUB) procedure (without the [CALL](CALL) keyword) can be triggered in **QBHD**.
 
 ## Example(s)
 

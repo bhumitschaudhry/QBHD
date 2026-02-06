@@ -6,7 +6,7 @@ The [COLOR](COLOR) statement is used to change the foreground and background col
 
 ## Description
 
-* background& colors are available in all QB64 color SCREEN modes. 
+* background& colors are available in all QBHD color SCREEN modes. 
 * [SCREEN](SCREEN) mode 10 has only 3 white foreground attributes including flashing. 
 * To change the background& color only, use a comma and the desired color. Ex: [COLOR](COLOR) , background&
 * Graphic drawing statements like [PSET](PSET), [PRESET](PRESET), [LINE](LINE), etc, also use the colors set by the [COLOR](COLOR) statement if no color is passed when they are called.
@@ -25,13 +25,13 @@ The [COLOR](COLOR) statement is used to change the foreground and background col
 * **SCREEN 9** can use up to 64 [DAC](DAC) color hues in 16 color attributes with background colors assigned to attribute 0 with a [_PALETTECOLOR](_PALETTECOLOR) swap. RGB settings can be changed in colors 0 to 5 and 7 using [_PALETTECOLOR](_PALETTECOLOR).
 * **SCREEN 10** has **only 4 color attributes** with black background. COLOR 0 = black, 1 = grey, 2 = flash white and 3 = bright white.
 * **SCREEN 11** is **monochrome** with white forecolor and a black background.
-* **SCREEN 12** can use 16 color attributes with a black background. 256K possible RGB color hues. Background colors can be used with QB64.
+* **SCREEN 12** can use 16 color attributes with a black background. 256K possible RGB color hues. Background colors can be used with QBHD.
 * **SCREEN 13** can use 256 color attributes with a black background. 256K possible RGB hues.
 * [PALETTE](PALETTE) swaps can be made in SCREEN 7 and 9 only. Those screens were [DAC](DAC) screen modes in QBasic.
-* [_DEST](_DEST) can be used to set the destination page or image to color using **QB64**.
+* [_DEST](_DEST) can be used to set the destination page or image to color using **QBHD**.
 * [_DEFAULTCOLOR](_DEFAULTCOLOR) returns the current color being used on an image or screen page handle.
 
-### 24/32-Bit colors using QB64
+### 24/32-Bit colors using QBHD
 
 * Pixel color intensities for red, green, blue and alpha range from 0 to 255 when used with [_RGB](_RGB), [_RGBA](_RGBA), [_RGB32](_RGB32) and [RGBA32](RGBA32).
 * Combined RGB function values returned are [LONG](LONG) values. **Blue intensity values may be cut off using [SINGLE](SINGLE) variables.**
@@ -96,7 +96,7 @@ COLOR 15 = &HFFFCFCFC      FC         FC         FC
 
 ### Reading and setting color port intensities using [INP](INP) and [OUT](OUT)
 
-* Legacy code may use [INP](INP) and [OUT](OUT) to read or set color port intensities. **QB64** emulates VGA memory to maintain compatibility.
+* Legacy code may use [INP](INP) and [OUT](OUT) to read or set color port intensities. **QBHD** emulates VGA memory to maintain compatibility.
 * The same can be achieved using [_PALETTECOLOR](_PALETTECOLOR) (**recommended practice**).
 
 > **OUT &H3C7, attribute** 'Set port to read RGB settings with:
@@ -250,7 +250,7 @@ Black on bright white!
 
 ----
 
-> *Explanation:* Since QB64 does not have [DAC](DAC) [SCREEN](SCREEN) 0 limitations, changing color intensities for custom background colors is possible.
+> *Explanation:* Since QBHD does not have [DAC](DAC) [SCREEN](SCREEN) 0 limitations, changing color intensities for custom background colors is possible.
 
 Changing light gray text in [SCREEN](SCREEN) 0 to a 32 bit custom color using a [LONG](LONG) HTML hexadecimal value:
 

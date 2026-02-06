@@ -1,4 +1,4 @@
-**_FLOAT** numerical values offer the maximum floating-point decimal precision available using **QB64**.
+**_FLOAT** numerical values offer the maximum floating-point decimal precision available using **QBHD**.
 
 ## Syntax
  
@@ -6,7 +6,7 @@
 
 ## Description
 
-* **QB64** always allocates 32 bytes to store this value. 
+* **QBHD** always allocates 32 bytes to store this value. 
 * It is safe to assume this value is at least as precise as [DOUBLE](DOUBLE). 
 * Under the current implementation it is stored in a 10-byte floating point variable.
 * [_FLOAT](_FLOAT) variables can also use the ## variable name type suffix.
@@ -15,7 +15,7 @@
 * Floating decimal point numerical values cannot be [_UNSIGNED](_UNSIGNED).
 * Values can be converted to 32 byte [ASCII](ASCII) strings using [_MK$](_MK$) and back with [_CV](_CV).
 * **When a variable has not been assigned or has no type suffix, the value defaults to [SINGLE](SINGLE).**
-* Note: OpenGL's [_GL_FLOAT](_GL-FLOAT) constant is a [SINGLE](SINGLE) (4 byte) floating point number, while a native QB64 _FLOAT is a 10-byte floating point number.
+* Note: OpenGL's [_GL_FLOAT](_GL-FLOAT) constant is a [SINGLE](SINGLE) (4 byte) floating point number, while a native QBHD _FLOAT is a 10-byte floating point number.
 
 ## See Also
 

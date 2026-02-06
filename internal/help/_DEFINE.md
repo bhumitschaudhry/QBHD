@@ -15,7 +15,7 @@
 * **When a variable has not been defined or has no type suffix, the value defaults to a [SINGLE](SINGLE) precision floating point value.**
 * _DEFINE sets the [Variable Types](Variable-Types) of all variable names with the starting letter(s) or letter ranges  when encountered in the progression of the program (even in conditional statement blocks not executed and subsequent [SUB](SUB) procedures).
 * **NOTE: Many QBasic keyword variable names CAN be used with a [STRING](STRING) suffix ($)! You cannot use them without the suffix, use a numerical suffix or use [DIM](DIM), [REDIM](REDIM), [_DEFINE](_DEFINE), [BYVAL](BYVAL) or [TYPE](TYPE) variable [AS](AS) statements.**
-* **QBasic's IDE** added DEF statements before any [SUB](SUB) or [FUNCTION](FUNCTION). **QB64** (like QB) will change all variable types in subsequent sub-procedures to that default variable type without giving a [ERROR Codes](ERROR-Codes) warning or adding the proper DEF statement to subsequent procedures. If you do not want that to occur, either remove that DEF statement or add the proper DEF type statements to subsequent procedures.
+* **QBasic's IDE** added DEF statements before any [SUB](SUB) or [FUNCTION](FUNCTION). **QBHD** (like QB) will change all variable types in subsequent sub-procedures to that default variable type without giving a [ERROR Codes](ERROR-Codes) warning or adding the proper DEF statement to subsequent procedures. If you do not want that to occur, either remove that DEF statement or add the proper DEF type statements to subsequent procedures.
 * May also affect [$INCLUDE]($INCLUDE) procedures.
 
 ## Example(s)

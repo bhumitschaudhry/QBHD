@@ -2,7 +2,7 @@
 
 ## Legacy Support
 
-* **QB64 can load larger arrays directly from binary files using [PUT](PUT) # and [GET](GET) # without BLOAD. For that reason, BLOAD isn't recommended practice anymore and is supported to maintain compatibility with legacy code.**
+* **QBHD can load larger arrays directly from binary files using [PUT](PUT) # and [GET](GET) # without BLOAD. For that reason, BLOAD isn't recommended practice anymore and is supported to maintain compatibility with legacy code.**
 
 ## Syntax
 
@@ -21,7 +21,7 @@
 * Fullscreen images in [SCREEN](SCREEN) 12 require 3 file BLOADs. A 26K array can hold 1/3 of screen.
 * Custom RGB color settings can be embedded(indexed) at the start of the image array. 
 * BLOAD can be used to load any array that was saved with [BSAVE](BSAVE), not just graphics.
-* Array sizes are limited to 32767 Integer elements due to use of [VARPTR](VARPTR) in QBasic and **QB64**'s emulated conventional memory.
+* Array sizes are limited to 32767 Integer elements due to use of [VARPTR](VARPTR) in QBasic and **QBHD**'s emulated conventional memory.
 
 ## Example(s)
 

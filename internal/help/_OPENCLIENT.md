@@ -27,7 +27,7 @@ END IF
 
 > **NOTE:** Try a valid TCP/IP port setting to test this routine!
 
-Using a "raw" Download function to download the QB64 bee image and displays it.
+Using a "raw" Download function to download the QBHD bee image and displays it.
 
 ```vb
 

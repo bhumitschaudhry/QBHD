@@ -1,4 +1,4 @@
-[CALL](CALL) sends code execution to a subroutine procedure in a program. In **QB64** the subroutine doesn't need to be declared.
+[CALL](CALL) sends code execution to a subroutine procedure in a program. In **QBHD** the subroutine doesn't need to be declared.
 
 ## Syntax
 

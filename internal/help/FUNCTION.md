@@ -19,13 +19,13 @@ A [FUNCTION](FUNCTION) block statement is used to create a function procedure to
 * All [$DYNAMIC]($DYNAMIC) variable values return to 0 or null strings when the procedure is exited except when a variable or the entire function is [STATIC](STATIC). This can save program memory as all [$DYNAMIC]($DYNAMIC) memory used in a FUNCTION is released on procedure exit.
 * FUNCTION procedure code can use [GOSUB](GOSUB) and [GOTO](GOTO) line numbers or labels inside of the procedure when necessary. 
 * For early function exits use [EXIT](EXIT) [FUNCTION](FUNCTION) before [END FUNCTION](END-FUNCTION) and [GOSUB](GOSUB) procedures using [RETURN](RETURN).
-* **QB64 ignores all procedural DECLARE statements.** Define all *parameter* [Data types](Data-types) in the FUNCTION procedure.
+* **QBHD ignores all procedural DECLARE statements.** Define all *parameter* [Data types](Data-types) in the FUNCTION procedure.
 *  **Images are not deallocated when the [SUB](SUB) or [FUNCTION](FUNCTION) they are created in ends. Free them with [_FREEIMAGE](_FREEIMAGE).**
 * The IDE can create the FUNCTION and END FUNCTION lines for you. Use the *New FUNCTION...* option in the Edit Menu. A box will come up for you to enter a name for the FUNCTION. Enter all code between the FUNCTION and [END FUNCTION](END-FUNCTION) lines.
 
 ## QBasic
 
-* Once a FUNCTION was created and used, the QBasic IDE would DECLARE it when the file was saved. **QB64 doesn't need these declarations.**
+* Once a FUNCTION was created and used, the QBasic IDE would DECLARE it when the file was saved. **QBHD doesn't need these declarations.**
 * QBasic's IDE could place a [DEFINT](DEFINT), [DEFSNG](DEFSNG), [DEFLNG](DEFLNG), [DEFDBL](DEFDBL) or [DEFSTR](DEFSTR) statement before the FUNCTION line if it is used in the main module. It may even be the wrong variable type needed.
 * QBasic allowed programmers to add DATA fields anywhere because the IDE separated the main code from other procedures.
 

@@ -104,15 +104,15 @@ CTRL + U = CHR$(21) | § | NegativeACK (NAK)  | CTRL + V = CHR$(22) | ▬ | Sync
 CTRL + W = CHR$(23) | ↨ | EndTXBlock  (ETB)  | CTRL + X = CHR$(24) | ↑ | Cancel            (CAN)
 CTRL + Y = CHR$(25) | ↓ | EndMedium   (EM)   | CTRL + Z = CHR$(26) | → | End Of File(SUB)  (EOF)
 
-**Highlighted items will format text and not [PRINT](PRINT) the symbol. [_PRINTSTRING](_PRINTSTRING) can print in QB64**
+**Highlighted items will format text and not [PRINT](PRINT) the symbol. [_PRINTSTRING](_PRINTSTRING) can print in QBHD**
 
 * Control characters **1 to 26** can be used to simulate *Ctrl + letter* key shortcuts in Windows programs using [_SCREENPRINT](_SCREENPRINT).
-* [_CONTROLCHR](_CONTROLCHR) OFF can also be used in QB64 to allow control characters to be printed without formatting the text.
+* [_CONTROLCHR](_CONTROLCHR) OFF can also be used in QBHD to allow control characters to be printed without formatting the text.
 
 **ASCII in Text and Printing**
 
 * Characters **0**(NULL) and **255**(NBSP) can also be used to print spaces(**32**). Useful for making file names harder to delete too.
-* Character **7** will create a [BEEP](BEEP) sound when printed in **QB64** or an error sound in QBasic using a **SCREEN 0** window.
+* Character **7** will create a [BEEP](BEEP) sound when printed in **QBHD** or an error sound in QBasic using a **SCREEN 0** window.
 * Character **8** is returned when the **Backspace** key is pressed.
 * Characters **9 thru 13** and **28 thru 31** can affect screen or file text placements and do not display the character when [PRINT](PRINT):
   * Character **9** will **Tab** space the cursor 8 column spaces when printed.
@@ -124,7 +124,7 @@ CTRL + Y = CHR$(25) | ↓ | EndMedium   (EM)   | CTRL + Z = CHR$(26) | → | End
   * Character **29** designates a Group Separator. Moves the print cursor one space left. Combination Ctrl + ]
   * Character **30** designates a Record Separator. Moves the print cursor one row up. Combination Ctrl + ^
   * Character **31** designates a Unit Separator. Moves the print cursor one row down. Combination Ctrl + _
-* **QB64** can display all of the control characters without formatting the text using [_PRINTSTRING](_PRINTSTRING).
+* **QBHD** can display all of the control characters without formatting the text using [_PRINTSTRING](_PRINTSTRING).
 * Characters **13** and **10** can be combined to create the **CrLf** carriage return used in files or printing. crlf$ = CHR$(13) + CHR$(10).
 * Character **16**, the data link escape(DLE) character, can designate that a control character is being sent from a [OPEN COM](OPEN-COM).
   Example(s)
@@ -134,7 +134,7 @@ CTRL + Y = CHR$(25) | ↓ | EndMedium   (EM)   | CTRL + Z = CHR$(26) | → | End
 * Character **26** can be used to designate the end of a file. See [EOF](EOF).
 * Character **27** **?** is returned when the **Escape** key is pressed.
 
-**Control character [PRINT](PRINT) actions can be controlled using [_CONTROLCHR](_CONTROLCHR) OFF or ON in QB64.**
+**Control character [PRINT](PRINT) actions can be controlled using [_CONTROLCHR](_CONTROLCHR) OFF or ON in QBHD.**
 
 ```vb
 
@@ -191,11 +191,11 @@ END
 '                                                                   *     48        46*
 '
 ' **    *Italics* = LCase/NumLock On  ____________  + = 2 Byte: CHR$(0) + CHR$(code)**
-'<sub>NOTE: The above commented table can be copied and pasted directly into the QB64 IDE</sub>
+'<sub>NOTE: The above commented table can be copied and pasted directly into the QBHD IDE</sub>
 
 ```
 
-Use **ASC(RIGHT$(key$, 1))** or **ASC(key$, 2)** in QB64 to read a two byte code when **ASC(key$) = 0**
+Use **ASC(RIGHT$(key$, 1))** or **ASC(key$, 2)** in QBHD to read a two byte code when **ASC(key$) = 0**
 
 *** See the Two Byte Ctrl, Alt and Shift + Function key combinations below**
 
@@ -211,7 +211,7 @@ DO: K$ = INKEY$
 LOOP UNTIL K$ = CHR$(27) 'escape key press exits 
 
 ```
-> *Note:* In QB64 [ASC](ASC)(K$, 2) can read the second byte of the 2 byte code when [ASC](ASC)(K$) reads the first byte as 0.
+> *Note:* In QBHD [ASC](ASC)(K$, 2) can read the second byte of the 2 byte code when [ASC](ASC)(K$) reads the first byte as 0.
 
 ## Two Byte Codes
 
@@ -219,7 +219,7 @@ LOOP UNTIL K$ = CHR$(27) 'escape key press exits
 
 * [INKEY$](INKEY$) returns both bytes when two byte keys or key combinations are pressed. The second byte = [RIGHT$](RIGHT$)(keypress$, 1)
 * If the character returned is a two byte code, [ASC](ASC) will return 0. **Warning:** ASC cannot read empty [INKEY$](INKEY$) string values!
-* In **QB64** only, [ASC](ASC)(keypress$, 2) can return the second byte code. Don't read empty string values!
+* In **QBHD** only, [ASC](ASC)(keypress$, 2) can return the second byte code. Don't read empty string values!
 * String values returned can be compared in an [IF...THEN](IF...THEN) or [SELECT CASE](SELECT-CASE) routine by using the actual string definitions such as:
 
 > IF INKEY$ = CHR$(0) + CHR$(80) THEN row = row + 1 **or** IF INKEY$ = CHR$(0) + "P" THEN row = row + 1
@@ -243,7 +243,7 @@ LOOP UNTIL K$ = CHR$(27) 'escape key press exits
                     CHR$(0) + CHR$(72)         [?] Up Arrow         "H"
                     CHR$(0) + CHR$(73)         [Page Up]            "I"
                     CHR$(0) + CHR$(75)         [?] Left Arrow       "K"
-                    CHR$(0) + CHR$(76)         [5 NumberPad]        "L" (NumLock off in QB64)
+                    CHR$(0) + CHR$(76)         [5 NumberPad]        "L" (NumLock off in QBHD)
                     CHR$(0) + CHR$(77)         [?] Right Arrow      "M"
                     CHR$(0) + CHR$(79)         [End]                "O"
                     CHR$(0) + CHR$(80)         [?] Down Arrow       "P"
@@ -267,7 +267,7 @@ LOOP UNTIL K$ = CHR$(27) 'escape key press exits
 
 ```
 
-> In **QB64**, [CVI](CVI) can be used to get the [_KEYDOWN](_KEYDOWN) 2-byte code value. Example: **status = _KEYDOWN(CVI(CHR$(0) + "P"))**
+> In **QBHD**, [CVI](CVI) can be used to get the [_KEYDOWN](_KEYDOWN) 2-byte code value. Example: **status = _KEYDOWN(CVI(CHR$(0) + "P"))**
 
 **See [Scancodes](Scancodes) for other keyboard function keys.**
 
@@ -346,7 +346,7 @@ Routine displays all keypress codes including Ctrl, Alt and Shift combinations. 
      END IF
      IF ASC(A$) = 0 THEN  'two byte key codes
          code% = ASC(RIGHT$(A$, 1)) 'QBasic code
-         'code% = ASC(A$, 2)        'QB64 code alternative
+         'code% = ASC(A$, 2)        'QBHD code alternative
          SELECT CASE code%
             CASE 16 TO 50: Key$ = "Alt+ letter"
             CASE 72: Key$ = CHR$(24) + " Arrow"
@@ -409,7 +409,7 @@ Routine displays all keypress codes including Ctrl, Alt and Shift combinations. 
 * [_KEYHIT](_KEYHIT), [_KEYDOWN](_KEYDOWN)
 * [_MAPUNICODE](_MAPUNICODE), [_MAPUNICODE (function)](_MAPUNICODE-(function))
 * [Code Pages](Code-Pages) (Various Unicode Languages)
-* [ASC (statement)](ASC-(statement)) (QB64 only)
+* [ASC (statement)](ASC-(statement)) (QBHD only)
 * [ASC](ASC), [INSTR](INSTR)
 * [CHR$](CHR$), [INKEY$](INKEY$)
 * [LEFT$](LEFT$), [MID$](MID$), [RIGHT$](RIGHT$)

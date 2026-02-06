@@ -51,7 +51,7 @@ END SUB
 
 ```
 
-*Explanation:* The above routine can also be used to place the file name info into string arrays by using the count variable cnt% to determine the index. Long file names are normally returned by **QB64**. To keep older QBasic programs compatible, you may want to only use the short names when displaying the files on the screen.
+*Explanation:* The above routine can also be used to place the file name info into string arrays by using the count variable cnt% to determine the index. Long file names are normally returned by **QBHD**. To keep older QBasic programs compatible, you may want to only use the short names when displaying the files on the screen.
 
 ## See Also
 

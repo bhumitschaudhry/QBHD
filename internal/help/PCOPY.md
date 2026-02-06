@@ -10,12 +10,12 @@ The [PCOPY](PCOPY) statement copies one source screen page to a destination page
 * destinationPage% is the video memory location to copy the source image to.
 * The working page is set as 0. All drawing occurs there.
 * The visible page is set as any page number that the SCREEN mode allows.
-* The [_DISPLAY (function)](_DISPLAY-(function)) return can be used a page number reference in **QB64** (See Example 1).
-* The **QB64** [_DISPLAY](_DISPLAY) statement can also be used to stop screen flicker without page flipping or [CLS](CLS) and **is the recommended practice**.
+* The [_DISPLAY (function)](_DISPLAY-(function)) return can be used a page number reference in **QBHD** (See Example 1).
+* The **QBHD** [_DISPLAY](_DISPLAY) statement can also be used to stop screen flicker without page flipping or [CLS](CLS) and **is the recommended practice**.
 
 ## QBasic
 
-* sourcePage% and destinationPage% numbers are limited by the SCREEN mode used. In **QB64**, the same limits don't apply.
+* sourcePage% and destinationPage% numbers are limited by the SCREEN mode used. In **QBHD**, the same limits don't apply.
 
 ## Example(s)
 
@@ -64,7 +64,7 @@ Bouncing balls
  DO
  PCOPY 1, 0                           'place image on the visible page 0
  CLS
- _LIMIT 100                           'regulates speed of balls in QB64
+ _LIMIT 100                           'regulates speed of balls in QBHD
  FOR a = 1 TO 10     
    CIRCLE(x(a), y(a)), 5, 15          'all erasing and drawing is done on page 1
     x(a) = x(a) + dx(a)
@@ -78,7 +78,7 @@ Bouncing balls
 
 ```
 
-> *Explanation:* PCOPY reduces the flickering produced by clearing the screen. x(a) = x(a) - 1, etc. is just to be safe that the balls stay within the boundaries. dx(a) = -dx(a), etc. is to keep the actual speed while inverting it (so that the ball "bounces"). The rest should be self-explanatory, but if you are unsure about arrays you might want to look at QB64 Tutorials -> [Arrays](Arrays).
+> *Explanation:* PCOPY reduces the flickering produced by clearing the screen. x(a) = x(a) - 1, etc. is just to be safe that the balls stay within the boundaries. dx(a) = -dx(a), etc. is to keep the actual speed while inverting it (so that the ball "bounces"). The rest should be self-explanatory, but if you are unsure about arrays you might want to look at QBHD Tutorials -> [Arrays](Arrays).
 
 ## See Also
 

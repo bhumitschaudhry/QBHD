@@ -13,7 +13,7 @@ The **PUT #** file or port statement writes data to a specific byte or record lo
 * If a [LEN](LEN) = record length statement is omitted in an [OPEN](OPEN) FOR [RANDOM](RANDOM)  statement the record size defaults to 128 bytes!
 * **Warning: Not designating a PUT position can overwrite previous file data based on the current file *position*!**
 * When using a numeric *holding variable*, values do NOT require conversion using [MKI$](MKI$), [MKL$](MKL$), [MKS$](MKS$) or [MKD$](MKD$).
-* **QB64** can load [Arrays](Arrays) data directly(brackets required) to a [BINARY](BINARY) file using **one** PUT to a [BINARY](BINARY) file: **PUT #1, , array()**
+* **QBHD** can load [Arrays](Arrays) data directly(brackets required) to a [BINARY](BINARY) file using **one** PUT to a [BINARY](BINARY) file: **PUT #1, , array()**
 
 ## Example(s)
 
@@ -78,7 +78,7 @@ END SUB
 
 ```
 
-> *Note:* Use empty brackets in QB64 when using [GET](GET) to create an array or [PUT](PUT) to create a [BINARY](BINARY) data file.
+> *Note:* Use empty brackets in QBHD when using [GET](GET) to create an array or [PUT](PUT) to create a [BINARY](BINARY) data file.
 
 ## See Example(s)
 

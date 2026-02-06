@@ -19,7 +19,7 @@ The [LINE INPUT](LINE-INPUT) statement requests a [STRING](STRING) keyboard entr
 * LINE INPUT does not trim off leading or trailing spaces in the string entry like [INPUT](INPUT) string returns.
 * Use [VAL](VAL) to convert string numbers and [&O](&O) (octal), [&H](&H) (hexadecimal) or [&B](&B) (binary) prefixed entries into numerical values. 
 * Use [_DEST](_DEST) [_CONSOLE](_CONSOLE) before LINE INPUT statements to receive input from a [$CONSOLE]($CONSOLE) window.
-* **Note: QB64** will not remove CHR$(0) from the end of LINE INPUT string return values like QBasic did.
+* **Note: QBHD** will not remove CHR$(0) from the end of LINE INPUT string return values like QBasic did.
 
 ## Example(s)
 

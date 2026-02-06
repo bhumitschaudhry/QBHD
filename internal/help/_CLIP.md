@@ -1,4 +1,4 @@
-The [_CLIP](_CLIP) option is used in a QB64 graphics [PUT (graphics statement)](PUT-(graphics-statement)) to allow placement of an image partially off of the screen.
+The [_CLIP](_CLIP) option is used in a QBHD graphics [PUT (graphics statement)](PUT-(graphics-statement)) to allow placement of an image partially off of the screen.
 
 ## Syntax
 
@@ -8,7 +8,7 @@ The [_CLIP](_CLIP) option is used in a QB64 graphics [PUT (graphics statement)](
 
 * _CLIP should be placed immediately before the PUT action if used. XOR is default when not used.
 * The offscreen portions of the image will be the omit color.
-* [GET (graphics statement)](GET-(graphics-statement)) can get portions of the images off screen in **QB64**.
+* [GET (graphics statement)](GET-(graphics-statement)) can get portions of the images off screen in **QBHD**.
 
 ## Example(s)
 

@@ -10,7 +10,7 @@ The [_SCREENCLICK](_SCREENCLICK) statement simulates clicking on a pixel coordin
 * row% is the vertical pixel coordinate position on the screen.
 * Optional button% can be used to specify left button (1, default), right button (2) or middle button (3) (available with **build 20170924/68**).
 * Coordinates can range from 0 to the [_DESKTOPWIDTH](_DESKTOPWIDTH) and [_DESKTOPHEIGHT](_DESKTOPHEIGHT). The desktop image acquired by [_SCREENIMAGE](_SCREENIMAGE) can be used to map the coordinates required.
-* [Keywords currently not supported](Keywords-currently-not-supported-by-QB64)
+* [Keywords currently not supported](Keywords-currently-not-supported-by-QBHD)
 
 ## See Also
 

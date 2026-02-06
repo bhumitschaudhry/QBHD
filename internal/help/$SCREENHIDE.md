@@ -6,7 +6,7 @@ The [$SCREENHIDE]($SCREENHIDE) [Metacommand](Metacommand) can be used to hide th
 
 * $SCREENHIDE may be used at the start of a program to hide the main program window when using a [$CONSOLE]($CONSOLE) window.
 * The [_SCREENHIDE](_SCREENHIDE) statement must be used before [_SCREENSHOW](_SCREENSHOW) can be used in sections of a program.
-* **QB64 [Metacommand](Metacommand)s cannot be commented out with [apostrophe](apostrophe) or [REM](REM)**.
+* **QBHD [Metacommand](Metacommand)s cannot be commented out with [apostrophe](apostrophe) or [REM](REM)**.
 
 ## Example(s)
 

@@ -34,14 +34,14 @@ The PRINT statement prints numeric or string expressions to the program screen. 
 * **Quotes cannot be inside of a literal STRING! Use [CHR$](CHR$)(34) [concatenation](concatenation) to insert [quotation mark](quotation-mark)s into a literal string.**
 * To better format number and text data placement use PRINT USING.
 * Instead of typing PRINT you can just type a [question mark](question-mark) (?). It will change to PRINT when enter is pressed in the IDE.
-* Use the [_PRINTMODE](_PRINTMODE) statement before a print to deal with the text background in **QB64**:
+* Use the [_PRINTMODE](_PRINTMODE) statement before a print to deal with the text background in **QBHD**:
   - **1** _KEEPBACKGROUND: Text background transparent. Only the text is displayed over anything behind it.
   - **2** _ONLYBACKGROUND: Text background is only displayed. Text is transparent to anything behind it.
   - **3** _FILLBACKGROUND: Text and background block anything behind them. Default setting.
   - * Use the [_PRINTMODE (function)](_PRINTMODE-(function)) to find the current _PRINTMODE setting number.
 * [WRITE](WRITE) can be used to print a list of comma separated data values to the screen with [comma](comma)s between each value.
 * Use [_DEST](_DEST) [_CONSOLE](_CONSOLE) before PRINT statements to be used in a [$CONSOLE]($CONSOLE) window.
-* Use [_CONTROLCHR](_CONTROLCHR) **OFF** to PRINT the unprintable lower [ASCII](ASCII) control characters in QB64. 
+* Use [_CONTROLCHR](_CONTROLCHR) **OFF** to PRINT the unprintable lower [ASCII](ASCII) control characters in QBHD. 
 
 ## Example(s)
 

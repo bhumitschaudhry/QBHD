@@ -31,7 +31,7 @@
 * Use **SELECT CASE** when [IF...THEN](IF...THEN) statements get too long or complicated.
 * **SELECT CASE** and **EVERYCASE** statement blocks must **always** be ended with [END SELECT](END-SELECT).
 * Use **[colon](colon)s** to execute multiple statements in one line.
-* An **[underscore](underscore)** can be used anywhere after the code on one line to continue it to the next line in **QB64**.
+* An **[underscore](underscore)** can be used anywhere after the code on one line to continue it to the next line in **QBHD**.
 
 ## Example(s)
 

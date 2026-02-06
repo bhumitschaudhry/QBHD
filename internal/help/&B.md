@@ -1,4 +1,4 @@
-The **&B&** prefix denotes that an integer value is expressed in a binary base 2 format using **QB64** only.
+The **&B&** prefix denotes that an integer value is expressed in a binary base 2 format using **QBHD** only.
 
 ## Syntax
 
@@ -122,7 +122,7 @@ END FUNCTION
 
 *Note:* The MSB% flag allows zeroes to be added. Uncomment the MSB% = 1 statement for returns with leading zeroes.
 
-QB64 converts the binary values from the example above to [INTEGER](INTEGER) decimal values automatically.
+QBHD converts the binary values from the example above to [INTEGER](INTEGER) decimal values automatically.
 
 ```VB
 

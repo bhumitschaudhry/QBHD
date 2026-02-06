@@ -8,7 +8,7 @@ The [_PRINTIMAGE](_PRINTIMAGE) statement prints a colored image on the printer, 
 * Use a white background to save ink. `[CLS](CLS) , _RGB(255, 255, 255)` can be used to set the white background in any [SCREEN](SCREEN) mode.
 * The image may be stretched disproportionately using normal screen sizes. To compensate, use a [_NEWIMAGE](_NEWIMAGE) screen that is proportional to the paper size. *e.g.* A 640 X 900 SCREEN page is roughly the same as 3 times a 210mm X 297mm paper size.
 * [_NEWIMAGE](_NEWIMAGE) or graphic screen pages can use [_PRINTSTRING](_PRINTSTRING) to print different sized text [_FONT](_FONT)s.
-* [Keywords currently not supported](Keywords-currently-not-supported-by-QB64)
+* [Keywords currently not supported](Keywords-currently-not-supported-by-QBHD)
 
 ## Example(s)
 
@@ -59,7 +59,7 @@ _DEST Page&
 _FONT FontHandle
 COLOR _RGB(255, 0, 0), _RGBA(0, 0, 0, 0)        'RED text on clear black background
 _PRINTSTRING (0, CursorPosY), text$
-_FONT 16                               'change to the QB64 default font to free it
+_FONT 16                               'change to the QBHD default font to free it
 _FREEFONT FontHandle
 _DEST 0
 CursorPosY = CursorPosY + FontHeight            'adjust print position down 

@@ -9,9 +9,9 @@ The [_DISPLAY](_DISPLAY) statement turns off the automatic display while only di
 * **_DISPLAY** turns off the auto refresh screen default [_AUTODISPLAY](_AUTODISPLAY) behavior. Prevents screen flickering.
 * Call _DISPLAY each time the screen graphics are to be displayed. Place call after the image has been changed.
 * Re-enable automatic display refreshing by calling [_AUTODISPLAY](_AUTODISPLAY). If it isn't re-enabled, things may not be displayed later.
-* _DISPLAY tells **QB64** to render all of the hardware [_PUTIMAGE](_PUTIMAGE) commands loaded into the buffer previously.
+* _DISPLAY tells **QBHD** to render all of the hardware [_PUTIMAGE](_PUTIMAGE) commands loaded into the buffer previously.
 * The [_AUTODISPLAY (function)](_AUTODISPLAY-(function)) can be used to detect the current display behavior.
-* **QB64** can set the graphic rendering order of _SOFTWARE, _HARDWARE, and _GLRENDER with [_DISPLAYORDER](_DISPLAYORDER).
+* **QBHD** can set the graphic rendering order of _SOFTWARE, _HARDWARE, and _GLRENDER with [_DISPLAYORDER](_DISPLAYORDER).
 
 ## Example(s)
 

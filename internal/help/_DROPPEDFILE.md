@@ -16,7 +16,7 @@ The [_DROPPEDFILE](_DROPPEDFILE) function returns the list of items (files or fo
 * When using [_DROPPEDFILE](_DROPPEDFILE) to read the list sequentially (without specifying an *index&*), an empty string ("") indicates the list is over and then [_TOTALDROPPEDFILES](_TOTALDROPPEDFILES) gets reset to 0.
 * When using [_DROPPEDFILE](_DROPPEDFILE) with an index (which goes from 1 to [_TOTALDROPPEDFILES](_TOTALDROPPEDFILES)), you must call [_FINISHDROP](_FINISHDROP) after you finish working with the list.
 * Because it returns a string, [_DROPPEDFILE](_DROPPEDFILE) also accepts being followed by a string suffix ([_DROPPEDFILE](_DROPPEDFILE)**$**)
-* **[Keywords currently not supported](Keywords-currently-not-supported-by-QB64)**.
+* **[Keywords currently not supported](Keywords-currently-not-supported-by-QBHD)**.
 
 ## Availability
 

@@ -1,4 +1,4 @@
-While QB64 offers [_FONT](_FONT) and [Unicode](Unicode) text options, QBasic was limited in what it could offer. This shortfall could be overcome in various ways including using sprite pictures. Thanks to QB64, we can have the best in both worlds without creating them yourself!
+While QBHD offers [_FONT](_FONT) and [Unicode](Unicode) text options, QBasic was limited in what it could offer. This shortfall could be overcome in various ways including using sprite pictures. Thanks to QBHD, we can have the best in both worlds without creating them yourself!
 
 > 1) The characters can be loaded in a file for QBasic.
 > 2) Text fonts can be sized without re-loading them.
@@ -37,7 +37,7 @@ END SUB
 
 ```
 
-> Above [ASCII](ASCII) Characters 7, 9, 10, 11, 12, 13, 28, 29, 30, and 31 won't print in QBasic! **QB64** can print them with [_PRINTSTRING](_PRINTSTRING) or by using [PRINT](PRINT) after [_CONTROLCHR](_CONTROLCHR) OFF is set.
+> Above [ASCII](ASCII) Characters 7, 9, 10, 11, 12, 13, 28, 29, 30, and 31 won't print in QBasic! **QBHD** can print them with [_PRINTSTRING](_PRINTSTRING) or by using [PRINT](PRINT) after [_CONTROLCHR](_CONTROLCHR) OFF is set.
 
 **Bit Packing**
 
@@ -186,9 +186,9 @@ END SUB
 ```
 <sub>Code by Ted Weissgerber</sub>
 
-> The program above shows each array [_BYTE](_BYTE) character value and character. [PRINT](PRINT) will not print some characters in QB64 or QB.
+> The program above shows each array [_BYTE](_BYTE) character value and character. [PRINT](PRINT) will not print some characters in QBHD or QB.
 
-Use **[_CONTROLCHR](_CONTROLCHR) OFF** to [PRINT](PRINT) control characters in QB64!
+Use **[_CONTROLCHR](_CONTROLCHR) OFF** to [PRINT](PRINT) control characters in QBHD!
 
 **[ASCII](ASCII) 8 X 16 Text Character size increased using [LINE](LINE)**
 
@@ -205,7 +205,7 @@ FOR character = 1 TO L                     'go through text chars
     FOR c = 0 TO 7 '                       'cycle through 8 bit values
       IF ASC(Char(tx, r)) AND 2 ^ c THEN      'if bit is on
         LINE (x, y)-(x + Xsize - 1, y + Ysize - 1), FG, BF
-      END IF  'adapted from code by TerryRitchie @ www.QB64.net
+      END IF  'adapted from code by TerryRitchie @ www.QBHD.net
       x = x + Xsize                        'move x position
     NEXT c                                 'next bit
     y = y + Ysize                          'move y position
@@ -231,7 +231,7 @@ END SUB
 To convert different sized [_FONT](_FONT) or [Unicode](Unicode) characters, first determine the text block size to find how much data is required:
 
 ```vb
-                           'Code must be run in QB64 ONLY! 
+                           'Code must be run in QBHD ONLY! 
 DEFINT A-Z
 DIM SHARED high%  'value is shared with both SUB procedures!
 DO
@@ -283,7 +283,7 @@ FOR character = 1 TO L 'go through text chars
     FOR c% = 0 TO wide% - 1                         'cycle through bit values
       IF value% AND 2 ^ c% THEN 'if bit is on
         LINE (x, y)-(x + Xsize - 1, y + Ysize - 1), FG, BF
-      END IF               'adapted from code by TerryRitchie @ www.QB64.net
+      END IF               'adapted from code by TerryRitchie @ www.QBHD.net
       x = x + Xsize                      'move x position
     NEXT c%                              'next column bit
     y = y + Ysize                        'move y position
@@ -327,7 +327,7 @@ END SUB
 
 ## Reading the Data File
 
-**Reading the file data in a QB64 program only**
+**Reading the file data in a QBHD program only**
 
 ```vb
 
@@ -359,7 +359,7 @@ FOR character = 1 TO L                              'go through text chars
     FOR c% = 0 TO wide% - 1        'cycle through bit values
       IF value% AND 2 ^ c% THEN 'if bit is on
         LINE (x, y)-(x + Xsize - 1, y + Ysize - 1), FG, BF
-      END IF                'adapted from code by TerryRitchie @ www.QB64.net
+      END IF                'adapted from code by TerryRitchie @ www.QBHD.net
       x = x + Xsize                'move x position
     NEXT c%                        'next bit
     y = y + Ysize                  'move y position
@@ -374,7 +374,7 @@ END SUB
 
 *Note:* Use empty parenthesis after the [Arrays](Arrays) name to [PUT](PUT) # or [GET](GET) # the entire array, even multi-dimensional ones.
 
-**Reading the file data in a QBasic or QB64 program**
+**Reading the file data in a QBasic or QBHD program**
 
 ```vb
 
@@ -418,7 +418,7 @@ FOR character = 1 TO L                                    'go through text chars
     FOR c% = 0 TO wide% - 1 'cycle through bit values
       IF value% AND 2 ^ c% THEN 'if bit is on
         LINE (x, y)-(x + Xsize - 1, y + Ysize - 1), FG, BF
-      END IF               'adapted from code by TerryRitchie @ www.QB64.net
+      END IF               'adapted from code by TerryRitchie @ www.QBHD.net
       x = x + Xsize               'move x position
     NEXT 'next bit
     y = y + Ysize 'move y position
@@ -431,7 +431,7 @@ END SUB
 
 ```
 
-The QB64 [PUT](PUT) [BINARY](BINARY) file can be read to the array by reading the row values for all of the characters as above.
+The QBHD [PUT](PUT) [BINARY](BINARY) file can be read to the array by reading the row values for all of the characters as above.
 
 **The average font file with 256 characters is less than 20 KB in size!**
 

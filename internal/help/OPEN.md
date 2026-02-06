@@ -18,24 +18,24 @@ The [OPEN](OPEN) statement is used to open a file or [OPEN COM](OPEN-COM) serial
 
 ## Description
 
-* **QB64** can open as many files as your computer memory can handle. QBasic could only open about 15 at a time.
-* **QB64 will allocate 4 bytes of memory for every possible file number up to the highest number used in a program.**
+* **QBHD** can open as many files as your computer memory can handle. QBasic could only open about 15 at a time.
+* **QBHD will allocate 4 bytes of memory for every possible file number up to the highest number used in a program.**
 * mode defaults to RANDOM if the mode or FOR access statement is omitted. (see open modes described below)
 * **Only the fileName$, fileNumber& and LEN = recordLength values can use variable values in the QBasic syntax.**
 * If [LEN](LEN) = is ommitted, sequential file record sizes default to 512 and [RANDOM](RANDOM) to 128 bytes in QBasic.
-* fileName$ can be up to 255 characters with no limit on file name extension length in **QB64**. 
+* fileName$ can be up to 255 characters with no limit on file name extension length in **QBHD**. 
 * Once a file or port is opened, it can be used in any program procedure using the assigned file number. 
 * The **"SCRN:"** device is supported in **version 1.000 and up** (see Example 3).
-* **Devices such as "KYBD:", "CONS:", and "LPTn:" are [Keywords currently not supported by QB64](Keywords-currently-not-supported-by-QB64)**.
->  **Note:** OPEN "LPTn" is not supported by QB64, but may be supported directly by your operating system. 
-* [OPEN COM](OPEN-COM) can also be used for serial port access in **QB64**.
+* **Devices such as "KYBD:", "CONS:", and "LPTn:" are [Keywords currently not supported by QBHD](Keywords-currently-not-supported-by-QBHD)**.
+>  **Note:** OPEN "LPTn" is not supported by QBHD, but may be supported directly by your operating system. 
+* [OPEN COM](OPEN-COM) can also be used for serial port access in **QBHD**.
 
 ## Error(s)
 
-* Illegal **QB64** Windows filename characters are ** " * / \ | ? : < > **. Multiple dots (periods) are allowed.
+* Illegal **QBHD** Windows filename characters are ** " * / \ | ? : < > **. Multiple dots (periods) are allowed.
 * Possible OPEN [ERROR Codes](ERROR-Codes) include "Bad file name or number", "Bad File Mode", "File Not Found" or "Path Not Found". 
   * An OPEN file not found error may occur if [CHR$](CHR$)(0) to (31) are used in a Windows file name.
-* **QB64** does not have DOS file name limitations.
+* **QBHD** does not have DOS file name limitations.
 
 ## Details
 
@@ -86,7 +86,7 @@ FUNCTION CheckName% (Filename$)
      code% = ASC(MID$(Filename$, i%, 1)): COLOR 10      ' see ASCII codes
      SELECT CASE code%       'check for errors and highlight in red
 	'CASE 34, 42 TO 44, 47, 58 TO 63, 91 TO 93, 124: E% = E% + 1: COLOR 12 ' **QBasic errors**
-        CASE 34, 42, 47, 58, 60, 62, 92, 124: E% = E% + 1: COLOR 12 ' **QB64 errors**
+        CASE 34, 42, 47, 58, 60, 62, 92, 124: E% = E% + 1: COLOR 12 ' **QBHD errors**
         CASE 46: dot% = dot% + 1: IF dot% > 1 THEN E% = E% + 1: COLOR 12
      END SELECT     
      PRINT CHR$(code%);  'use LOCATE before FUNCTION call to place print
@@ -96,7 +96,7 @@ END FUNCTION
 
 ```
 
-*Note: The QBasic character error list is commented out and the function will return invalid filenames under QB64.
+*Note: The QBasic character error list is commented out and the function will return invalid filenames under QBHD.
 
 ```text
 

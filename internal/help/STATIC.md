@@ -16,7 +16,7 @@ The STATIC keyword is used in declaration statements to control where variables 
   * variableName may include a type suffix or use [AS](AS) to specify a type other than the default [SINGLE](SINGLE) type.
   * Arrays with static storage are declared by specifying empty parenthesis following the array name. See [Arrays](Arrays)
 * STATIC can be used after the name of a [SUB](SUB) or [FUNCTION](FUNCTION) in the procedure to force all variables to retain their values.
-* **Recursive procedures may be required to be STATIC to avoid a Stack Overflow error. QB64 programs may just close.**
+* **Recursive procedures may be required to be STATIC to avoid a Stack Overflow error. QBHD programs may just close.**
 * [$STATIC]($STATIC) defined program [arrays](arrays) cannot be [REDIM](REDIM) or use [_PRESERVE](_PRESERVE).
 
 ## Example(s)
@@ -47,7 +47,7 @@ END FUNCTION
 
 ```
 
-> *Explanation:* The [FUNCTION](FUNCTION) above returns a [STRING](STRING) value representing the bits ON in an [INTEGER](INTEGER) value. The string can be printed to the screen to see what is happening in a port register. **STATIC** keeps the function from overloading the memory "Stack" and is normally REQUIRED when recursive calls are used in QBasic! **QB64 procedures will close without warning or error!**
+> *Explanation:* The [FUNCTION](FUNCTION) above returns a [STRING](STRING) value representing the bits ON in an [INTEGER](INTEGER) value. The string can be printed to the screen to see what is happening in a port register. **STATIC** keeps the function from overloading the memory "Stack" and is normally REQUIRED when recursive calls are used in QBasic! **QBHD procedures will close without warning or error!**
 
 Using a static array to cache factorials, speeding up repeated calculations:
 

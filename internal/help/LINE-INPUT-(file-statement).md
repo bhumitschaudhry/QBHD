@@ -17,7 +17,7 @@ The **LINE INPUT #** file statement reads an entire line from a text file into a
 * Can be used with [EOF](EOF) to count the number of lines of data (records) in a file using a loop.
 * Use the [EOF](EOF) function to avoid going past the end of a file and creating an error.
 * **LINE INPUT #** can even retain the original quotation marks in text.
-* **Note: QB64** will not remove CHR$(0) from the end of **LINE INPUT #** string return values like QBasic did.
+* **Note: QBHD** will not remove CHR$(0) from the end of **LINE INPUT #** string return values like QBasic did.
 
 ## Error(s)
 

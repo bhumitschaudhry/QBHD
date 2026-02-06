@@ -1,4 +1,4 @@
-The **POKE** statement sets the value of a specified memory address offset. **QB64 currently has limited access!** 
+The **POKE** statement sets the value of a specified memory address offset. **QBHD currently has limited access!** 
 
 ## Syntax
 
@@ -11,8 +11,8 @@ The **POKE** statement sets the value of a specified memory address offset. **QB
 * Important [SCREEN (statement)](SCREEN-(statement)) segments using [PEEK](PEEK) and [POKE](POKE) include &HB800 (text segment) and &HA000 (graphics segment).
 * [DEF SEG](DEF-SEG) should always be used to reset the default segment when access to other memory is no longer necessary.
 * POKE is safer to use than [OUT](OUT) which could damage a PC register.
-* **Warning: DEF SEG, VARSEG , VARPTR, PEEK or POKE access QB64's emulated 16 bit conventional memory block!** 
->  **It is highly recommended that QB64's [_MEM](_MEM) memory system be used to avoid running out of memory.**
+* **Warning: DEF SEG, VARSEG , VARPTR, PEEK or POKE access QBHD's emulated 16 bit conventional memory block!** 
+>  **It is highly recommended that QBHD's [_MEM](_MEM) memory system be used to avoid running out of memory.**
 
 ## Example(s)
 

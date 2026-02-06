@@ -15,7 +15,7 @@ The [MID$](MID$) function returns a portion of a [STRING](STRING).
 * When the bytes% value is not passed, the function returns the remainder of the string from the starting character position.
 * Number of character bytes% should be within the string's [LEN](LEN) from the start position, but will only return the string's remainder when exceeded.
 * If the bytes% value is 0 or the startPosition% is 0 or greater than the [LEN](LEN) of the string, an empty string is returned (no error is triggered).
-* In **QB64**, [ASC](ASC) string byte position reads are about **5 times faster** than MID$ when parsing strings. See *Example 2* below.
+* In **QBHD**, [ASC](ASC) string byte position reads are about **5 times faster** than MID$ when parsing strings. See *Example 2* below.
 
 ## QBasic
 
@@ -43,7 +43,7 @@ hour = 11: minutes = 23
 
 ```
 
-Comparing MID$, the **QB64** byte position version of [ASC](ASC) and [_MEMGET](_MEMGET) speeds parsing string characters:
+Comparing MID$, the **QBHD** byte position version of [ASC](ASC) and [_MEMGET](_MEMGET) speeds parsing string characters:
 
 ```vb
 

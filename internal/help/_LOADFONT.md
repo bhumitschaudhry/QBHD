@@ -8,14 +8,14 @@ The [_LOADFONT](_LOADFONT) function loads a TrueType font (.TTF) or an OpenType 
 
 * The assigned [LONG](LONG) font handle& variable return value designates a font style to be used somewhere in a program. Valid handle values are greater than 0 (**handle& > 0**).
 * fontFileName$ is the filename of a TrueType or OpenType font. Can include the path to the font file. Best practice is to include font files with a program.
-* If no path is specified for fontFileName$ and the font file isn't in the same folder as the resulting binary, QB64 attempts to load from the default *C:\Windows\Fonts* path.
+* If no path is specified for fontFileName$ and the font file isn't in the same folder as the resulting binary, QBHD attempts to load from the default *C:\Windows\Fonts* path.
 * size% is the [INTEGER](INTEGER) height of the font. If the size is too large or small an [ERROR Codes](ERROR-Codes) will occur.
 * Optional comma separated *style* parameter(s) used are literal [STRING](STRING)s (in quotes) or can be contained in variable(s). 
   * **"MONOSPACE"** loads a font with all characters occupying the same width. Results may be too spaced out for fonts that aren't designed for monospace use.
   * **"BOLD", "ITALIC"** or **"UNDERLINE"** create bold, italic or underlined fonts when available in font.
-    * (valid for QB64 versions prior to 1.000).
-* **For **QB64 1.000 or later**, you must specify the proper file name according to the desired attributes. For example, Courier New is in font **cour.ttf** while Courier New Bold is in font **courbd.ttf**, as shipped with Windows.
-  * **"UNICODE"** loads Unicode fonts such as *cyberbit.ttf* which is included in the QB64 downloads. 
+    * (valid for QBHD versions prior to 1.000).
+* **For **QBHD 1.000 or later**, you must specify the proper file name according to the desired attributes. For example, Courier New is in font **cour.ttf** while Courier New Bold is in font **courbd.ttf**, as shipped with Windows.
+  * **"UNICODE"** loads Unicode fonts such as *cyberbit.ttf* which is included in the QBHD downloads. 
   * **"DONTBLEND"** turns off [_ALPHA](_ALPHA) blending of fonts. This can also be done with the [_DONTBLEND](_DONTBLEND) statement.
   * You can pass different font styles using different predefined [STRING](STRING) variable lists. You **can** include an empty style string.
 * **Always check that font handle values are greater than 0 (**handle& > 0**) before using them or [ERROR Codes](ERROR-Codes) may occur.**
@@ -28,7 +28,7 @@ The [_LOADFONT](_LOADFONT) function loads a TrueType font (.TTF) or an OpenType 
 
 * Multiple fonts will require multiple font variable handles unless used and freed consecutively.
 * Font handles with values greater than 0 that are **no longer used** should be freed using [_FREEFONT](_FREEFONT). 
-* **Predefined QB64** font handle numbers can be substituted before freeing a font handle:
+* **Predefined QBHD** font handle numbers can be substituted before freeing a font handle:
   **_FONT 8** - default font for [SCREEN (statement)](SCREEN-(statement)) 1, 2, 7, 8 or 13
   **_FONT 14** - default font for [SCREEN (statement)](SCREEN-(statement)) 9 or 10
   **_FONT 16** - default font for [SCREEN (statement)](SCREEN-(statement)) 0 ([WIDTH](WIDTH) 80, 25 text only), 11 or 12
@@ -85,7 +85,7 @@ Hello!
 
 > *Note:* You can load a fixed width font file without using the "monospace" option and it will be treated as variable width. This can be useful because LOCATE treats the horizontal position as an offset in pixels for variable width fonts.
 
-Loading a [Unicode](Unicode) font, *cyberbit.ttf*, which was downloaded with QB64:
+Loading a [Unicode](Unicode) font, *cyberbit.ttf*, which was downloaded with QBHD:
 
 ```vb
 

@@ -14,20 +14,20 @@ The [INPUT](INPUT) statement requests a [STRING](STRING) or numerical keyboard e
 
 ## Description
 
-* **QB64** does not return *Redo from start* errors like QBasic did, as user input is limited to the scope of the variable [Data types](Data-types) used.
-* Text entries (with a [STRING](STRING) variable]] can receive any characters, including numerical. **QB64 will ignore commas in single variable text entries.**
-* The [Data types](Data-types) of the variable used to store user input determines the valid numerical range for value entries in QB64, with non-numerical characters limited to D, E, [&H](&H), [&O](&O) or [&B](&B).
+* **QBHD** does not return *Redo from start* errors like QBasic did, as user input is limited to the scope of the variable [Data types](Data-types) used.
+* Text entries (with a [STRING](STRING) variable]] can receive any characters, including numerical. **QBHD will ignore commas in single variable text entries.**
+* The [Data types](Data-types) of the variable used to store user input determines the valid numerical range for value entries in QBHD, with non-numerical characters limited to D, E, [&H](&H), [&O](&O) or [&B](&B).
   * For example, if you use an [INTEGER](INTEGER) variable, as in `INPUT "Initial value: ", myValue%`, the valid range is -32768 to 32767.
   * [INTEGER](INTEGER), [LONG](LONG), and [_INTEGER64](_INTEGER64) entries will ignore decimal points entered and will use all numbers.
   * INPUT can be used to get more than one variable value from the user. Do so by separating input variables with commas in the code.
   * The program must inform the user that more than one variable is requested, in order to enter each value separated with a comma at runtime.
   * [STRING](STRING) and numerical variables can both be used in multiple entry requests separated by commas.
-  * **QB64**  allows comma separated entries to be skipped by the user without generating an error.
+  * **QBHD**  allows comma separated entries to be skipped by the user without generating an error.
 * **Use [LINE INPUT](LINE-INPUT) for text input entries that may contain commas such as address or name entries.**
 * The user must press enter for the INPUT procedure to end. <!-- redundant: Multiple entries can be skipped. -->
 * [INPUT](INPUT) accepts the [scientific notation](scientific-notation) letters D or E in [SINGLE](SINGLE) or [DOUBLE](DOUBLE) numerical values.
 * Numerical values starting with [&H](&H), [&O](&O) and [&B](&B) can also be entered.
-* INPUT removes all leading or trailing spaces in a string value entry. **QB64 does NOT remove those spaces!**
+* INPUT removes all leading or trailing spaces in a string value entry. **QBHD does NOT remove those spaces!**
 * The statement halts a program until enter is pressed, which may not be desired in programs using mouse input (see [INKEY$](INKEY$) loops).
 * Use [_DEST](_DEST) [_CONSOLE](_CONSOLE) before INPUT statements to receive input from a [$CONSOLE]($CONSOLE) window.
 
@@ -45,7 +45,7 @@ PRINT name$ + " how much do you weigh"; : INPUT weight%   'no text adds ?
 
 > *Explanation:* Use an empty string with a comma to eliminate the question mark that would appear without the string.
 
-How QB64 avoids a *Redo from start* multiple entry error. Use commas between values.
+How QBHD avoids a *Redo from start* multiple entry error. Use commas between values.
 
 ```vb
 

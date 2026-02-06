@@ -8,7 +8,7 @@ The [_WINDOWHANDLE](_WINDOWHANDLE) function returns the window handle assigned t
 
 * The result is an [_OFFSET](_OFFSET) number assigned by Windows to your running program.
 * Use it to make [Windows Libraries](Windows-Libraries) that require a window handle to be passed.
-* [Keywords currently not supported](Keywords-currently-not-supported-by-QB64).
+* [Keywords currently not supported](Keywords-currently-not-supported-by-QBHD).
 
 ## Availability
 

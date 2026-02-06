@@ -7,7 +7,7 @@ The [_FINISHDROP](_FINISHDROP) statement resets [_TOTALDROPPEDFILES](_TOTALDROPP
 ## Description
 
 * When using [_DROPPEDFILE](_DROPPEDFILE) with an index (which goes from 1 to [_TOTALDROPPEDFILES](_TOTALDROPPEDFILES)), you must call [_FINISHDROP](_FINISHDROP) after you finish working with the list in order to prepare for the next drag/drop operation.
-* **[Keywords currently not supported](Keywords-currently-not-supported-by-QB64)**.
+* **[Keywords currently not supported](Keywords-currently-not-supported-by-QBHD)**.
 
 ## Availability
 

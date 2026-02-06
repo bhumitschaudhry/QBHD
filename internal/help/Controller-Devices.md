@@ -1,4 +1,4 @@
-QB64 supports all kinds of keyboard, mouse, joystick, gamepad, steering wheel and other multi-stick controller input devices. 
+QBHD supports all kinds of keyboard, mouse, joystick, gamepad, steering wheel and other multi-stick controller input devices. 
 
 * **In order to read the device controls, the number of input devices MUST first be found using [_DEVICES](_DEVICES).**
 

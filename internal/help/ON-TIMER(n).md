@@ -17,9 +17,9 @@ The [ON_TIMER(n)](ON-TIMER(n)) statement sets up a timed event to be repeated at
 * **ON TIMER** events will interrupt a [SLEEP](SLEEP) call and [RETURN](RETURN) to running program procedures.
 * Only one TIMER event can be set at a time using this legacy syntax and all TIMER code must be in the main code, as it uses [GOSUB](GOSUB).
 
-### QB64 syntax
+### QBHD syntax
 
-* **QB64** can use multiple numbered timer events and [SINGLE](SINGLE) floating point second values down to one millisecond (.001).
+* **QBHD** can use multiple numbered timer events and [SINGLE](SINGLE) floating point second values down to one millisecond (.001).
 * The **TIMER** number% must be obtained from the [_FREETIMER](_FREETIMER) function. Store _FREETIMER numbers in a variable or an array to be able to reference them later.
 * If the **TIMER** number is omitted or `**ON TIMER**(0, seconds!)` is used, then the TIMER used is the *base TIMER* (same as in the legacy syntax above).
 * [SUB](SUB) procedures are allowed to be referenced, but [CALL](CALL) must not be used. 
@@ -27,11 +27,11 @@ The [ON_TIMER(n)](ON-TIMER(n)) statement sets up a timed event to be repeated at
 * Specific **TIMER** events can be turned on, suspended, turned off or freed using [TIMER (statement)](TIMER-(statement)) ON, STOP, OFF or FREE.
 * Use **TIMER(n) FREE** to release a timer event after it has been turned off or is no longer used.
   * The *base TIMER* cannot be freed.
-* **QB64** allows TIMER statements to also be inside of SUB and FUNCTION procedures.
+* **QBHD** allows TIMER statements to also be inside of SUB and FUNCTION procedures.
 * **ON TIMER** events will interrupt a [SLEEP](SLEEP) call and [RETURN](RETURN) to running program procedures.
-* [$CHECKING]($CHECKING):OFF can disable all QB64 event checking. **Setting $CHECKING:OFF is only designed for 100% stable, error-less sections of code, where every CPU cycle saved counts.**
+* [$CHECKING]($CHECKING):OFF can disable all QBHD event checking. **Setting $CHECKING:OFF is only designed for 100% stable, error-less sections of code, where every CPU cycle saved counts.**
 
-## QB64 Timing Alternatives
+## QBHD Timing Alternatives
 
 * The [TIMER](TIMER) function can be used to find timed intervals down to 1 millisecond(.001) accuracy.
 * The [_DELAY](_DELAY) statement can be used to delay program execution for intervals down to milliseconds.
@@ -39,7 +39,7 @@ The [ON_TIMER(n)](ON-TIMER(n)) statement sets up a timed event to be repeated at
 
 ## Example(s)
 
-Using a numbered TIMER to check the mouse button press status in **QB64**.
+Using a numbered TIMER to check the mouse button press status in **QBHD**.
 
 ```vb
 
@@ -78,4 +78,4 @@ END SUB
 
 * [TIMER](TIMER), [_FREETIMER](_FREETIMER)
 * [TIMER (statement)](TIMER-(statement)), [_DELAY](_DELAY), [_LIMIT](_LIMIT)
-* [$CHECKING]($CHECKING) (QB64 [Metacommand](Metacommand))
+* [$CHECKING]($CHECKING) (QBHD [Metacommand](Metacommand))

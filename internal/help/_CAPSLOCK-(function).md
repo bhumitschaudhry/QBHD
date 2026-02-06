@@ -7,7 +7,7 @@ The [_CAPSLOCK (function)](_CAPSLOCK-(function)) function returns the current st
 ## Availability
 
 * Version 1.4 and up.
-* [Keywords currently not supported](Keywords-currently-not-supported-by-QB64).
+* [Keywords currently not supported](Keywords-currently-not-supported-by-QBHD).
 
 ## See Also
 

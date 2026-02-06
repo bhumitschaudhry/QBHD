@@ -50,7 +50,7 @@ Program illustrates how the CIRCLE command using a negative radian value can be 
 
 ```vb
 
-CONST PI = 3.141593 'The mathematical value of PI to six places. You can also use QB64's native _PI.
+CONST PI = 3.141593 'The mathematical value of PI to six places. You can also use QBHD's native _PI.
 DIM clock(60)             'A dimensioned array to hold 60 radian points
 clockcount% = 15          'A counter to keep track of the radians
 

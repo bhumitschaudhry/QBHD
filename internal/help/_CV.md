@@ -47,7 +47,7 @@ _CV: 2305843009213693952
 
 ## See Also
 
-* [_MK$](_MK$) (QB64 string conversion function)
+* [_MK$](_MK$) (QBHD string conversion function)
 * [MKI$](MKI$), [CVI](CVI), [INTEGER](INTEGER)
 * [MKL$](MKL$), [CVL](CVL), [LONG](LONG)
 * [MKS$](MKS$), [CVS](CVS), [SINGLE](SINGLE)

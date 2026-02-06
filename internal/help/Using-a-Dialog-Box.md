@@ -1,4 +1,4 @@
-QB64 displays dialog boxes when you choose commands that have options.
+QBHD displays dialog boxes when you choose commands that have options.
 
 ## Select a text box for input.
 

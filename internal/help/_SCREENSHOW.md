@@ -10,5 +10,5 @@ The [_SCREENSHOW](_SCREENSHOW) statement can be used to display the main program
 
 ## See Also
 
-* [$SCREENHIDE]($SCREENHIDE), [$SCREENSHOW]($SCREENSHOW), [$CONSOLE]($CONSOLE) (QB64 [Metacommand](Metacommand)s)
+* [$SCREENHIDE]($SCREENHIDE), [$SCREENSHOW]($SCREENSHOW), [$CONSOLE]($CONSOLE) (QBHD [Metacommand](Metacommand)s)
 * [_SCREENHIDE](_SCREENHIDE), [_CONSOLE](_CONSOLE)

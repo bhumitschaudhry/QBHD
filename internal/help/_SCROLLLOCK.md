@@ -7,7 +7,7 @@ The [_SCROLLLOCK](_SCROLLLOCK) statement sets the state of the Scroll Lock key.
 ## Availability
 
 * Version 1.4 and up.
-* [Keywords currently not supported](Keywords-currently-not-supported-by-QB64).
+* [Keywords currently not supported](Keywords-currently-not-supported-by-QBHD).
 
 ## See Also
 

@@ -5,17 +5,17 @@ The [ASC](ASC) function returns the [ASCII](ASCII) code number of a certain [STR
 > code% = [ASC](ASC)(text$[, position%])
 
 * text$ [STRING](STRING) character parameter must have a length of at least 1 byte or an error occurs. 
-* **In QB64** the optional byte position% [INTEGER](INTEGER) parameter greater than 0 can specify the ASCII code of any character in a string to be returned.
+* **In QBHD** the optional byte position% [INTEGER](INTEGER) parameter greater than 0 can specify the ASCII code of any character in a string to be returned.
 * If the optional position% parameter is omitted, ASC will return the [ASCII](ASCII) code of the first [STRING](STRING) character.
 * [ASCII](ASCII) code [INTEGER](INTEGER) or [_UNSIGNED](_UNSIGNED) [_BYTE](_BYTE) values returned range from 0 to 255. 
 * ASC returns 0 when reading [ASCII](ASCII) 2 byte codes returned by [INKEY$](INKEY$) when the arrow, function, Home/Page keys are used. 
-  * Use QB64's position% parameter to read the second byte if necessary. IF ASC(key$) <nowiki>=</nowiki> 0 THEN byte2 <nowiki>=</nowiki> ASC(key$, 2)
-* In **QB64** ASC string byte position reads are about **5 times faster** than [MID$](MID$) when parsing strings. See [MID$](MID$) *Example 2*.
+  * Use QBHD's position% parameter to read the second byte if necessary. IF ASC(key$) <nowiki>=</nowiki> 0 THEN byte2 <nowiki>=</nowiki> ASC(key$, 2)
+* In **QBHD** ASC string byte position reads are about **5 times faster** than [MID$](MID$) when parsing strings. See [MID$](MID$) *Example 2*.
 
 ## Error(s)
 
 * If the function is used to read an **empty string value** an illegal function call [ERROR Codes](ERROR-Codes) will occur. [INKEY$](INKEY$) returns an empty string when a key is not pressed.
-* **QB64**'s position% parameters must range from 1 to the [LEN](LEN) of the string being read or an illegal function call [ERROR Codes](ERROR-Codes) will occur.
+* **QBHD**'s position% parameters must range from 1 to the [LEN](LEN) of the string being read or an illegal function call [ERROR Codes](ERROR-Codes) will occur.
 
 ```text
 
@@ -65,7 +65,7 @@ The [ASC](ASC) function returns the [ASCII](ASCII) code number of a certain [STR
                     CHR$(0) + CHR$(72)         [↑] Arrow            "H"
                     CHR$(0) + CHR$(73)         [Page Up]            "I"
                     CHR$(0) + CHR$(75)         [←] Arrow            "K"
-                    CHR$(0) + CHR$(76)         [5 NumberPad]        "L" (NumLock off in QB64)
+                    CHR$(0) + CHR$(76)         [5 NumberPad]        "L" (NumLock off in QBHD)
                     CHR$(0) + CHR$(77)         [→] Arrow            "M"
                     CHR$(0) + CHR$(79)         [End]                "O"
                     CHR$(0) + CHR$(80)         [↓] Arrow            "P"
@@ -89,17 +89,17 @@ The [ASC](ASC) function returns the [ASCII](ASCII) code number of a certain [STR
 
 ```
 
-> In **QB64**, [CVI](CVI) can be used to get the [_KEYDOWN](_KEYDOWN) 2-byte code value. Example: IF _KEYDOWN([CVI](CVI)([CHR$](CHR$)(0) + "P")) THEN
+> In **QBHD**, [CVI](CVI) can be used to get the [_KEYDOWN](_KEYDOWN) 2-byte code value. Example: IF _KEYDOWN([CVI](CVI)([CHR$](CHR$)(0) + "P")) THEN
 
 ## Example(s)
 
-How ASC can be used to find any ASCII code in a string of characters using QB64.
+How ASC can be used to find any ASCII code in a string of characters using QBHD.
 
 ```vb
 
 PRINT ASC("A")
 PRINT ASC("Be a rockstar")
-PRINT ASC("QB64 is not only COMPATIBLE, it can find any part of the string!", 18) 
+PRINT ASC("QBHD is not only COMPATIBLE, it can find any part of the string!", 18) 
 
 ```
 
@@ -117,7 +117,7 @@ PRINT ASC("QB64 is not only COMPATIBLE, it can find any part of the string!", 18
 
 > *Note:* The ASCII code for "A" and "a" are different by the value of 32, "A" + 32 is "a", 65("A") + 32 = 97("a").
 
-Reading the ASCII and two byte code combinations with ASC in **QB64**.
+Reading the ASCII and two byte code combinations with ASC in **QBHD**.
 
 ```vb
 

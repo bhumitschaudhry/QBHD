@@ -6,7 +6,7 @@ The [CLEAR](CLEAR) statement clears all variable and array element values in a p
 
 ## Description
 
-* All parameters are optional and ignored by **QB64**.
+* All parameters are optional and ignored by **QBHD**.
 * Normally used to clear all program variable and [Arrays](Arrays) values where numerical values become zero and string values become empty ("").
 * It does not clear [CONST](CONST) values.
 * Closes all opened files.

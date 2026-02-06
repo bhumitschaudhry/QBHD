@@ -6,7 +6,7 @@ The [ON STRIG(n)](ON-STRIG(n)) statement is an event procedure that directs prog
 
 >  **ON STRIG**(buttonFunction[, joystickNumber]) {[GOSUB](GOSUB) {lineNumber|lineLabel} | [SUB](SUB)procedure}
 
-* In **QB64** the value can be any button function number with any number of joysticks. See [STRIG](STRIG) and [STICK](STICK) for parameters.
+* In **QBHD** the value can be any button function number with any number of joysticks. See [STRIG](STRIG) and [STICK](STICK) for parameters.
 * There are two buttonFunction for each button. The even numbered function is always the event of any press since last read.
 * The statement sends the procedure to a line number, line label or [SUB](SUB) procedure when a button event occurs.
 
@@ -62,7 +62,7 @@ END SUB
 
 ```
 
-> *Explanation:* Up to 256 controllers can be used in QB64 with many buttons to read.
+> *Explanation:* Up to 256 controllers can be used in QBHD with many buttons to read.
 
 ## See Also
 

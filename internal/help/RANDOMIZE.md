@@ -6,12 +6,12 @@
 
 * The *seed number* can be ANY positive or negative numerical type value. The [TIMER](TIMER) value is often used to change [RND](RND) output each run.
 * If the *seed number* is omitted, the program will display: **Random-number seed (-32768 to 32767)?** request on screen.
-* **USING** resets a *seed number* sequence to the start of the sequence as if the program just started using that seed in **QB64 only**.
+* **USING** resets a *seed number* sequence to the start of the sequence as if the program just started using that seed in **QBHD only**.
 * **Note:** The RANDOMIZE USING *seed number* MUST be designated or a Name already in use status error will occur! 
 * If the same initial seed number is used, the sequence of random numbers returned will be identical every program run.
 * The fact that random numbers would always be the same has been used for simple data encryption and decryption.
 * Using a [TIMER](TIMER) starting value ensures that the initial return sequence values are different almost every time the program is run!
-* [RUN](RUN) should reset the [RANDOMIZE](RANDOMIZE) sequence to the starting [RND](RND) function value.(Not yet in QB64)
+* [RUN](RUN) should reset the [RANDOMIZE](RANDOMIZE) sequence to the starting [RND](RND) function value.(Not yet in QBHD)
 
 ## Example(s)
 
@@ -31,7 +31,7 @@ END
 
 > *Explanation:* Procedure generates random integer values from 2 to 12 like a pair of dice.
 
-Repeating a random number sequence with RANDOMIZE **USING** and a specific seed value in **QB64** only.
+Repeating a random number sequence with RANDOMIZE **USING** and a specific seed value in **QBHD** only.
 
 ```vb
 

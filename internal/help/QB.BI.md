@@ -5,7 +5,7 @@ The **QB.BI** file can be used for [INTERRUPT](INTERRUPT) or [INTERRUPTX](INTERR
 
 * Create your own BI files to [$INCLUDE]($INCLUDE) to hold your own [TYPE](TYPE) definitions. Use notepad and save as All Files as *filename.BI*
 * In QBasic the BI library or support file MUST be included in a program package or download!
-* **QB64** programs do not require any INCLUDED files once the BAS file is compiled!
+* **QBHD** programs do not require any INCLUDED files once the BAS file is compiled!
 
 ## Example(s)
 

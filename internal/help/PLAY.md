@@ -1,4 +1,4 @@
-**PLAY** is a statement that plays notes of sound through the sound card in QB64 using a command [STRING](STRING).
+**PLAY** is a statement that plays notes of sound through the sound card in QBHD using a command [STRING](STRING).
 
 ## Syntax
 
@@ -22,17 +22,17 @@
     * **T**n - Tempo sets number of L4 quarter notes per minute (n can be 32 to 255 where 120 is the default). Example: **PLAY "T180"**
   - ** .**  - period after a note plays 1½ times the note length determined by L * T.
   - **..**  - two periods plays 1-3/4 times the note length determined by L * T.
-  - **,**  - **commas in QB64** stop play advancement to allow more than one note to be played simultaneously. Example: **PLAY "C,E,G,"**
-  - **V**n - Volume in **QB64 only** can be any volume from 0(none) to 100(full).  The default level is 50 when **n** is not specified. 
+  - **,**  - **commas in QBHD** stop play advancement to allow more than one note to be played simultaneously. Example: **PLAY "C,E,G,"**
+  - **V**n - Volume in **QBHD only** can be any volume from 0(none) to 100(full).  The default level is 50 when **n** is not specified. 
   - **MF** - Play music in the foreground (each note must be completed before another can start).
-  - **MB** - Play music in the background while program code execution continues (QB64 has no note buffer limits).
+  - **MB** - Play music in the background while program code execution continues (QBHD has no note buffer limits).
   - **X** **+** [VARPTR$](VARPTR$)(string-expression) - executes a command string variable. **MUST be used with variables!**.
 
 ## Usage
 
 * MB will allow music to play while program code progresses. MF will wait for code to continue playing notes.
 * Command string values are not case sensitive and spacing is ignored. Use upper or lower case as desired.
-***NOTE: In QB64, PLAY may NOT delay program progress! Use [_DELAY](_DELAY) and [END](END) to allow music completion.**
+***NOTE: In QBHD, PLAY may NOT delay program progress! Use [_DELAY](_DELAY) and [END](END) to allow music completion.**
 
 ## Example(s)
 
@@ -55,7 +55,7 @@ PLAY "v10l1c,l4egl2o5c,o4l4eg"
 
 ```
 
-Plays "Frosty the snowman". The lyric printing is not delayed by PLAY in QB64.
+Plays "Frosty the snowman". The lyric printing is not delayed by PLAY in QBHD.
 
 ```vb
 

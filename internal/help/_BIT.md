@@ -13,7 +13,7 @@ The [_BIT](_BIT) datatype can return only values of 0 (bit off) and -1 (bit on).
 * The least significant bit is the last bit on a string of bits (11111) since that bit will only add 1 to the value if set. The most significant bit is the first bit on a string of bits and changes the value more dramatically (significantly) if set on or off.
 * The _BIT datatype can be succesfully used as a [Boolean](Boolean) (TRUE or FALSE) and it requires minimal amount of memory (the lowest amount possible actually, one byte can hold 8 bits, if you want to use bits in order to decrease memory usage, use them as arrays as a _BIT variable by itself allocates 4 bytes - DIM bitarray(800) AS _BIT uses 100 bytes).
 * **When a variable has not been assigned or has no type suffix, the value defaults to [SINGLE](SINGLE).**
-* **[Keywords_currently_not_supported_by_QB64](Keywords-currently-not-supported-by-QB64)** Use a [_BYTE](_BYTE) and assign up to 8 bit values as shown below.
+* **[Keywords_currently_not_supported_by_QBHD](Keywords-currently-not-supported-by-QBHD)** Use a [_BYTE](_BYTE) and assign up to 8 bit values as shown below.
 
 Use a [_BYTE](_BYTE) and assign up to 8 bit values as shown below.
 
@@ -63,7 +63,7 @@ Use a [_BYTE](_BYTE) and assign up to 8 bit values as shown below.
 
 ## Example(s)
 
-Shifting bits in a value in QB64 versions prior to 1.3 (you can use [_SHL](_SHL) and [_SHR](_SHR) starting with version 1.3).
+Shifting bits in a value in QBHD versions prior to 1.3 (you can use [_SHL](_SHL) and [_SHR](_SHR) starting with version 1.3).
 
 ```vb
 

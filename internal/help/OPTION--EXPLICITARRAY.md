@@ -15,7 +15,7 @@
 
 ## Example(s)
 
-Avoiding simple typos with [OPTION _EXPLICITARRAY](OPTION--EXPLICITARRAY) results shown in the QB64 IDE Status area.
+Avoiding simple typos with [OPTION _EXPLICITARRAY](OPTION--EXPLICITARRAY) results shown in the QBHD IDE Status area.
 
 ```vb
 
@@ -29,7 +29,7 @@ y(2) = 3 'This now generates an error
 
 ```
 
-*QB64 IDE Status will show:*
+*QBHD IDE Status will show:*
 
 **Array 'y' (SINGLE) not defined on line 7**
 

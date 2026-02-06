@@ -1,19 +1,19 @@
 ## Original QBasic keywords:
 
-**These QBasic keywords (with a few noted exceptions) will work in all versions of QB64.**
+**These QBasic keywords (with a few noted exceptions) will work in all versions of QBHD.**
 
 ### A
 
 * [ABS](ABS) (function) converts any negative numerical value to a positive value.
 * [CALL ABSOLUTE](CALL-ABSOLUTE) (statement) is used to access computer interrupt registers.
 * [ACCESS](ACCESS) (file statement) sets the read and write access of a file when opened.
-* [ALIAS](ALIAS) (QB64 [DECLARE LIBRARY](DECLARE-LIBRARY) statement) denotes the actual name of an imported [FUNCTION](FUNCTION) or [SUB](SUB) procedure.
+* [ALIAS](ALIAS) (QBHD [DECLARE LIBRARY](DECLARE-LIBRARY) statement) denotes the actual name of an imported [FUNCTION](FUNCTION) or [SUB](SUB) procedure.
 * [AND](AND) (logical operator) is used to compare two numerical values bitwise.
 * [AND (boolean)](AND-(boolean))  conditonal operator is used to include another evaluation in an [IF...THEN](IF...THEN) or [Boolean](Boolean) statement.
 * [APPEND](APPEND) (file mode) creates a new file or allows an existing file to have data added using [WRITE (file statement)](WRITE-(file-statement)) or [PRINT (file statement)](PRINT-(file-statement))
 * [AS](AS) is used to denote a variable type or file number.
 * [ASC](ASC) (function) returns the [ASCII](ASCII) code number of a text [STRING](STRING) character.
-* [ASC (statement)](ASC-(statement)) (QB64 only) sets the code value of an [ASCII](ASCII) text character at a designated [STRING](STRING) position.
+* [ASC (statement)](ASC-(statement)) (QBHD only) sets the code value of an [ASCII](ASCII) text character at a designated [STRING](STRING) position.
 * [ATN](ATN) (function) or arctangent returns the angle in radians of a numerical [TAN](TAN) value.
 
 ### B
@@ -60,7 +60,7 @@
 * [DATA](DATA) (statement) creates a line of fixed program information separated by commas.
 * [DATE$](DATE$) (function) returns the present Operating System date [STRING](STRING) formatted as mm-dd-yyyy.
 * [DATE$ (statement)](DATE$-(statement)) sets the date of the Operating System using a mm-dd-yyyy [STRING](STRING) format.
-* DECLARE (BASIC statement) declares a [SUB](SUB) or [FUNCTION](FUNCTION) procedure at the start of a program. Not required in QB64.
+* DECLARE (BASIC statement) declares a [SUB](SUB) or [FUNCTION](FUNCTION) procedure at the start of a program. Not required in QBHD.
 * [DECLARE LIBRARY](DECLARE-LIBRARY) declares a C++, SDL or Operating System [SUB](SUB) or [FUNCTION](FUNCTION) to be used.
 * [DECLARE DYNAMIC LIBRARY](DECLARE-DYNAMIC-LIBRARY) declares DYNAMIC, CUSTOMTYPE or STATIC  library(DLL) [SUB](SUB) or [FUNCTION](FUNCTION).
 * [DEF SEG](DEF-SEG) (statement) defines a segment in memory to be accessed by a memory procedure.
@@ -104,7 +104,7 @@
 * [FOR...NEXT](FOR...NEXT) (statement) creates a recursive loop procedure that loop a specified number of times.
 * [FOR (file statement)](FOR-(file-statement)) used in an [OPEN](OPEN) file or device statement to indicate the access mode.
 * [FRE](FRE) (function) returns the number of bytes of Memory available to running programs.
-* [FREE (QB64 TIMER statement)](TIMER) frees a numbered TIMER event in QB64.
+* [FREE (QBHD TIMER statement)](TIMER) frees a numbered TIMER event in QBHD.
 * [FREEFILE](FREEFILE) (file function) returns a file number that is currently not in use by the Operating System.
 * [FUNCTION](FUNCTION) (procedure block) sub-procedure that can calculate and return one value to a program in its name.
 
@@ -200,7 +200,7 @@
 * [ON PLAY(n)](ON-PLAY(n)) (statement) sets up a [PLAY](PLAY) event procedure call.
 * [ON STRIG(n)](ON-STRIG(n)) (statement) sets up a joystick button event procedure call.
 * [ON TIMER(n)](ON-TIMER(n)) (statement) sets up a timed event procedure call.
-* [ON UEVENT](ON-UEVENT) (statement) **Not implemented in QB64.**
+* [ON UEVENT](ON-UEVENT) (statement) **Not implemented in QBHD.**
 * [ON...GOSUB](ON...GOSUB) (statement) sets up a numerical event procedure call.
 * [ON...GOTO](ON...GOTO) (statement) sets up a numerical event procedure call.
 * [OPEN](OPEN) (file statement) opens a file name for an access mode with a specific file number.
@@ -305,7 +305,7 @@
 
 * [UBOUND](UBOUND) (function) returns the upper-most index number of a designated [arrays](arrays).
 * [UCASE$](UCASE$) (function) returns an uppercase representation of a specified [STRING](STRING).
-* [UEVENT](UEVENT) (statement) **Not implemented in QB64.**
+* [UEVENT](UEVENT) (statement) **Not implemented in QBHD.**
 * [UNLOCK](UNLOCK) (statement) unlocks a designated file or portions of it.
 * [UNTIL](UNTIL) (condition) evaluates a [DO...LOOP](DO...LOOP) condition until it is True.
 
@@ -333,9 +333,9 @@
 
 * [XOR](XOR) (logic operator) is used to compare two numerical values bitwise.
 
-## QB64 specific keywords:
+## QBHD specific keywords:
 
-Keywords beginning with underscores are QB64 specific. **To use them without the prefix, use [$NOPREFIX]($NOPREFIX).** Also note that the underscore prefix is reserved for QB64 KEYWORDS only.
+Keywords beginning with underscores are QBHD specific. **To use them without the prefix, use [$NOPREFIX]($NOPREFIX).** Also note that the underscore prefix is reserved for QBHD KEYWORDS only.
 
 ### _A
 
@@ -373,7 +373,7 @@ Keywords beginning with underscores are QB64 specific. **To use them without the
 
 * [_CAPSLOCK (function)](_CAPSLOCK-(function)) returns -1 when Caps Lock is on
 * [_CAPSLOCK](_CAPSLOCK) (statement) sets Caps Lock key state
-* [$CHECKING]($CHECKING) (QB64 C++ [Metacommand](Metacommand)) turns event error checking OFF or ON.
+* [$CHECKING]($CHECKING) (QBHD C++ [Metacommand](Metacommand)) turns event error checking OFF or ON.
 * [_CEIL](_CEIL) (function) Rounds x upward, returning the smallest integral value that is not less than x.
 * [_CINP](_CINP) (function) Returns a key code from $CONSOLE input
 * [_CLEARCOLOR (function)](_CLEARCOLOR-(function)) returns the current transparent color of an image.
@@ -381,13 +381,13 @@ Keywords beginning with underscores are QB64 specific. **To use them without the
 * [_CLIP](_CLIP) ([PUT (graphics statement)](PUT-(graphics-statement)) graphics option) allows placement of an image partially off of the screen.
 * [_CLIPBOARD$](_CLIPBOARD$) (function) returns the operating system's clipboard contents as a [STRING](STRING).
 * [_CLIPBOARD$ (statement)](_CLIPBOARD$-(statement)) sets and overwrites the [STRING](STRING) value in the operating system's clipboard. 
-* [_CLIPBOARDIMAGE (function)](_CLIPBOARDIMAGE-(function)) pastes an image from the clipboard into a new QB64 image in memory.
-* [_CLIPBOARDIMAGE](_CLIPBOARDIMAGE) (statement) copies a valid QB64 image to the clipboard.
+* [_CLIPBOARDIMAGE (function)](_CLIPBOARDIMAGE-(function)) pastes an image from the clipboard into a new QBHD image in memory.
+* [_CLIPBOARDIMAGE](_CLIPBOARDIMAGE) (statement) copies a valid QBHD image to the clipboard.
 * [$COLOR]($COLOR) (metacommand) includes named color constants in a program
 * [_COMMANDCOUNT](_COMMANDCOUNT) (function) returns the number of arguments passed to the compiled program from the command line.
 * [_CONNECTED](_CONNECTED) (function) returns the status of a TCP/IP connection handle.
 * [_CONNECTIONADDRESS$](_CONNECTIONADDRESS$) (TCP/IP function) returns a connected user's STRING IP address value using the handle.
-* [$CONSOLE]($CONSOLE) (QB64 [Metacommand](Metacommand)) creates a console window that can be used throughout a program.
+* [$CONSOLE]($CONSOLE) (QBHD [Metacommand](Metacommand)) creates a console window that can be used throughout a program.
 * [_CONSOLE](_CONSOLE) (statement) used to turn a console window OFF or ON or to designate [_DEST](_DEST) _CONSOLE for output.
 * [_CONSOLEINPUT](_CONSOLEINPUT) (function) fetches input data from a [$CONSOLE]($CONSOLE) window to be read later (both mouse and keyboard)
 * [_CONSOLETITLE](_CONSOLETITLE) (statement) creates the title of the console window using a literal or variable [STRING](STRING).
@@ -436,14 +436,14 @@ Keywords beginning with underscores are QB64 specific. **To use them without the
 * [$ERROR]($ERROR)  (precompiler [metacommand](metacommand)) used to trigger compiler errors.
 * [_ERRORLINE](_ERRORLINE) (function) returns the source code line number that caused the most recent runtime error.
 * [_ERRORMESSAGE$](_ERRORMESSAGE$) (function) returns a human-readable message describing the most recent runtime error.
-* [$EXEICON]($EXEICON) (Pre-Compiler [Metacommand](Metacommand)) used with a .ICO icon file name to embed the image into the QB64 executable.
+* [$EXEICON]($EXEICON) (Pre-Compiler [Metacommand](Metacommand)) used with a .ICO icon file name to embed the image into the QBHD executable.
 * [_EXIT (function)](_EXIT-(function)) prevents a user exit and indicates if a user has clicked the close X window button or CTRL + BREAK.
 
 ### _F
 
 * [_FILEEXISTS](_FILEEXISTS) (function) returns -1 if the file name [STRING](STRING) parameter exists. Zero if it does not.
 * [_FINISHDROP](_FINISHDROP) (statement)  resets [_TOTALDROPPEDFILES](_TOTALDROPPEDFILES) and clears the [_DROPPEDFILE](_DROPPEDFILE) list of items (files/folders).
-* [_FLOAT](_FLOAT) (numerical type ##) offers the maximum floating-point decimal precision available using QB64.
+* [_FLOAT](_FLOAT) (numerical type ##) offers the maximum floating-point decimal precision available using QBHD.
 * [_FONT](_FONT) (statement) sets the current font handle to be used by PRINT or [_PRINTSTRING](_PRINTSTRING).
 * [_FONT (function)](_FONT-(function)) creates a new font handle from a designated image handle.
 * [_FONTHEIGHT](_FONTHEIGHT) (function) returns the current text or font height.
@@ -528,7 +528,7 @@ Keywords beginning with underscores are QB64 specific. **To use them without the
 ### _N
 
 * [_NEWIMAGE](_NEWIMAGE) (function) creates a designated size program [SCREEN](SCREEN) or page image and returns a handle value.
-* [$NOPREFIX]($NOPREFIX) (metacommand) allows QB64-specific keywords to be used without the underscore prefix.
+* [$NOPREFIX]($NOPREFIX) (metacommand) allows QBHD-specific keywords to be used without the underscore prefix.
 * [_NUMLOCK (function)](_NUMLOCK-(function)) returns -1 when Num Lock is on
 * [_NUMLOCK](_NUMLOCK) (statement) sets Num Lock key state
 
@@ -541,7 +541,7 @@ Keywords beginning with underscores are QB64 specific. **To use them without the
 * [_OPENHOST](_OPENHOST) (TCP/IP function) opens a Host and returns a Host status handle.
 * [OPTION _EXPLICIT](OPTION--EXPLICIT) (Pre-compiler directive) instructs the compiler to require variable declaration with [DIM](DIM) or an equivalent statement.
 * [OPTION _EXPLICITARRAY](OPTION--EXPLICITARRAY) (Pre-compiler directive) instructs the compiler to require array declaration with [DIM](DIM) or an equivalent statement. 
-* [_OS$](_OS$) (function) returns the QB64 compiler version in which the program was compiled as [WINDOWS], [LINUX] or [MACOSX] and [32BIT] or [64BIT].
+* [_OS$](_OS$) (function) returns the QBHD compiler version in which the program was compiled as [WINDOWS], [LINUX] or [MACOSX] and [32BIT] or [64BIT].
 
 ### _P
 
@@ -580,14 +580,14 @@ Keywords beginning with underscores are QB64 specific. **To use them without the
 
 * [_SCREENCLICK](_SCREENCLICK) (statement) simulates clicking on a point on the desktop screen with the left mouse button.
 * [_SCREENEXISTS](_SCREENEXISTS) (function) returns a -1 value once a screen has been created.
-* [$SCREENHIDE]($SCREENHIDE) ([QB64 [Metacommand]]) hides the program window from view.
+* [$SCREENHIDE]($SCREENHIDE) ([QBHD [Metacommand]]) hides the program window from view.
 * [_SCREENHIDE](_SCREENHIDE) (statement) hides the program window from view.
 * [_SCREENICON (function)](_SCREENICON-(function)) returns -1 or 0 to indicate if the window has been minimized to an icon on the taskbar. 
 * [_SCREENICON](_SCREENICON) (statement) minimizes the program window to an icon on the taskbar. 
 * [_SCREENIMAGE](_SCREENIMAGE) (function) creates an image of the current desktop and returns an image handle.
 * [_SCREENMOVE](_SCREENMOVE) (statement) positions program window on the desktop using designated coordinates or the _MIDDLE option.
 * [_SCREENPRINT](_SCREENPRINT) (statement) simulates typing text into a Windows program using the keyboard.
-* [$SCREENSHOW]($SCREENSHOW) (QB64 [Metacommand](Metacommand)) displays that program window after it was hidden by [$SCREENHIDE]($SCREENHIDE).
+* [$SCREENSHOW]($SCREENSHOW) (QBHD [Metacommand](Metacommand)) displays that program window after it was hidden by [$SCREENHIDE]($SCREENHIDE).
 * [_SCREENSHOW](_SCREENSHOW) (statement) displays the program window after it has been hidden by [_SCREENHIDE](_SCREENHIDE).
 * [_SCREENX](_SCREENX) (function) returns the program window's upper left corner horizontal position on the desktop.
 * [_SCREENY](_SCREENY) (function) returns the program window's upper left corner vertical position on the desktop.
@@ -654,7 +654,7 @@ Keywords beginning with underscores are QB64 specific. **To use them without the
 
 ## OpenGL specific keywords:
 
-**All QB64 OpenGL keywords must use the underscore _gl prefix with the alphabetically listed function names.**
+**All QBHD OpenGL keywords must use the underscore _gl prefix with the alphabetically listed function names.**
 
 Use [$NOPREFIX]($NOPREFIX) to enable these to be used without the leading underscore.
 
@@ -1052,7 +1052,7 @@ Use [$NOPREFIX]($NOPREFIX) to enable these to be used without the leading unders
 
 ## Symbols:
 
-**QB64 and QB Symbols:**
+**QBHD and QB Symbols:**
 
 *[Note: All symbols below can also be used inside of literal quoted strings except for quotation marks.]*
 
@@ -1072,25 +1072,25 @@ Use [$NOPREFIX]($NOPREFIX) to enable these to be used without the leading unders
 * [Parenthesis](Parenthesis) enclose a math or conditional procedure order, [SUB](SUB) or [FUNCTION](FUNCTION) parameters or to pass by value.
 * [+](+) [concatenation](Concatenation) operator MUST be used to combine literal string values in a variable definition.
 * [Quotation mark](Quotation-mark) designates the ends of a literal [STRING](STRING) value. Use [CHR$](CHR$)(34) to insert quotes in a text [STRING](STRING).
-* [Underscore](Underscore) can be used to continue a line of code to the next program line in **QB64**.
+* [Underscore](Underscore) can be used to continue a line of code to the next program line in **QBHD**.
 
 > **Variable Name Type Suffixes**
 
 * [STRING](STRING) text character type: 1 byte
 * [SINGLE](SINGLE) floating decimal point numerical type (4 bytes)
 * [DOUBLE](DOUBLE) floating decimal point numerical type (8 bytes)
-* [_FLOAT](_FLOAT) **QB64** decimal point numerical type (32 bytes)
-* [_UNSIGNED](_UNSIGNED) **QB64** [INTEGER](INTEGER) positive numerical type when it precedes the 6 numerical suffixes below:
+* [_FLOAT](_FLOAT) **QBHD** decimal point numerical type (32 bytes)
+* [_UNSIGNED](_UNSIGNED) **QBHD** [INTEGER](INTEGER) positive numerical type when it precedes the 6 numerical suffixes below:
 * [INTEGER](INTEGER) [INTEGER](INTEGER) numerical type (2 bytes)
 * [LONG](LONG) [INTEGER](INTEGER) numerical type (4 bytes}
-* [_INTEGER64](_INTEGER64) **QB64** [INTEGER](INTEGER) numerical type (8 bytes) 
-* [_BIT](_BIT) **QB64** [INTEGER](INTEGER) numerical type (1 bit) (Key below tilde (~) or [CHR$](CHR$)(96))
-* [_BYTE](_BYTE) **QB64** [INTEGER](INTEGER) numerical type (1 byte)
-* [_OFFSET](_OFFSET) **QB64** [INTEGER](INTEGER) numerical pointer address type (any byte size required)
+* [_INTEGER64](_INTEGER64) **QBHD** [INTEGER](INTEGER) numerical type (8 bytes) 
+* [_BIT](_BIT) **QBHD** [INTEGER](INTEGER) numerical type (1 bit) (Key below tilde (~) or [CHR$](CHR$)(96))
+* [_BYTE](_BYTE) **QBHD** [INTEGER](INTEGER) numerical type (1 byte)
+* [_OFFSET](_OFFSET) **QBHD** [INTEGER](INTEGER) numerical pointer address type (any byte size required)
 
 > **Numerical Base Prefixes**
 
-* [&B](&B)           Base 2:    Digits 0 or 1 [**QB64**]
+* [&B](&B)           Base 2:    Digits 0 or 1 [**QBHD**]
 * [&O](&O)            Base 8:    Digits 0 to 7
 * [&H](&H) Base 16: Digits 0 to F
 
@@ -1117,8 +1117,8 @@ Use [$NOPREFIX]($NOPREFIX) to enable these to be used without the leading unders
 
 **Got a question about something?** 
 
-* [QB64 FAQ](QB64-FAQ)
-* [Visit the QB64 Main Site](http://qb64.com)
+* [QBHD FAQ](QBHD-FAQ)
+* [Visit the QBHD Main Site](http://qb64.com)
 
 **Links to other QBasic Sites:**
 

@@ -8,7 +8,7 @@ The [_CLIPBOARDIMAGE (function)](_CLIPBOARDIMAGE-(function)) function pastes an 
 
 * When the paste operation is successful, newImageHandle& will be < -1. Handle values of -1 or 0 indicate that there wasn't an image in the clipboard or that the format wasn't accepted.
 * Use [_FREEIMAGE](_FREEIMAGE) to free the memory used by newImageHandle& when it's no longer needed by your program.
-* [Keywords currently not supported](Keywords-currently-not-supported-by-QB64).
+* [Keywords currently not supported](Keywords-currently-not-supported-by-QBHD).
 
 ## Availability
 

@@ -7,7 +7,7 @@ The [_NUMLOCK (function)](_NUMLOCK-(function)) function returns the current stat
 ## Availability
 
 * Version 1.4 and up.
-* [Keywords currently not supported](Keywords-currently-not-supported-by-QB64).
+* [Keywords currently not supported](Keywords-currently-not-supported-by-QBHD).
 
 ## See Also
 

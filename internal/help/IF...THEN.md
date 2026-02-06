@@ -31,10 +31,10 @@
 * With multiple code lines to run, end the IF statement with THEN and place all of the code on lines below that line.
 * Multiple code line block statements require that the [IF...THEN](IF...THEN), [ELSEIF](ELSEIF), [ELSE](ELSE) and [END IF](END-IF) be on separate lines.
 * **The IDE may return an error of *[NEXT](NEXT) without [FOR](FOR)* or *[LOOP](LOOP) without [DO...LOOP](DO...LOOP)* when [END IF](END-IF) does not end a statement block.**
-* The **QB64** IDE will indicate an error in the IF statement line until END IF closes the statement block.
+* The **QBHD** IDE will indicate an error in the IF statement line until END IF closes the statement block.
 * Use [colon](colon)s to execute multiple statements in a single-line IF statement.
-* An **[underscore](underscore)** can be used anywhere after the code on a single-line to continue it to the next line in **QB64**.
-* **NOTE:** [STRING](STRING) values can only be evaluated in an IF statement if a value is compared to a literal or [CHR$](CHR$) string value. **QB64 may not compile literal IF string statements or indicate an IDE coding error.** Use [LEN](LEN) or [ASC](ASC) to compare strings numerically.
+* An **[underscore](underscore)** can be used anywhere after the code on a single-line to continue it to the next line in **QBHD**.
+* **NOTE:** [STRING](STRING) values can only be evaluated in an IF statement if a value is compared to a literal or [CHR$](CHR$) string value. **QBHD may not compile literal IF string statements or indicate an IDE coding error.** Use [LEN](LEN) or [ASC](ASC) to compare strings numerically.
 
 **Relational Operators:**
 
@@ -142,7 +142,7 @@ IF Key$ >= CHR$(65) AND Key$ <= CHR$(90) THEN PRINT "A to Z"
 > *Explanation:* Long [STRING](STRING) expression values are compared by their cumulative [ASCII](ASCII) code values.
 
 **QBasic decimal point value comparison errors**
-* Floating decimal point numerical values may not be compared as exactly the same value. QB64 will compare them the same.
+* Floating decimal point numerical values may not be compared as exactly the same value. QBHD will compare them the same.
 > QBasic would print *unequal* in the IF comparison code below even though it is exactly the same value printed.
 
 ```vb
@@ -155,7 +155,7 @@ IF x# + y# = z# THEN PRINT "equal" ELSE PRINT "unequal"
 
 ```
 
-> Note: QB64 will make the calculation correctly and print *equal*. Change older program code that relies on the error accordingly.
+> Note: QBHD will make the calculation correctly and print *equal*. Change older program code that relies on the error accordingly.
 
 ## See Also
 

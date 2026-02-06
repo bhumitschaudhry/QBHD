@@ -1,4 +1,4 @@
-The **PEEK** function returns the value that is contained at a certain memory address offset. **QB64 currently has limited access!**
+The **PEEK** function returns the value that is contained at a certain memory address offset. **QBHD currently has limited access!**
 
 ## Syntax
 
@@ -9,8 +9,8 @@ The **PEEK** function returns the value that is contained at a certain memory ad
 * PEEK only reads the memory byte value. Not certain bits. (See [AND](AND))
 * Important [SCREEN (statement)](SCREEN-(statement)) segments using [PEEK](PEEK) and [POKE](POKE) include &HB800 (text segment) and &HA000 (graphics segment).
 * To return to Basic default segment use [DEF SEG](DEF-SEG) without any arguments.
-* **Warning: DEF SEG, VARSEG , VARPTR, PEEK or POKE access QB64's emulated 16 bit conventional memory block!** 
->  **It is highly recommended that QB64's [_MEM](_MEM) memory system be used to avoid running out of memory.**
+* **Warning: DEF SEG, VARSEG , VARPTR, PEEK or POKE access QBHD's emulated 16 bit conventional memory block!** 
+>  **It is highly recommended that QBHD's [_MEM](_MEM) memory system be used to avoid running out of memory.**
 
 ## Example(s)
 

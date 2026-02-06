@@ -4,7 +4,7 @@ The **STRIG** function returns button press True or False status of game port (&
 
 > IF STRIG(button_function%) THEN ...
 
-## QB64 Syntax
+## QBHD Syntax
 
 > IF STRIG(*button_function%*[, *device_number%*]) THEN ...
 
@@ -12,7 +12,7 @@ The **STRIG** function returns button press True or False status of game port (&
 * Function returns -1 when a button event(even functions) has occurred or a button is pressed(odd functions). 
 * STRIG will not read keyboard or mouse buttons detected by [_DEVICES](_DEVICES).
 * The *device number* must be used with more than 2 devices. Use device 1 function numbers for just one joystick.
-* **QB64** can read many buttons from many devices and allows the use of devices with more than 2 buttons.
+* **QBHD** can read many buttons from many devices and allows the use of devices with more than 2 buttons.
 * Returns True(-1) or False(0) button press values for 2 devices. Each leading STRIG checks for missed button press events:
 
 ```text
@@ -25,15 +25,15 @@ The **STRIG** function returns button press True or False status of game port (&
   **STRIG(5) = -1  'upper button 2 on device 1 currently pressed**
   STRIG(6) = -1  'upper button 2 on device 2 pressed since last STRIG(6) read
   STRIG(7) = -1  'upper button 2 on device 2 currently pressed (maximum in QBasic)
-  **STRIG(8) = -1  'button 3 on device 1 pressed since last STRIG(8) read**  'QB64 only
+  **STRIG(8) = -1  'button 3 on device 1 pressed since last STRIG(8) read**  'QBHD only
   **STRIG(9) = -1  'button 3 on device 1 currently pressed**           
-  STRIG(10) = -1 'button 3 on device 2 pressed since last STRIG(10) read 'QB64 only
+  STRIG(10) = -1 'button 3 on device 2 pressed since last STRIG(10) read 'QBHD only
   STRIG(11) = -1 'button 3 on device 2 currently pressed
 
 ```
 
 * STRIG(0), STRIG(2), STRIG(4), STRIG(6), STRIG(8), STRIG(10) are used to monitor any presses that might have been missed.
-* **QB64** allows more than two controllers by using the second parameter as the stick number and the odd or even STRIG values:
+* **QBHD** allows more than two controllers by using the second parameter as the stick number and the odd or even STRIG values:
 
 ```text
 
@@ -67,7 +67,7 @@ LOOP UNTIL INKEY$ > ""
 
 ```
 
-> *Explanation:* Notice the extra **QB64 only** parameters used to cater for the 2nd stick and the buttons of the 3rd joystick.
+> *Explanation:* Notice the extra **QBHD only** parameters used to cater for the 2nd stick and the buttons of the 3rd joystick.
 
 ## See Also
  

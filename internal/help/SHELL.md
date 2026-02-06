@@ -9,15 +9,15 @@ The [SHELL](SHELL) statement allows a program to run external programs or comman
 ## Description
 
 * If the *DOSCommand$* [STRING](STRING) parameter isn't used, the "command console" is opened and execution is halted until the user closes it manually.
-* If [_DONTWAIT](_DONTWAIT) is used, the **QB64** program doesn't wait for the SHELLed program/command to end.
+* If [_DONTWAIT](_DONTWAIT) is used, the **QBHD** program doesn't wait for the SHELLed program/command to end.
 * When the [_HIDE](_HIDE) action is used, the [_CONSOLE](_CONSOLE) window is hidden and screen info can be "redirected" (using redirection characters like >) to a file (recommended).
 * Commands are external commands, according to the user's operating system, passed as [STRING](STRING) enclosed in quotes or string variables.
 * Commands can be a mixture of [STRING](STRING) and string variables added together using the + [concatenation](concatenation) operator.
 * Command text can be in upper or lower case. Use single spacing between items and options.
-* **QB64** automatically uses CMD /C when using [SHELL](SHELL), but it is allowed in a command string. Note: CMD alone may lock up program.
+* **QBHD** automatically uses CMD /C when using [SHELL](SHELL), but it is allowed in a command string. Note: CMD alone may lock up program.
 * **Note: Some commands may not work without adding CMD /C to the start of the command line.**
-* **QB64** program screens will not get distorted, minimized or freeze the program like QBasic full-screen modes would.
-* **QB64** can use long path folder names and file names and [SHELL](SHELL) command lines can be longer than 124 characters.
+* **QBHD** program screens will not get distorted, minimized or freeze the program like QBasic full-screen modes would.
+* **QBHD** can use long path folder names and file names and [SHELL](SHELL) command lines can be longer than 124 characters.
 * In Windows, use additional [CHR$](CHR$)(34) quotation marks around folder or file names that contain spaces.
 * For other operating systems, both the quotation mark character and the apostrophe can be used to enclose a file name that contains spaces.
 * **NOTE: Use [CHDIR](CHDIR) instead of CD as SHELL commands cannot affect the current program path.**
@@ -53,7 +53,7 @@ Opening a Windows program (Notepad) to read or print a Basic created text file.
 INPUT "Enter a file name to read in Notepad: ", filename$
 SHELL "CMD /C start /max notepad " + filename$  ' display in Notepad full screen in XP or NT   
 
-'SHELL "start /min notepad /p " + filename$ ' taskbar print using QB64 CMD /C not necessary
+'SHELL "start /min notepad /p " + filename$ ' taskbar print using QBHD CMD /C not necessary
 
 ```
 
@@ -71,7 +71,7 @@ Function that returns the program's current working path.
  PRINT currentpath$
 
  FUNCTION Path$   
-   SHELL _HIDE "CD > D0S-DATA.INF"   'code to hide window in **QB64**
+   SHELL _HIDE "CD > D0S-DATA.INF"   'code to hide window in **QBHD**
    OPEN "D0S-DATA.INF" FOR APPEND AS #1  'this may create the file
         L% = LOF(1)          'verify that file and data exist
    CLOSE #1   
@@ -87,8 +87,8 @@ Function that returns the program's current working path.
 
 ```
 
-> *Explanation:* The **SHELL "CD"** statement requests the current working path. This info is normally printed to the screen, but the **>** pipe character sends the information to the DOS-DATA.INF file instead(**QB64** can use [_HIDE](_HIDE) to not display the DOS window). The function uses the [OPEN](OPEN) FOR [APPEND](APPEND) mode to check for the file and the data([INPUT (file mode)](INPUT-(file-mode)) would create an error if file does not exist). The current path is listed on one line of the file. The file is opened and [LINE INPUT (file statement)](LINE-INPUT-(file-statement)) returns one line of the file text. The function adds a "\" so that the Path$ returned can be used in another file statement by just adding a file name. Save the Path$ to another variable for later use when the program has moved to another directory.
-> In **QB64** you can simply use the [_CWD$](_CWD$) statement for the same purpose of the example above.
+> *Explanation:* The **SHELL "CD"** statement requests the current working path. This info is normally printed to the screen, but the **>** pipe character sends the information to the DOS-DATA.INF file instead(**QBHD** can use [_HIDE](_HIDE) to not display the DOS window). The function uses the [OPEN](OPEN) FOR [APPEND](APPEND) mode to check for the file and the data([INPUT (file mode)](INPUT-(file-mode)) would create an error if file does not exist). The current path is listed on one line of the file. The file is opened and [LINE INPUT (file statement)](LINE-INPUT-(file-statement)) returns one line of the file text. The function adds a "\" so that the Path$ returned can be used in another file statement by just adding a file name. Save the Path$ to another variable for later use when the program has moved to another directory.
+> In **QBHD** you can simply use the [_CWD$](_CWD$) statement for the same purpose of the example above.
 
 Determining if a drive or path exists. Cannot use with a file name specification.
 
@@ -112,7 +112,7 @@ END FUNCTION
 ```
 
 > *Explanation: IF Exist* checks for the drive path. *\Nul* allows an empty folder at end of path. *Echo* prints **yes** in the file if it exists.
-> In **QB64** you can simply use the [_FILEEXISTS](_FILEEXISTS) statement for the same purpose of the example above.
+> In **QBHD** you can simply use the [_FILEEXISTS](_FILEEXISTS) statement for the same purpose of the example above.
 
 *Snippet 1:* When looking for **printers** this command gives you a file list with the default printer marked as **TRUE**:
 
@@ -172,7 +172,7 @@ Default  Name
 * [RMDIR](RMDIR), [NAME](NAME), [KILL](KILL), [RUN](RUN)
 * [_HIDE](_HIDE), [_DONTWAIT](_DONTWAIT)
 * [_CONSOLE](_CONSOLE), [$CONSOLE]($CONSOLE)
-* [$SCREENHIDE]($SCREENHIDE), [$SCREENSHOW]($SCREENSHOW) (QB64 [Metacommand](Metacommand)s)
+* [$SCREENHIDE]($SCREENHIDE), [$SCREENSHOW]($SCREENSHOW) (QBHD [Metacommand](Metacommand)s)
 * [_SCREENHIDE](_SCREENHIDE), [_SCREENSHOW](_SCREENSHOW)
 * [FILELIST$](FILELIST$), [PDS (7.1) Procedures](PDS-(7.1)-Procedures) (member-contributed file list array function)
 

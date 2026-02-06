@@ -1,4 +1,4 @@
-The [ASC (statement)](ASC-(statement)) statement allows a **QB64** program to change a character at any position of a [STRING](STRING) variable.
+The [ASC (statement)](ASC-(statement)) statement allows a **QBHD** program to change a character at any position of a [STRING](STRING) variable.
 
 ## Syntax
  

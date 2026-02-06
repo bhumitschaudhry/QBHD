@@ -4,15 +4,15 @@ The STRIG(n) statement controls event trapping for a particular joystick or game
 
 > STRIG(button%) {ON|OFF|STOP}
 
-## QB64 Syntax
+## QBHD Syntax
 
 > STRIG[(*button_function%*[, *device_number%*])] {ON|OFF|STOP}
 
 ## Description
 
 * button function specifies the device's button function. Even functions record events while odd ones read the actual presses.
-* **QB64** can designate a button function and controller device number from 0 to 256.
-* When no parameters are used **QB64** enables, disables or suspends the reading of ALL button events.
+* **QBHD** can designate a button function and controller device number from 0 to 256.
+* When no parameters are used **QBHD** enables, disables or suspends the reading of ALL button events.
 * [STRIG(n)](STRIG(n)) specifies that event trapping is turned on for the specified button.
 * [STRIG(n)](STRIG(n)) specifies that event trapping is turned off for the specified button.
 * If STOP is specified, event trapping is suspended for the specified button. Further joystick button events are remembered and trapped, in order, after the next STRIG(n) ON statement is used.

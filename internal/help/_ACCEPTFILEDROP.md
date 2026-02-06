@@ -10,7 +10,7 @@ The [_ACCEPTFILEDROP](_ACCEPTFILEDROP) statement prepares a program window to re
 * To know when files have been dropped into your program's window, check that [_TOTALDROPPEDFILES](_TOTALDROPPEDFILES) is greater than 0.
 * Use [_DROPPEDFILE](_DROPPEDFILE) to read the list, either sequentially or by index.
 * If using [_DROPPEDFILE](_DROPPEDFILE) with an index, you must call [_FINISHDROP](_FINISHDROP) after you finish working with the list.
-* **[Keywords currently not supported](Keywords-currently-not-supported-by-QB64)**.
+* **[Keywords currently not supported](Keywords-currently-not-supported-by-QBHD)**.
 
 ## Availability
 

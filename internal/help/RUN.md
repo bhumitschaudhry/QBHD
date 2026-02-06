@@ -1,6 +1,6 @@
 **RUN** is a control flow statement that clears and restarts the program currently in memory or executes another specified program.
 
-The multi-modular technique goes back to when QBasic and QuickBASIC had module size constraints. In QB64 it has been implemented so that that older code can still be compiled, though **it is advisable to use single modules for a single project (not counting [$INCLUDE]($INCLUDE) libraries), for ease of sharing and also because the module size constraints no longer exist.**
+The multi-modular technique goes back to when QBasic and QuickBASIC had module size constraints. In QBHD it has been implemented so that that older code can still be compiled, though **it is advisable to use single modules for a single project (not counting [$INCLUDE]($INCLUDE) libraries), for ease of sharing and also because the module size constraints no longer exist.**
 
 ## Syntax
 
@@ -12,17 +12,17 @@ The multi-modular technique goes back to when QBasic and QuickBASIC had module s
 * An optional *filespec* specifies a program to load into memory and run. 
     * BAS or EXE extensions are assumed to be the same as the calling module's extension, EXE or BAS (QBasic only).
     * *file names specs* with other extensions must use the full filename. No extension requires a dot.
-* In **QB64** *command line parameters* can follow the program file name and be read using the [COMMAND$](COMMAND$) function later.
+* In **QBHD** *command line parameters* can follow the program file name and be read using the [COMMAND$](COMMAND$) function later.
 
 ## Usage
 
 * The starting [line number](line-number) MUST be one used in the main module code, even if RUN is called from within a SUB or FUNCTION.
 * If no line number is given the currently loaded program runs from the first executable line.
-* In **QB64** RUN can open any kind of executable program and provide case sensitive program specific parameters. 
+* In **QBHD** RUN can open any kind of executable program and provide case sensitive program specific parameters. 
   * Recommended practice to run external programs is to use [SHELL](SHELL).
 * RUN closes all open files and closes the invoking program module before the called program starts.
 * RUN resets the [RANDOMIZE](RANDOMIZE) sequence to the starting [RND](RND) function value.
-* **Note: Calling RUN repeatedly may cause a stack leak in QB64 if it is called from within a [SUB](SUB) or [FUNCTION](FUNCTION). Avoid when possible.**
+* **Note: Calling RUN repeatedly may cause a stack leak in QBHD if it is called from within a [SUB](SUB) or [FUNCTION](FUNCTION). Avoid when possible.**
 
 ## Example(s)
 

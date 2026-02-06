@@ -10,7 +10,7 @@ The [_CONSOLEINPUT](_CONSOLEINPUT) function is used to monitor any new mouse or 
 * Must be called before reading any of the other mouse functions and before reading [_CINP](_CINP).
 * To clear all previous input data, read [_CONSOLEINPUT](_CONSOLEINPUT) in a loop until it returns 0.
 * To capture mouse input, turn off Quick Edit in the settings of command prompt and use [_SOURCE](_SOURCE) [_CONSOLE](_CONSOLE).
-* [Keywords currently not supported](Keywords-currently-not-supported-by-QB64).
+* [Keywords currently not supported](Keywords-currently-not-supported-by-QBHD).
 
 ## Example(s)
 

@@ -1,16 +1,16 @@
-QB64 is a modern extended BASIC programming language that retains QBasic / Quick BASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.
+QBHD is a modern extended BASIC programming language that retains QBasic / Quick BASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.
 
 ## Getting started
 
-* Grab the latest version of QB64 from our active [GitHub repo](https://github.com/QB64Official/qb64/releases/latest).
+* Grab the latest version of QBHD from our active [GitHub repo](https://github.com/QBHDOfficial/qb64/releases/latest).
 
 ### FAQ
 
-* [QB64 FAQ](QB64-FAQ)
+* [QBHD FAQ](QBHD-FAQ)
 
 ### Get in touch
 
-* [Official QB64 Discord Server Invitation](https://discord.gg/A3HmUe2mv8)
+* [Official QBHD Discord Server Invitation](https://discord.gg/A3HmUe2mv8)
 
 ## Keywords
 
@@ -19,12 +19,12 @@ QB64 is a modern extended BASIC programming language that retains QBasic / Quick
 
 ### Known issues
 
-* [Keywords currently not supported by QB64](Keywords-currently-not-supported-by-QB64)
+* [Keywords currently not supported by QBHD](Keywords-currently-not-supported-by-QBHD)
 
 ## Articles and Tutorials
 
-* [Terry Ritchie's QB64 Game Programming](http://www.qb64sourcecode.com)
-* [School Freeware series on QB64 (YouTube)](https://www.youtube.com/watch?v=hE-Voij5k5Q&list=PLF6199808BD4901E1)
+* [Terry Ritchie's QBHD Game Programming](http://www.qb64sourcecode.com)
+* [School Freeware series on QBHD (YouTube)](https://www.youtube.com/watch?v=hE-Voij5k5Q&list=PLF6199808BD4901E1)
 * [Arrays](Arrays)
 * [ASCII](ASCII)
 * [Binary](Binary)
@@ -42,7 +42,7 @@ QB64 is a modern extended BASIC programming language that retains QBasic / Quick
 * [Mathematical Operations](Mathematical-Operations)
 * [PDS (7.1) Procedures](PDS-(7.1)-Procedures)
 * [Port Access Libraries](Port-Access-Libraries)
-* [QB 4.5 Library Ports For QB64](QB-4.5-Library-Ports-For-QB64)
+* [QB 4.5 Library Ports For QBHD](QB-4.5-Library-Ports-For-QBHD)
 * [Relational Operations](Relational-Operations)
 * [Line numbers](Line-numbers)
 * [Line number](Line-number)

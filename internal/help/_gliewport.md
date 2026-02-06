@@ -4,7 +4,7 @@
 ## Syntax
 
 
-;QB64:SUB _glViewport (BYVAL x AS LONG, BYVAL y AS LONG, BYVAL width AS LONG, BYVAL height AS LONG)
+;QBHD:SUB _glViewport (BYVAL x AS LONG, BYVAL y AS LONG, BYVAL width AS LONG, BYVAL height AS LONG)
 ;C/C++:void **_glViewport**(GLint x, GLint y, GLsizei width, GLsizei height);
 
 

@@ -1,4 +1,4 @@
-QB64 supports several relational operations, which are binary operations that test numeric or string values and return an [INTEGER](INTEGER) value representing a boolean *true* (-1) or *false* (0) result. These operations are primarily used in expressions where a condition is required, such as the [IF...THEN](IF...THEN) statement.
+QBHD supports several relational operations, which are binary operations that test numeric or string values and return an [INTEGER](INTEGER) value representing a boolean *true* (-1) or *false* (0) result. These operations are primarily used in expressions where a condition is required, such as the [IF...THEN](IF...THEN) statement.
 
 ## List of relational operations
 

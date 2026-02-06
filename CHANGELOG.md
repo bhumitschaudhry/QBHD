@@ -1,4 +1,4 @@
-# QB64 development build - Changelog
+# QBHD development build - Changelog
 Upcoming version is currently identified as v2.1, but that number may change before release.
 
 ## New features

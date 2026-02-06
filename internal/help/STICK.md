@@ -4,13 +4,13 @@ The **STICK** function returns the directional axis coordinate move of game port
 
 > coordinate_move% = STICK(direction%)
 
-## QB64 Syntax
+## QBHD Syntax
 
 > coordinate_move% = STICK(*direction%*[, *axis_number%*])
 
 ## Description
 
-* **QB64** allows any number of coordinate pairs for more than two game device controllers. STICK will not read a mouse axis.
+* **QBHD** allows any number of coordinate pairs for more than two game device controllers. STICK will not read a mouse axis.
 * *axis_number* can be used as the next axis parameter for controllers with multiple axis using the SAME *directional* parameters.
 * The *axis_number* 1 can be omitted for the main stick column and row parameter reads. 
 * Point of view "hats" also have 2 axis. Slide, turn or twist controls have one. The device determines the order of the axis.
@@ -23,13 +23,13 @@ The **STICK** function returns the directional axis coordinate move of game port
 **STICK(1) returns row coordinate of device 1.**
 STICK(2) returns column coordinate of device 2. (second joystick if used)
 STICK(3) returns row coordinate of device 2 if used. (QBasic maximum was 2 controllers)
-**STICK(4) returns column coordinate of device 3. (other joysticks if used in QB64 only!)**
+**STICK(4) returns column coordinate of device 3. (other joysticks if used in QBHD only!)**
 **STICK(5) returns row coordinate of device 3 if used.**
 
 ```
 
-* **QB64** allows more joysticks by extending the numbers in pairs like device 3 above. EX: STICK(6): STICK(7) 'device 4
-* **QB64** allows a dual stick to be read using the same first parameters and 2 as the second parameter. EX: STICK(0, 2)
+* **QBHD** allows more joysticks by extending the numbers in pairs like device 3 above. EX: STICK(6): STICK(7) 'device 4
+* **QBHD** allows a dual stick to be read using the same first parameters and 2 as the second parameter. EX: STICK(0, 2)
 * **There will not be an error if you try to read too many device axis or buttons!**
 
 ## Example(s)
@@ -54,7 +54,7 @@ LOOP UNTIL INKEY$ > ""
 
 ```
 
-> *Explanation:* Notice the extra **QB64 only** parameters used to cater for the 2nd stick and the buttons of the 3rd joystick.
+> *Explanation:* Notice the extra **QBHD only** parameters used to cater for the 2nd stick and the buttons of the 3rd joystick.
 
 Displays the Sidewinder Precision Pro Stick, Slider, Z Axis, and Hat Point of View.
 

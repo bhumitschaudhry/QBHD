@@ -15,7 +15,7 @@ The [_SCREENMOVE](_SCREENMOVE) statement positions the program window on the des
 * Use [_DESKTOPWIDTH](_DESKTOPWIDTH) and [_DESKTOPHEIGHT](_DESKTOPHEIGHT) to find the current desktop resolution to place the program's window.
 * On dual monitors a negative column& position or a value greater than the main screen width can be used to position a window in another monitor.
 * **A small delay may be necessary when a program first starts up to properly orient the screen on the desktop properly.** See [_SCREENEXISTS](_SCREENEXISTS).
-* **[Keywords currently not supported](Keywords-currently-not-supported-by-QB64)**
+* **[Keywords currently not supported](Keywords-currently-not-supported-by-QBHD)**
 
 ## Example(s)
 

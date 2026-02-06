@@ -1,14 +1,14 @@
-## Basic and QB64 Numerical Types
+## Basic and QBHD Numerical Types
 
 **QBasic Number Types**
 
-* [INTEGER](INTEGER) [**%**]: 2 Byte signed whole number values from -32768 to 32767. 0 to 65535 unsigned. (not checked in QB64) 
+* [INTEGER](INTEGER) [**%**]: 2 Byte signed whole number values from -32768 to 32767. 0 to 65535 unsigned. (not checked in QBHD) 
 * [LONG](LONG) [**&**]: 4 byte signed whole number values from -2147483648 to 2147483647. 0 to 4294967295 unsigned.
 * [SINGLE](SINGLE) [**!**]: 4 byte signed floating decimal point values of up to 7 decimal place accuracy. **Cannot be unsigned.** 
 * [DOUBLE](DOUBLE) [#]: 8 byte signed floating decimal point values of up to 15 decimal place accuracy. **Cannot be unsigned.**
 * To get **one byte** values, can use an [ASCII](ASCII) [STRING](STRING) character to represent values from 0 to 255 as in [BINARY](BINARY) files.
 
-**QB64 Number Types**
+**QBHD Number Types**
 
 * [_BIT](_BIT) [**\`**]: 1 bit signed whole number values of 0 or -1 signed or 0 or 1 unsigned. [_BIT](_BIT) * 8 can hold a signed or unsigned [_BYTE](_BYTE) value.
 * [_BYTE](_BYTE) [**%%**]: 1 byte signed whole number values from -128 to 127. Unsigned values from 0 to 255.
@@ -22,7 +22,7 @@ Negative (signed) numerical values can affect calculations when using any of the
 
 > * [SGN](SGN)(n) returns the value's sign as -1 if negative, 0 if zero or 1 if positive.
 > * [ABS](ABS)(n) changes negative values to the equivalent positive values.
-> * **QB64:** [_UNSIGNED](_UNSIGNED) in a [DIM](DIM), [AS](AS) or [_DEFINE](_DEFINE) statement for only positive [INTEGER](INTEGER) values.
+> * **QBHD:** [_UNSIGNED](_UNSIGNED) in a [DIM](DIM), [AS](AS) or [_DEFINE](_DEFINE) statement for only positive [INTEGER](INTEGER) values.
 
 [_UNSIGNED](_UNSIGNED) integer, byte and bit variable values can use the tilde ~ suffix before the type suffix to define the type.
 
@@ -57,7 +57,7 @@ There is also an operator for **exponential** calculations. The exponential oper
 ### Notes
 
 * Exponent fractions should be enclosed in () brackets in order to be treated as a root rather than as division.
-* Negative exponential values must be enclosed in () brackets in QB64.
+* Negative exponential values must be enclosed in () brackets in QBHD.
 
 ## Basic's Order of Operations
 

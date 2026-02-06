@@ -19,7 +19,7 @@ SaveBMP32 x1%, x2%, y1%, y2%, picture&, "ScreenShot.bmp"
   
 SUB SaveBMP32 (x1%, x2%, y1%, y2%, image&, Filename$)
 
-TYPE BMPFormat ' Description                          Bytes    QB64 Function
+TYPE BMPFormat ' Description                          Bytes    QBHD Function
     ID AS STRING * 2 'File ID("BM" or 19778 AS Integer) 2  CVI("BM")
     Size AS LONG ' Total Size of the file               4  LOF
     Blank AS LONG ' Reserved                            4
@@ -109,6 +109,6 @@ END SUB
 
 ## See Also
 
-* [SAVEIMAGE](SAVEIMAGE) (QB64 Image to Bitmap SUB by Galleon)
+* [SAVEIMAGE](SAVEIMAGE) (QBHD Image to Bitmap SUB by Galleon)
 * [Program ScreenShots](Program-ScreenShots) (Member program for legacy screen modes)
-* [ThirtyTwoBit SUB](ThirtyTwoBit-SUB) (QB64 Image area to bitmap)
+* [ThirtyTwoBit SUB](ThirtyTwoBit-SUB) (QBHD Image area to bitmap)

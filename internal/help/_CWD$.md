@@ -8,7 +8,7 @@ The [_CWD$](_CWD$) function returns the current working directory path as a stri
 
 * By default, the initial working directory path is usually the same as the directory of the executable file run.
 * The current working directory can be changed with the [CHDIR](CHDIR) or [SHELL](SHELL) command; CHDIR sets it, _CWD$ returns it.
-* Path returns will change only when the working path has changed.  When in C:\ and run QB64\cwd.exe, it will still return C:\
+* Path returns will change only when the working path has changed.  When in C:\ and run QBHD\cwd.exe, it will still return C:\
 * The current working directory string can be used in [OPEN](OPEN) statements and [SHELL](SHELL) commands that deal with files.
 * Works in Windows, macOS and Linux. [_OS$](_OS$) can be used by a program to predict the proper slash separations in different OS's.
 
@@ -35,9 +35,9 @@ RMDIR "a_temporary_dir"
 
 ```text
 
-We started at C:\QB64
-We are now in C:\QB64\a_temporary_dir
-And now we're back in C:\QB64
+We started at C:\QBHD
+We are now in C:\QBHD\a_temporary_dir
+And now we're back in C:\QBHD
 
 ```
 

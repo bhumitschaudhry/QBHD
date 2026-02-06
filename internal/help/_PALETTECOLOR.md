@@ -38,7 +38,7 @@ The [_PALETTECOLOR](_PALETTECOLOR) statement sets the color value of a palette e
 ```
 
 [HTML Color Table Values and Names](http://www.w3schools.com/html/html_colornames.asp) or [Other RGB colors](http://www.tayloredmktg.com/rgb/#OR)
-  * *Note:* **QB64** 32 bit color intensity values from 0 to 255 can be found by multiplying above values by 4.
+  * *Note:* **QBHD** 32 bit color intensity values from 0 to 255 can be found by multiplying above values by 4.
 
 *Summary:* The red, green, and blue intensity values can be changed using [OUT](OUT) or [PALETTE](PALETTE) statements. Some **QBasic** RGB color attribute values can be changed in [DAC](DAC) [SCREEN (statement)](SCREEN-(statement)) modes and the [DAC](DAC) RGB intensity settings may be different. 
 

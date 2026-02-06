@@ -23,7 +23,7 @@ The **RND** function returns a random number with a value between 0 (inclusive) 
   * Using [INT](INT): randNum% = INT(RND * (max% - min% + 1)) + min%
   * Using [CINT](CINT): randNum% = CINT(RND * (max% - min%)) + min%
 * Use [RANDOMIZE](RANDOMIZE) [TIMER](TIMER) for different random number results each time a program is run. 
-* [RUN](RUN) should reset the [RANDOMIZE](RANDOMIZE) sequence to the starting [RND](RND) function value.(Not yet in QB64)
+* [RUN](RUN) should reset the [RANDOMIZE](RANDOMIZE) sequence to the starting [RND](RND) function value.(Not yet in QBHD)
 
 ## Example(s)
 

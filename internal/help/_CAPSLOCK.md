@@ -7,7 +7,7 @@ The [_CAPSLOCK](_CAPSLOCK) statement sets the state of the Caps Lock key.
 ## Availability
 
 * Version 1.4 and up.
-* [Keywords currently not supported](Keywords-currently-not-supported-by-QB64).
+* [Keywords currently not supported](Keywords-currently-not-supported-by-QBHD).
 
 ## See Also
 

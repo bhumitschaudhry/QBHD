@@ -7,8 +7,8 @@ The **COMMAND$** function returns the command line argument(s) passed when a pro
 ## Description
 
 * The [STRING](STRING) return value is anything typed after a program's executable file name in command line (or using the [RUN](RUN) statement).
-* Unlike QuickBASIC, **QB64** does not return all [UCASE$](UCASE$) values so keep that in mind when checking parameters.
-* In **QB64**, COMMAND$ works as an array to return specific elements passed to the command line. COMMAND$(2) would return the second parameter passed at the command line. Arguments can contain spaces if they are passed inside quotation marks. This can be used to properly retrieve file names and arguments which contain spaces.
+* Unlike QuickBASIC, **QBHD** does not return all [UCASE$](UCASE$) values so keep that in mind when checking parameters.
+* In **QBHD**, COMMAND$ works as an array to return specific elements passed to the command line. COMMAND$(2) would return the second parameter passed at the command line. Arguments can contain spaces if they are passed inside quotation marks. This can be used to properly retrieve file names and arguments which contain spaces.
 * Use the [_COMMANDCOUNT](_COMMANDCOUNT) function to find the number of parameters passed to a program via the command line. See *Example 2* below.
 
 ## Example(s)
@@ -21,18 +21,18 @@ LOCATE 12, 36: PRINT "ProgramA"
 
 LOCATE 23, 25: PRINT "Press any key to run ProgramB"
 K$ = INPUT$(1)
-RUN "ProgramB FS"  'pass FS parameter to ProgramB in QB64 or QB4.5
+RUN "ProgramB FS"  'pass FS parameter to ProgramB in QBHD or QB4.5
 
 SYSTEM
 
 ```
 
-> *ProgramB* checks for fullscreen parameter pass in QB64 and goes full screen. 
+> *ProgramB* checks for fullscreen parameter pass in QBHD and goes full screen. 
 
 ```vb
 
 LOCATE 17, 36: PRINT "ProgramB"
-parameter$ = UCASE$(COMMAND$) 'UCASE$ is needed in QB64 only, as QB4.5 will always return upper case
+parameter$ = UCASE$(COMMAND$) 'UCASE$ is needed in QBHD only, as QB4.5 will always return upper case
 LOCATE 20, 33: PRINT "Parameter = " + parameter$
 IF LEFT$(parameter$, 2) = "FS" THEN _FULLSCREEN 'parameter changes to full screen
 

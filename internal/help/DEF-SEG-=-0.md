@@ -1,6 +1,6 @@
 The following **DOS BIOS** information can be used on Windows 9x machines. Not necessarily XP or NT! Each routine includes the hexadecimal and decimal registers. 
 
-> **NOTE: Few of these addresses are currenly accessable in QB64! Some may never be due to OS changes.**
+> **NOTE: Few of these addresses are currenly accessable in QBHD! Some may never be due to OS changes.**
 
 > **DEF SEG = 0 LOW MEMORY PORT ADDRESSES**
 > #### #### #### #### #### #### #### 

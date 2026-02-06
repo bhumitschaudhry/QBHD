@@ -17,7 +17,7 @@ The [_MOUSESHOW](_MOUSESHOW) statement displays the mouse cursor and can change 
   * _MOUSESHOW "TOPRIGHT_BOTTOMLEFT" will display bottom diagonal arrow cursor for movement
   * _MOUSESHOW "DEFAULT" can be used after a mouse cursor statement above was previously used.
 * This statement will also disable [_MOUSEMOVEMENTX](_MOUSEMOVEMENTX) or [_MOUSEMOVEMENTY](_MOUSEMOVEMENTY) relative mouse movement reads.
-* The mouse cursor will not interfere with any print or graphic screen changes in **QB64**.
+* The mouse cursor will not interfere with any print or graphic screen changes in **QBHD**.
 
 ### QBasic/QuickBASIC
 

@@ -12,7 +12,7 @@ The TAB function is used in [PRINT](PRINT) and [LPRINT](LPRINT) statements to mo
 * [Comma](Comma) PRINT spacing is up to 15 column places (IE: TAB(15)) to a maximum column of 57.
 * When printing to a file, a carriage return([CHR$](CHR$)(13)) and linefeed([CHR$](CHR$)(10)) character are output when it moves to the next row.
 * **Note:** QBasic did not allow a TAB to be [concatenation](concatenation) to a string value. In [PRINT](PRINT) statements the [+](+) would be changed to a [semicolon](semicolon). 
-> In QB64, TAB [concatenation](concatenation) is allowed instead of [semicolon](semicolon)s. Example: PRINT "text" + TAB(9) + "here"
+> In QBHD, TAB [concatenation](concatenation) is allowed instead of [semicolon](semicolon)s. Example: PRINT "text" + TAB(9) + "here"
 
 ## Example(s)
 

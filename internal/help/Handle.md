@@ -1,4 +1,4 @@
-In QB64 **handles** are created and used by various statements and functions to reference screen surfaces, images, sounds, fonts and IP users.
+In QBHD **handles** are created and used by various statements and functions to reference screen surfaces, images, sounds, fonts and IP users.
 
 ## Syntax
 

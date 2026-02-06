@@ -41,7 +41,7 @@ SCREEN 12 'set full screen in QBasic only for flashing colors
 SCREEN 0
 OUT &H3C8, 0: OUT &H3C9, 0: OUT &H3C9, 0: OUT &H3C9, 20
 
-_FONT _LOADFONT("C:\Windows\Fonts\Cour.ttf", 20, "MONOSPACE") 'select monospace font. QB64 only!
+_FONT _LOADFONT("C:\Windows\Fonts\Cour.ttf", 20, "MONOSPACE") 'select monospace font. QBHD only!
 
 DEF SEG = &HB800                        'SCREEN 0 text ONLY!
 FOR code = 0 TO 255
@@ -79,7 +79,7 @@ Byte offset:    0, 1               640     642     644     646     648     650  
 
 * The graphic video memory segment is located at hexadecimal memory address A000 or 40960 decimal.
 * Legacy graphic screen modes include 1, 2, 7, 8, 9, 10, 11, 12 and 13 with varying pixel widths, heights and color attributes.
-* **QB64** [_NEWIMAGE](_NEWIMAGE) or [_LOADIMAGE](_LOADIMAGE) screen modes can use the legacy modes above, 256 color or 32 bit color modes.
+* **QBHD** [_NEWIMAGE](_NEWIMAGE) or [_LOADIMAGE](_LOADIMAGE) screen modes can use the legacy modes above, 256 color or 32 bit color modes.
 
 ## See Also
 

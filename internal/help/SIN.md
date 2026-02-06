@@ -121,7 +121,7 @@ The value of 2 &pi; is used to determine the sec! multiplier that determines the
 
 ## See Also
 
-* [_PI](_PI) (QB64 function)
+* [_PI](_PI) (QBHD function)
 * [COS](COS) (cosine)
 * [ATN](ATN) (arctangent)
 * [TAN](TAN) (tangent)

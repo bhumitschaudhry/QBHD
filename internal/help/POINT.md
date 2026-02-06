@@ -15,7 +15,7 @@ The **POINT** function returns the pixel [COLOR](COLOR) attribute at a specified
 Graphic Color syntax:
 
 * The [INTEGER](INTEGER) *column* and *row* coordinates designate the pixel position color on the screen to read.
-* The return value is an [INTEGER](INTEGER) palette attribute value or an [_UNSIGNED](_UNSIGNED) [LONG](LONG) [_RGBA](_RGBA) 32 bit value in QB64.
+* The return value is an [INTEGER](INTEGER) palette attribute value or an [_UNSIGNED](_UNSIGNED) [LONG](LONG) [_RGBA](_RGBA) 32 bit value in QBHD.
 
 Graphic cursor position syntax: 
 
@@ -30,7 +30,7 @@ Graphic cursor position syntax:
 
 ## Usage
 
-* Use **[_SOURCE](_SOURCE)** first to set the image handle that POINT should read or QB64 will assume the current source image.
+* Use **[_SOURCE](_SOURCE)** first to set the image handle that POINT should read or QBHD will assume the current source image.
 > **_SOURCE 0** 'sets POINT to read the current SCREEN image after reading a previous source image
 * **POINT cannot be used in SCREEN 0!** Use the [SCREEN (function)](SCREEN-(function)) function to point text character codes and colors in SCREEN 0.
 
@@ -38,10 +38,10 @@ Graphic cursor position syntax:
 
 * The [INTEGER](INTEGER) color attributes returned are limited by the number of colors in the legacy SCREEN mode used.
 * *Column* and *row* [INTEGER](INTEGER) parameters denote the graphic pixel coordinate to read.
-* In **QB64** the offscreen or off image value returned is -1. Use IF POINT(x, y) <> -1 THEN...
+* In **QBHD** the offscreen or off image value returned is -1. Use IF POINT(x, y) <> -1 THEN...
 * In QBasic the coordinates MUST be on the screen or an [ERROR Codes](ERROR-Codes) will occur. 
 
-**POINT in QB64 32 Bit Graphic [_NEWIMAGE](_NEWIMAGE) or [_LOADIMAGE](_LOADIMAGE) Modes:**
+**POINT in QBHD 32 Bit Graphic [_NEWIMAGE](_NEWIMAGE) or [_LOADIMAGE](_LOADIMAGE) Modes:**
 
 * Returns [_UNSIGNED](_UNSIGNED) [LONG](LONG) 32 bit color values. Use [_UNSIGNED](_UNSIGNED) values when you don't want negative values.
 * **[_UNSIGNED](_UNSIGNED) [LONG](LONG) variables should be used when comparing POINT returns with [_RGB](_RGB) or [_RGB32](_RGB32) [_ALPHA](_ALPHA) bit values**
@@ -51,11 +51,11 @@ Graphic cursor position syntax:
 
 ## Example(s)
 
-How [_RGB](_RGB) 32 bit values return [DOUBLE](DOUBLE) or [_UNSIGNED](_UNSIGNED) [LONG](LONG) values in QB64.
+How [_RGB](_RGB) 32 bit values return [DOUBLE](DOUBLE) or [_UNSIGNED](_UNSIGNED) [LONG](LONG) values in QBHD.
 
 ```vb
 
-DIM clr AS LONG 'DO NOT use LONG in older versions of QB64 (V .936 down)
+DIM clr AS LONG 'DO NOT use LONG in older versions of QBHD (V .936 down)
 SCREEN _NEWIMAGE(640, 480, 32)
 CLS , _RGB(255, 255, 255)  'makes the background opaque white
 
@@ -87,7 +87,7 @@ SCREEN _NEWIMAGE(640, 480, 32)
 _TITLE "Mouse POINTer 32"
 
 'LINE INPUT "Enter an image file: ", image$  'use quotes around file names with spaces
-image$ = "QB64bee.png" 'up to 320 X 240 with current _PUTIMAGE settings
+image$ = "QBHDbee.png" 'up to 320 X 240 with current _PUTIMAGE settings
 i& = _LOADIMAGE(image$, 32)
 IF i& >= -1 THEN BEEP: PRINT "Could NOT load image!": END
 w& = _WIDTH(i&): h& = _HEIGHT(i&)
@@ -137,13 +137,13 @@ Creating an image mask to PUT an image over other colored backgrounds. See: [GET
 
 ```
 
-> *Explanation:* In the procedure all black areas(background) are changed to white for a PUT using AND over other colored objects. The other image colors are changed to black for a PUT of the original image using XOR. The array images can be BSAVEd for later use. **QB64 can also** [PUT](PUT)** a full screen 12 image from an array directly into a** [BINARY](BINARY) **file.**
+> *Explanation:* In the procedure all black areas(background) are changed to white for a PUT using AND over other colored objects. The other image colors are changed to black for a PUT of the original image using XOR. The array images can be BSAVEd for later use. **QBHD can also** [PUT](PUT)** a full screen 12 image from an array directly into a** [BINARY](BINARY) **file.**
 
 ## See Example(s)
 
-* [SAVEIMAGE](SAVEIMAGE) (QB64 Image to Bitmap SUB by Galleon)
+* [SAVEIMAGE](SAVEIMAGE) (QBHD Image to Bitmap SUB by Galleon)
 * [Program ScreenShots](Program-ScreenShots) (Member program for legacy screen modes)
-* [ThirtyTwoBit SUB](ThirtyTwoBit-SUB) (QB64 Image area to bitmap)
+* [ThirtyTwoBit SUB](ThirtyTwoBit-SUB) (QBHD Image area to bitmap)
 * [ThirtyTwoBit MEM SUB](ThirtyTwoBit-MEM-SUB) (Fast image area to Bitmap using [_MEM](_MEM))
 
 ## See Also

@@ -1,4 +1,4 @@
-[_DONTWAIT](_DONTWAIT) is used with the [SHELL](SHELL) statement in **QB64** to specify that the program shouldn't wait until the external command/program is finished (which it otherwise does by default).
+[_DONTWAIT](_DONTWAIT) is used with the [SHELL](SHELL) statement in **QBHD** to specify that the program shouldn't wait until the external command/program is finished (which it otherwise does by default).
 
 ## Syntax
 
@@ -8,8 +8,8 @@
 
 *Runs the command/program specified in commandline$ and lets the calling program continue at the same time in its current screen format.
 *Especially useful when CMD /C or START is used in a SHELL command line to run another program. 
-* **QB64** automatically uses CMD /C or COMMAND /C when using SHELL. 
-* **QB64** program screens will not get distorted or minimized like QBasic fullscreen modes would.
+* **QBHD** automatically uses CMD /C or COMMAND /C when using SHELL. 
+* **QBHD** program screens will not get distorted or minimized like QBasic fullscreen modes would.
 
 ## Example(s)
 

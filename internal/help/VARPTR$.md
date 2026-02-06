@@ -28,7 +28,7 @@ NEXT
 
 ```
 
-> *NOTE:'GWBasic** allows **semicolons** to be used in the ROW$ definition, but QBasic and **QB64** MUST use **+** concatenation.
+> *NOTE:'GWBasic** allows **semicolons** to be used in the ROW$ definition, but QBasic and **QBHD** MUST use **+** concatenation.
 
 Using the function to change a Turn Angle value using DRAW.
 

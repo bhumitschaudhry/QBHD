@@ -11,7 +11,7 @@ The [CLS](CLS) statement clears the [_DEST](_DEST).
   * CLS 0 - Clears the entire page of text and graphics. Print cursor is moved to row 1 at column 1.
   * CLS 1 - Clears only the graphics view port. Has no effect for text mode.
   * CLS 2 - Clears only the text view port. The print cursor is moved to the top row of the text view port at column 1.
-* The bgColor& specifies the color attribute or palette index to use when clearing the screen in **QB64**.
+* The bgColor& specifies the color attribute or palette index to use when clearing the screen in **QBHD**.
 
 ## Description
 
@@ -25,7 +25,7 @@ The [CLS](CLS) statement clears the [_DEST](_DEST).
 
 ## Example(s)
 
-Printing black text on a white background in QB64.
+Printing black text on a white background in QBHD.
 
 ```vb
 
@@ -51,7 +51,7 @@ _PUTIMAGE (0, 0), i 'places image at upper left corner of window w/o stretching 
 
 ```
 
-> *Explanation:* When QB64 loads a .PNG file containing a transparent color, that color will be properly treated as transparent when _PUTIMAGE is used to put it onto another image. You can use a .PNG file containing transparency information in a 256-color screen mode in QB64. [CLS](CLS) sets the [_CLEARCOLOR](_CLEARCOLOR) setting using [_RGB](_RGB).
+> *Explanation:* When QBHD loads a .PNG file containing a transparent color, that color will be properly treated as transparent when _PUTIMAGE is used to put it onto another image. You can use a .PNG file containing transparency information in a 256-color screen mode in QBHD. [CLS](CLS) sets the [_CLEARCOLOR](_CLEARCOLOR) setting using [_RGB](_RGB).
 
 ## See Also
 

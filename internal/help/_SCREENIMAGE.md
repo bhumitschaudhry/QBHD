@@ -12,7 +12,7 @@ The [_SCREENIMAGE](_SCREENIMAGE) function stores the current desktop image or a 
 * The current screen resolution or width-to-height aspect ratio can be obtained with [_DESKTOPWIDTH](_DESKTOPWIDTH) and [_DESKTOPHEIGHT](_DESKTOPHEIGHT).
 * Can be used to take screenshots of the desktop or used with [_PRINTIMAGE](_PRINTIMAGE) to print them.
 * It is important to free unused or uneeded image handles with [_FREEIMAGE](_FREEIMAGE) to prevent memory overflow errors.
-* [Keywords currently not supported](Keywords-currently-not-supported-by-QB64)
+* [Keywords currently not supported](Keywords-currently-not-supported-by-QBHD)
 
 ## Example(s)
 

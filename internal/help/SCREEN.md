@@ -7,7 +7,7 @@ The [SCREEN](SCREEN) statement sets the video display mode and size of the progr
 ## Parameter(s)
  
 * The SCREEN *mode* [INTEGER](INTEGER) values available today are 0 to 2 and 7 to 13 listed below. 
-* **QB64** can use a [LONG](LONG) [_NEWIMAGE](_NEWIMAGE) page or [_LOADIMAGE](_LOADIMAGE) file *image handle* value instead.
+* **QBHD** can use a [LONG](LONG) [_NEWIMAGE](_NEWIMAGE) page or [_LOADIMAGE](_LOADIMAGE) file *image handle* value instead.
 * The empty comma disables color when any value is used. **DO NOT USE!** Include the comma ONLY when using page flipping.
 * If the SCREEN mode supports pages, the *active page* is the page to be worked on while *visual page* is the one displayed.
 
@@ -15,14 +15,14 @@ The [SCREEN](SCREEN) statement sets the video display mode and size of the progr
  
 * No SCREEN statement in a program defaults to [SCREEN](SCREEN) 0 text ONLY mode.
 * A SCREEN statement that changes screen modes also clears the screen like [CLS](CLS). Nothing on the screen is retained.
-* Some screen mode text sizes are adjustable with [WIDTH](WIDTH) and all **QB64** screens support [PCOPY](PCOPY) and page flipping.  
+* Some screen mode text sizes are adjustable with [WIDTH](WIDTH) and all **QBHD** screens support [PCOPY](PCOPY) and page flipping.  
 
 ```text
 
                        **LEGACY SCREEN MODES AT A GLANCE**
 
  **Screen      Text           Graphics          Colors      Video    Text      Default** 
-  **Mode   Rows   Columns   Width   Height  Attrib.   BPP   Pages    Block    QB64 Font**
+  **Mode   Rows   Columns   Width   Height  Attrib.   BPP   Pages    Block    QBHD Font**
 
    0   25/43/50  80/40    No graphics     16/16 DAC  4     0-7     -----    _FONT 16
    1      25      40      320     200     16/4 BG    4     none    8 X 8    _FONT 8 
@@ -36,11 +36,11 @@ The [SCREEN](SCREEN) statement sets the video display mode and size of the progr
   12     30/60    80      640     480     16/262K    4     none    8 X 16   _FONT 16
   13      25      40      320     200     256/65K    8     none    8 X 8    _FONT 8 
 
-              **QB64 allows video paging and [PCOPY](PCOPY) in ALL screen modes!** 
+              **QBHD allows video paging and [PCOPY](PCOPY) in ALL screen modes!** 
 
 ```
 
-## QB64 Custom Screen Modes
+## QBHD Custom Screen Modes
 
 >  [SCREEN](SCREEN) *imagehandle&* [, , *active_page*, *visual_page*]
 
@@ -49,11 +49,11 @@ The [SCREEN](SCREEN) statement sets the video display mode and size of the progr
 >  [SCREEN](SCREEN) [_LOADIMAGE](_LOADIMAGE)(*file$*[, {*mode*|*256*|*32*}]) [, , *active_page*, *visual_page*]
 
 * Custom screen modes can be created using a [_NEWIMAGE](_NEWIMAGE) or [_LOADIMAGE](_LOADIMAGE) function *imagehandle* return value. 
-* **QB64** screen modes 0 to 2 and 7 to 13 can be emulated with the same color depth and text block size and different dimensions.
+* **QBHD** screen modes 0 to 2 and 7 to 13 can be emulated with the same color depth and text block size and different dimensions.
 * [_NEWIMAGE](_NEWIMAGE) screens can be any set size. A screen mode can be emulated or 256 or 32 bit colors can be designated.
 * The [_LOADIMAGE](_LOADIMAGE) screen size will be the size of the image loaded. Can designate a *mode* or 256 or 32 bit colors.
-* **QB64** allows page flipping or a [PCOPY](PCOPY) in ANY SCREEN mode. [_DISPLAY](_DISPLAY) can also be used to reduce flickering in animations.
-* All SCREEN modes are Windows in QB64. Use [_FULLSCREEN](_FULLSCREEN) to set the window area to full screen.
+* **QBHD** allows page flipping or a [PCOPY](PCOPY) in ANY SCREEN mode. [_DISPLAY](_DISPLAY) can also be used to reduce flickering in animations.
+* All SCREEN modes are Windows in QBHD. Use [_FULLSCREEN](_FULLSCREEN) to set the window area to full screen.
 * [_SCREENMOVE](_SCREENMOVE) can position a window or the _MIDDLE option can center it on the desktop.
 
 ## Legacy Screen Modes
@@ -84,11 +84,11 @@ The [SCREEN](SCREEN) statement sets the video display mode and size of the progr
 
 * **[SCREEN](SCREEN) 13** has 256 color attributes, black background. 256K possible color hues. Text is 25 by 40. Graphics is 320 by 200. 
 
-* **[SCREEN](SCREEN) [_NEWIMAGE](_NEWIMAGE)**(wide&, deep&, mode%) can imitate any size screen mode or use 32 bit or 256 color modes in **QB64**.
+* **[SCREEN](SCREEN) [_NEWIMAGE](_NEWIMAGE)**(wide&, deep&, mode%) can imitate any size screen mode or use 32 bit or 256 color modes in **QBHD**.
 
-* **[SCREEN](SCREEN) [_LOADIMAGE](_LOADIMAGE)**(imagehandle&, colors) can load a program screen of an image file handle in **QB64** using 256 or 32 bit. 
+* **[SCREEN](SCREEN) [_LOADIMAGE](_LOADIMAGE)**(imagehandle&, colors) can load a program screen of an image file handle in **QBHD** using 256 or 32 bit. 
 
-**QB64 can use page flipping with any number of pages in any screen mode!**
+**QBHD can use page flipping with any number of pages in any screen mode!**
 
 ## Text and Graphics
 
@@ -98,7 +98,7 @@ The [SCREEN](SCREEN) statement sets the video display mode and size of the progr
 * Text characters occupy a certain sized pixel box adjusted by [WIDTH](WIDTH) in some screen modes.
 * Text [PRINT](PRINT) cursor positions can be read by CSRLIN and POS(0) to [LOCATE](LOCATE) text [PRINT](PRINT)s.
 * [VIEW PRINT](VIEW-PRINT) can be used to designate a text view port area.
-* In **QB64** the [_WIDTH (function)](_WIDTH-(function)) and [_HEIGHT](_HEIGHT) functions will return the text dimensions in SCREEN 0 only.
+* In **QBHD** the [_WIDTH (function)](_WIDTH-(function)) and [_HEIGHT](_HEIGHT) functions will return the text dimensions in SCREEN 0 only.
 
 > **Graphic Coordinates:**
 
@@ -108,21 +108,21 @@ The [SCREEN](SCREEN) statement sets the video display mode and size of the progr
 * [GET (graphics statement)](GET-(graphics-statement)) and [PUT (graphics statement)](PUT-(graphics-statement)) screen image operations MUST be located completely on the screen in QBasic!
 * [VIEW](VIEW) can be used to designate a graphic view port area of the screen.
 * [WINDOW](WINDOW) can be used to set the graphics SCREEN coordinates to almost any size needed. Use the SCREEN option for normal row coordinate values. Row coordinates are Cartesian(decrease in value going down the screen) otherwise.
-* In **QB64** the [_WIDTH (function)](_WIDTH-(function)) and [_HEIGHT](_HEIGHT) functions will return the graphic pixel dimensions in SCREENs other than 0.
+* In **QBHD** the [_WIDTH (function)](_WIDTH-(function)) and [_HEIGHT](_HEIGHT) functions will return the graphic pixel dimensions in SCREENs other than 0.
 
-> **QB64 Screen Statements and Functions:**
+> **QBHD Screen Statements and Functions:**
 
 * For file image screens that adopt the image dimensions and image color settings use: [_LOADIMAGE](_LOADIMAGE)
 * To create custom sized screen modes or pages and 256 or 32 bit colors use: [_NEWIMAGE](_NEWIMAGE)
 * [_PUTIMAGE](_PUTIMAGE) can stretch or reduce the size of images to fit the SCREEN size.
-* [PUT (graphics statement)](PUT-(graphics-statement)) can use [_CLIP](_CLIP) to set objects partially off screen. [GET (graphics statement)](GET-(graphics-statement)) can read objects off screen as a color in QB64 ONLY.
+* [PUT (graphics statement)](PUT-(graphics-statement)) can use [_CLIP](_CLIP) to set objects partially off screen. [GET (graphics statement)](GET-(graphics-statement)) can read objects off screen as a color in QBHD ONLY.
 * A [_DISPLAY](_DISPLAY) statement can be used to only display an image after changes instead of using page flipping or [PCOPY](PCOPY).
 * The current desktop screen resolution can be found using the [_SCREENIMAGE](_SCREENIMAGE) handle value with [_WIDTH (function)](_WIDTH-(function)) and [_HEIGHT](_HEIGHT).
 * **NOTE: Default 32 bit backgrounds are clear black or [_RGBA](_RGBA)(0, 0, 0, 0)! Use [CLS](CLS) to make the black opaque!**
 
 ## Example(s)
 
-> *Example 1:* Shows an example of each legacy screen mode available to QBasic and QB64.
+> *Example 1:* Shows an example of each legacy screen mode available to QBasic and QBHD.
 
 ```vb
 
@@ -156,9 +156,9 @@ This is SCREEN 0 - only text is allowed!
 
 ## See Example(s)
 
-* [SAVEIMAGE](SAVEIMAGE) (QB64 Image to Bitmap SUB by Galleon)
+* [SAVEIMAGE](SAVEIMAGE) (QBHD Image to Bitmap SUB by Galleon)
 * [Program ScreenShots](Program-ScreenShots) (Member program for legacy screen modes)
-* [ThirtyTwoBit SUB](ThirtyTwoBit-SUB) (QB64 Image area to bitmap)
+* [ThirtyTwoBit SUB](ThirtyTwoBit-SUB) (QBHD Image area to bitmap)
 * [SelectScreen](SelectScreen) (Member Screen mode selection function)
 * [ScreenMode](ScreenMode) (Member function to find current Screen mode)
 
