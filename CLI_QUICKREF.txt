@@ -1,0 +1,72 @@
+╔══════════════════════════════════════════════════════════════╗
+║              QBHD CLI QUICK REFERENCE                        ║
+╚══════════════════════════════════════════════════════════════╝
+
+┌─ APPLY ENHANCEMENTS ─────────────────────────────────────────┐
+│ ./apply_cli_enhancements.sh                                  │
+│ ./build_qbhd.sh                                              │
+└──────────────────────────────────────────────────────────────┘
+
+┌─ NEW FLAGS ──────────────────────────────────────────────────┐
+│ --version              Show version and exit                 │
+│ --help                 Show help message                     │
+│ --check                Syntax check only (fast!)             │
+│ --json                 JSON output (for LSP)                 │
+│ --output <file>        Specify output file                   │
+│ --optimize <0-3>       Optimization level                    │
+│ --debug                Include debug symbols                 │
+│ --verbose              Verbose output                        │
+└──────────────────────────────────────────────────────────────┘
+
+┌─ COMMON USAGE ───────────────────────────────────────────────┐
+│ Quick check:                                                 │
+│   ./qbhd --check myprogram.bas                               │
+│                                                              │
+│ LSP integration:                                             │
+│   ./qbhd --json --check myprogram.bas                        │
+│                                                              │
+│ Debug build:                                                 │
+│   ./qbhd --debug --output debug_build myprogram.bas          │
+│                                                              │
+│ Release build:                                               │
+│   ./qbhd --optimize 3 --output release myprogram.bas         │
+│                                                              │
+│ Verbose compile:                                             │
+│   ./qbhd --verbose myprogram.bas                             │
+└──────────────────────────────────────────────────────────────┘
+
+┌─ TESTING ────────────────────────────────────────────────────┐
+│ ./test_cli_enhancements.sh                                   │
+└──────────────────────────────────────────────────────────────┘
+
+┌─ DOCUMENTATION ──────────────────────────────────────────────┐
+│ CLI_ENHANCEMENTS.md        - User guide                      │
+│ PHASE1_TASK2_SUMMARY.md    - Implementation details          │
+│ TASK2_COMPLETE.md          - Completion summary              │
+└──────────────────────────────────────────────────────────────┘
+
+┌─ EXIT CODES ─────────────────────────────────────────────────┐
+│ 0 = Success                                                  │
+│ 1 = Compilation error                                        │
+│ 2 = System error                                             │
+└──────────────────────────────────────────────────────────────┘
+
+┌─ JSON OUTPUT FORMAT ─────────────────────────────────────────┐
+│ [                                                            │
+│   {                                                          │
+│     "file": "program.bas",                                   │
+│     "line": 10,                                              │
+│     "column": 5,                                             │
+│     "severity": "error",                                     │
+│     "message": "Expected END IF"                             │
+│   }                                                          │
+│ ]                                                            │
+└──────────────────────────────────────────────────────────────┘
+
+┌─ NEXT STEPS ─────────────────────────────────────────────────┐
+│ Phase 1, Task 3: Build System                                │
+│ Phase 2: LSP & Neovim (15 tasks)                             │
+│ Phase 3: Tauri IDE (16 tasks)                                │
+└──────────────────────────────────────────────────────────────┘
+
+Progress: 2/34 tasks complete (5.9%)
