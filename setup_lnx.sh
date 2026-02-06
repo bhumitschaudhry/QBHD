@@ -34,7 +34,7 @@ GET_WGET=
 QB64_ICON_PATH="internal/source"
 
 #Name of the Icon picture
-QB64_ICON_NAME="qb64icon32.png"
+QB64_ICON_NAME="qbhdicon32.png"
 
 DISTRO=
 

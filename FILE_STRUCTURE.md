@@ -38,8 +38,8 @@ QBHD/
 └── source/
     ├── qb64.bas                   # Original QB64 source (~1.1MB)
     ├── qbhd_compiler.bas          # QBHD compiler source (generated, ~600KB)
-    ├── qb64.png                   # Icon
-    ├── qb64.ico                   # Icon
+    ├── qbhd.png                   # Icon
+    ├── qbhd.ico                   # Icon
     ├── icon.rc                    # Resource file
     │
     ├── global/                    # Global includes

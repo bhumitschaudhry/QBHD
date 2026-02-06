@@ -10,7 +10,7 @@ $CONSOLE
 'Initially the "SCREEN" will be hidden, if the -x option is used it will never be created
 $SCREENHIDE
 
-$EXEICON:'./qb64.ico'
+$EXEICON:'./qbhd.ico'
 
 $VERSIONINFO:CompanyName=QB64
 $VERSIONINFO:FileDescription=QB64 IDE and Compiler

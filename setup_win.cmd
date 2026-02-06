@@ -110,7 +110,7 @@ cd ../../../../../..
 
 echo Building 'QB64'
 copy internal\source\*.* internal\temp\ >nul
-copy source\qb64.ico internal\temp\ >nul
+copy source\qbhd.ico internal\temp\ >nul
 copy source\icon.rc internal\temp\ >nul
 cd internal\c
 c_compiler\bin\windres.exe -i ..\temp\icon.rc -o ..\temp\icon.o

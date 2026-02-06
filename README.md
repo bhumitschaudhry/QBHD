@@ -1,6 +1,6 @@
 # QBHD - Modern BASIC Development Environment
 
-![QBHD](source/qb64.png)
+![QBHD](source/qbhd.png)
 
 QBHD is a modernized BASIC compiler with three professional interfaces: command-line tools, Neovim LSP integration, and a modern GUI IDE. It retains QB4.5/QBasic compatibility while compiling native binaries for Windows, Linux, and macOS.
 

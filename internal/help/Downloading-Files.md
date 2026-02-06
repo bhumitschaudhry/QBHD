@@ -32,7 +32,7 @@ cache-control: max-age=0
 
 ```vb
 
-IF Download("www.qb64.net/qb64.png", "qb64logo.png", 10) THEN ' timelimit = 10 seconds
+IF Download("www.qb64.net/qbhd.png", "qb64logo.png", 10) THEN ' timelimit = 10 seconds
  SCREEN _LOADIMAGE("qb64logo.png",32)
 ELSE: PRINT "Couldn't download QBHD logo."
 END IF
