@@ -1,0 +1,90 @@
+name: Build QBHD
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y g++ mesa-common-dev libglu1-mesa-dev libasound2-dev libx11-dev
+      
+      - name: Build QBHD
+        run: |
+          chmod +x *.sh *.py
+          ./build_qbhd.sh
+      
+      - name: Apply CLI enhancements
+        run: |
+          ./apply_cli_enhancements.sh
+          ./build_qbhd.sh
+      
+      - name: Test
+        run: |
+          ./qbhd --version
+          ./qbhd --help
+          ./qbhd --check test_hello.bas
+      
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: qbhd-linux
+          path: qbhd
+
+  build-macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Install Xcode tools
+        run: xcode-select --install || true
+      
+      - name: Build QBHD
+        run: |
+          chmod +x *.sh *.command *.py
+          ./setup_osx.command
+          ./apply_cli_enhancements.sh
+          ./build_qbhd.sh
+      
+      - name: Test
+        run: |
+          ./qbhd --version
+          ./qbhd --check test_hello.bas
+      
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: qbhd-macos
+          path: qbhd
+
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Build QBHD
+        shell: cmd
+        run: |
+          call setup_win.cmd
+          python apply_cli_enhancements.sh
+          call build_qbhd.sh
+      
+      - name: Test
+        shell: cmd
+        run: |
+          qbhd.exe --version
+          qbhd.exe --check test_hello.bas
+      
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: qbhd-windows
+          path: qbhd.exe
