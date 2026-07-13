@@ -30232,10 +30232,12 @@ void sub__consolefont(qbs* FontName, int FontSize){
     info.FontWeight   = FW_NORMAL;
     if (FontName->len>0){ //if we don't pass a font name, don't change the existing one.
         const size_t cSize = FontName->len;
-        wchar_t* wc = new wchar_t[32];
-        mbstowcs (wc, (char *)FontName->chr, cSize);
-        wcscpy(info.FaceName, wc);
-        delete[] wc;
+        wchar_t wc[32];
+        size_t converted = mbstowcs(wc, (char *)FontName->chr, 31);
+        if (converted == (size_t)-1) wc[0] = L'\0'; // invalid multibyte sequence
+        else wc[converted] = L'\0';
+        wcsncpy(info.FaceName, wc, LF_FACESIZE - 1);
+        info.FaceName[LF_FACESIZE - 1] = L'\0';
     }
 
     SetCurrentConsoleFontEx(cl_conout, NULL, &info);
@@ -30265,7 +30267,8 @@ int32 func__getconsoleinput(){
     INPUT_RECORD irInputRecord;
     DWORD dwEventsRead, fdwMode, dwMode;
     CONSOLE_SCREEN_BUFFER_INFO cl_bufinfo;
- 
+    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cl_bufinfo);
+
     GetConsoleMode(hStdin, (LPDWORD)&dwMode);
     fdwMode = ENABLE_EXTENDED_FLAGS;
     SetConsoleMode(hStdin, fdwMode);

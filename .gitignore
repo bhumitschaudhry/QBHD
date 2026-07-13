@@ -19,3 +19,7 @@ internal/c/qbx[2-9].cpp
 .vscode
 build.cmd
 PLAN.md
+lsp/target/
+lsp/Cargo.lock
+ide/dist/
+ide/node_modules/

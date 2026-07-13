@@ -57,7 +57,7 @@ impl LanguageServer for QbhdLsp {
             },
             server_info: Some(ServerInfo {
                 name: "qbhd-lsp".to_string(),
-                version: Some("0.2.0".to_string()),
+                version: Some(env!("CARGO_PKG_VERSION").to_string()),
             }),
         })
     }
@@ -173,8 +173,7 @@ impl LanguageServer for QbhdLsp {
             return Ok(None);
         };
 
-        let word = semantic::SemanticAnalyzer::new()
-            .get_symbol_at_position(&document.text, pos.line, pos.character);
+        let word = semantic::get_symbol_at_position(&document.text, pos.line, pos.character);
         drop(doc);
 
         let Some(word) = word else {
@@ -204,8 +203,7 @@ impl LanguageServer for QbhdLsp {
             return Ok(None);
         };
 
-        let word = semantic::SemanticAnalyzer::new()
-            .get_symbol_at_position(&document.text, pos.line, pos.character);
+        let word = semantic::get_symbol_at_position(&document.text, pos.line, pos.character);
         drop(doc);
 
         let Some(word) = word else {
@@ -233,8 +231,7 @@ impl LanguageServer for QbhdLsp {
             return Ok(None);
         };
 
-        let word = semantic::SemanticAnalyzer::new()
-            .get_symbol_at_position(&document.text, pos.line, pos.character);
+        let word = semantic::get_symbol_at_position(&document.text, pos.line, pos.character);
         drop(doc);
 
         let Some(word) = word else {
@@ -263,8 +260,7 @@ impl LanguageServer for QbhdLsp {
             return Ok(None);
         };
 
-        let word = semantic::SemanticAnalyzer::new()
-            .get_symbol_at_position(&document.text, pos.line, pos.character);
+        let word = semantic::get_symbol_at_position(&document.text, pos.line, pos.character);
         drop(doc);
 
         let Some(word) = word else {
@@ -314,7 +310,7 @@ impl QbhdLsp {
         let Some(path) = file_path else { return };
         let Some(path_str) = path.to_str() else { return };
 
-        let diagnostics = diagnostics::get_diagnostics(path_str);
+        let diagnostics = diagnostics::get_diagnostics(path_str).await;
 
         self.client
             .publish_diagnostics(uri, diagnostics, None)

@@ -957,6 +957,9 @@ gl_scan_header
 
 '-----------------------QB64 COMPILER ONCE ONLY SETUP CODE ENDS HERE---------------------------------------
 
+' QBHD: Skip IDE dispatch code (NoIDEMode=1 forced by strip_ide.py)
+' The block below (lines 961-1177) handles IDE message protocol and is
+' unreachable when NoIDEMode is set. It is retained for QB64 source compatibility.
 IF NoIDEMode THEN IDE_AutoPosition = 0: GOTO noide
 DIM FileDropEnabled AS _BYTE
 IF FileDropEnabled = 0 THEN FileDropEnabled = -1: _ACCEPTFILEDROP
@@ -2872,6 +2875,29 @@ UserDefineCount = 7
 FOR i = 0 TO constlast: constdefined(i) = 0: NEXT 'undefine constants
 
 FOR i = 1 TO 27: defineaz(i) = "SINGLE": defineextaz(i) = "!": NEXT
+
+' === File Handle Reference ===
+' #2  = C++ output per-sub/function (qbx*.cpp)
+' #9  = debug.txt (when Debug enabled)
+' #12 = main.txt (main C++ output)
+' #13 = maindata.txt / data*.txt (DATA statements)
+' #14 = mainerr.txt (error handler C++ code)
+' #15 = ret*.txt (return point C++ code)
+' #16 = data.bin (binary data)
+' #17 = regsf.txt (register sub/function info)
+' #18 = global.txt (global variable declarations)
+' #19 = mainfree.txt / free*.txt (memory cleanup code)
+' #21 = runline.txt (RUN line number tracking)
+' #22 = chain.txt (CHAIN support)
+' #23 = inpchain.txt (INPUT chain support)
+' #24 = ontimer.txt (ON TIMER event code)
+' #25 = ontimerj.txt (ON TIMER jump table)
+' #26 = reserved for QB64 locking
+' #27 = onkey.txt (ON KEY event code)
+' #28 = onkeyj.txt (ON KEY jump table)
+' #29 = onstrig.txt (ON STRIG event code)
+' #30 = onstrigj.txt (ON STRIG jump table)
+' ==============================
 
 OPEN tmpdir$ + "data.bin" FOR OUTPUT AS #16: CLOSE #16
 OPEN tmpdir$ + "data.bin" FOR BINARY AS #16
@@ -13444,7 +13470,7 @@ IF idemode AND qberrorhappenedvalue >= 0 THEN
 END IF
 
 IF qberrorhappenedvalue >= 0 THEN
-    a$ = "UNEXPECTED INTERNAL COMPILER ERROR!": GOTO errmes 'internal comiler error
+    a$ = "UNEXPECTED INTERNAL COMPILER ERROR!": GOTO errmes 'internal compiler error
 END IF
 
 
@@ -14510,6 +14536,15 @@ END FUNCTION
 
 
 FUNCTION dim2 (varname$, typ2$, method, elements$)
+
+    ' REFACTORING NOTE: This function contains ~10 type-specific blocks that
+    ' follow the same pattern (set ct$/n$, handle arrays, allocate, register).
+    ' Each block is ~80-100 lines with minor type-specific variations.
+    ' Consider extracting a helper like:
+    '   dim2_allocate(varname$, ct$, typesuffix$, typeconst%, size%, method, elements$)
+    ' However, some types have special handling (STRING heap alloc, _FLOAT
+    ' platform size, _OFFSET 32/64-bit, UDT recursion). Refactoring requires
+    ' a test suite first to verify behavior is preserved.
 
     'notes: (DO NOT REMOVE THESE IMPORTANT USAGE NOTES)
     '
@@ -20011,19 +20046,6 @@ FUNCTION isvalidvariable (a$)
     NEXT
 
     isvalidvariable = 1
-    IF i > n THEN EXIT FUNCTION 'i is always greater than n because n is undefined here. Why didn't I remove this line and the ones below it, which will never run? Cause I'm a coward. F.h.
-    e$ = RIGHT$(a$, LEN(a$) - i - 1)
-    IF e$ = "%%" OR e$ = "~%%" THEN EXIT FUNCTION
-    IF e$ = "%" OR e$ = "~%" THEN EXIT FUNCTION
-    IF e$ = "&" OR e$ = "~&" THEN EXIT FUNCTION
-    IF e$ = "&&" OR e$ = "~&&" THEN EXIT FUNCTION
-    IF e$ = "!" OR e$ = "#" OR e$ = "##" THEN EXIT FUNCTION
-    IF e$ = "$" THEN EXIT FUNCTION
-    IF e$ = "`" THEN EXIT FUNCTION
-    IF LEFT$(e$, 1) <> "$" AND LEFT$(e$, 1) <> "`" THEN isvalidvariable = 0: EXIT FUNCTION
-    e$ = RIGHT$(e$, LEN(e$) - 1)
-    IF isuinteger(e$) THEN isvalidvariable = 1: EXIT FUNCTION
-    isvalidvariable = 0
 END FUNCTION
 
 

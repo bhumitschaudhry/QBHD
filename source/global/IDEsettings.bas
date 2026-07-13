@@ -394,7 +394,13 @@ END IF
 result = ReadConfigSetting(displaySettingsSection$, "IDE_CustomFont$", value$)
 idecustomfontfile$ = value$
 IF result = 0 OR idecustomfontfile$ = "" THEN
-    idecustomfontfile$ = "C:\Windows\Fonts\lucon.ttf"
+    IF INSTR(_OS$, "WIN") THEN
+        idecustomfontfile$ = "C:\Windows\Fonts\lucon.ttf"
+    ELSEIF INSTR(_OS$, "LINUX") THEN
+        idecustomfontfile$ = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
+    ELSE
+        idecustomfontfile$ = "/System/Library/Fonts/Menlo.ttc"
+    END IF
     WriteConfigSetting displaySettingsSection$, "IDE_CustomFont$", idecustomfontfile$
 END IF
 

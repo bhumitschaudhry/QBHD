@@ -1,5 +1,6 @@
 use crate::parser::{Stmt, Expr};
-use std::collections::HashMap;
+use once_cell::sync::Lazy;
+use std::collections::{HashMap, HashSet};
 use tower_lsp::lsp_types::*;
 
 /// Semantic analyzer for QBHD BASIC.
@@ -11,6 +12,7 @@ use tower_lsp::lsp_types::*;
 /// - Go-to-definition
 /// - Find references
 /// - Symbol lookup by position
+#[derive(Debug)]
 pub struct SemanticAnalyzer {
     /// Symbol table: name -> list of definitions (may have multiple across scopes)
     symbols: HashMap<String, Vec<SymbolInfo>>,
@@ -40,6 +42,60 @@ pub enum SymbolKind {
     Label,
     Constant,
 }
+
+/// Built-in BASIC keywords for completion. Allocated once.
+static KEYWORDS: Lazy<Vec<String>> = Lazy::new(|| {
+    vec![
+        // Control flow
+        "PRINT", "INPUT", "DIM", "IF", "THEN", "ELSE", "ELSEIF", "END",
+        "FOR", "NEXT", "TO", "STEP", "WHILE", "WEND", "DO", "LOOP", "UNTIL",
+        "SELECT", "CASE", "EXIT",
+        // Procedures
+        "SUB", "FUNCTION", "RETURN", "CALL", "DECLARE",
+        "GOTO", "GOSUB", "ON", "ERROR", "RESUME",
+        // I/O
+        "OPEN", "CLOSE", "READ", "WRITE", "DATA", "RESTORE",
+        "LINE", "CLS", "SCREEN", "COLOR", "LOCATE",
+        // Graphics
+        "CIRCLE", "PSET", "PRESET", "PAINT", "DRAW", "VIEW", "WINDOW",
+        "GET", "PUT", "PCOPY",
+        // Types
+        "AS", "INTEGER", "LONG", "SINGLE", "DOUBLE", "STRING",
+        "TYPE", "SHARED", "STATIC", "REDIM", "PRESERVE",
+        "LET", "DEF", "OPTION", "BASE", "EXPLICIT",
+        // Operators
+        "AND", "OR", "NOT", "XOR", "MOD", "IS",
+        // Misc
+        "CHAIN", "COMMON", "ERASE", "RANDOMIZE", "SWAP", "WIDTH",
+        "BEEP", "SLEEP", "SYSTEM", "RUN", "STOP", "CONT",
+        // QB64 graphics
+        "_RGB", "_RGBA", "_NEWIMAGE", "_LOADIMAGE", "_FREEIMAGE", "_PUTIMAGE",
+        "_DISPLAY", "_LIMIT", "_SCREENIMAGE",
+        // QB64 input
+        "_KEYHIT", "_KEYDOWN", "_MOUSEINPUT", "_MOUSEX", "_MOUSEY",
+        "_MOUSEBUTTON", "_MOUSEWHEEL", "_MOUSESHOW", "_MOUSEHIDE",
+        // QB64 sound
+        "_SNDOPEN", "_SNDPLAY", "_SNDCLOSE", "_SNDVOL",
+        // QB64 text
+        "_PRINTSTRING", "_PRINTMODE", "_FONT", "_LOADFONT",
+        // QB64 screen
+        "_SCREENWIDTH", "_SCREENHEIGHT", "_DEST", "_SOURCE",
+        "_SCREENX", "_SCREENY", "_SCREENMOVE",
+        // QB64 math
+        "_CEIL", "_ROUND", "_PI", "_D2R", "_R2D",
+        // Built-in functions
+        "ABS", "ATN", "COS", "SIN", "TAN", "EXP", "LOG", "SQR", "INT", "RND",
+        "LEFT$", "RIGHT$", "MID$", "LEN", "CHR$", "ASC", "STR$", "VAL",
+        "INKEY$", "TIMER", "POINT", "PMAP", "EOF", "LOF", "FREEFILE",
+        "LBOUND", "UBOUND", "PEEK", "INP",
+    ]
+    .iter()
+    .map(|s| s.to_string())
+    .collect()
+});
+
+/// Cached placeholder URI for internal use (will be overridden by callers).
+static INTERNAL_URI: Lazy<Url> = Lazy::new(|| Url::parse("file:///internal").unwrap());
 
 impl SemanticAnalyzer {
     pub fn new() -> Self {
@@ -157,57 +213,19 @@ impl SemanticAnalyzer {
     }
 
     pub fn get_completions(&self) -> Vec<String> {
-        let mut items: Vec<String> = vec![
-            // Control flow
-            "PRINT", "INPUT", "DIM", "IF", "THEN", "ELSE", "ELSEIF", "END",
-            "FOR", "NEXT", "TO", "STEP", "WHILE", "WEND", "DO", "LOOP", "UNTIL",
-            "SELECT", "CASE", "EXIT",
-            // Procedures
-            "SUB", "FUNCTION", "RETURN", "CALL", "DECLARE",
-            "GOTO", "GOSUB", "ON", "ERROR", "RESUME",
-            // I/O
-            "OPEN", "CLOSE", "READ", "WRITE", "DATA", "RESTORE",
-            "LINE", "CLS", "SCREEN", "COLOR", "LOCATE",
-            // Graphics
-            "CIRCLE", "PSET", "PRESET", "PAINT", "DRAW", "VIEW", "WINDOW",
-            "GET", "PUT", "PCOPY",
-            // Types
-            "AS", "INTEGER", "LONG", "SINGLE", "DOUBLE", "STRING",
-            "TYPE", "SHARED", "STATIC", "REDIM", "PRESERVE",
-            "LET", "DEF", "OPTION", "BASE", "EXPLICIT",
-            // Operators
-            "AND", "OR", "NOT", "XOR", "MOD", "IS",
-            // Misc
-            "CHAIN", "COMMON", "ERASE", "RANDOMIZE", "SWAP", "WIDTH",
-            "BEEP", "SLEEP", "SYSTEM", "RUN", "STOP", "CONT",
-            // QB64 graphics
-            "_RGB", "_RGBA", "_NEWIMAGE", "_LOADIMAGE", "_FREEIMAGE", "_PUTIMAGE",
-            "_DISPLAY", "_LIMIT", "_SCREENIMAGE",
-            // QB64 input
-            "_KEYHIT", "_KEYDOWN", "_MOUSEINPUT", "_MOUSEX", "_MOUSEY",
-            "_MOUSEBUTTON", "_MOUSEWHEEL", "_MOUSESHOW", "_MOUSEHIDE",
-            // QB64 sound
-            "_SNDOPEN", "_SNDPLAY", "_SNDCLOSE", "_SNDVOL",
-            // QB64 text
-            "_PRINTSTRING", "_PRINTMODE", "_FONT", "_LOADFONT",
-            // QB64 screen
-            "_SCREENWIDTH", "_SCREENHEIGHT", "_DEST", "_SOURCE",
-            "_SCREENX", "_SCREENY", "_SCREENMOVE",
-            // QB64 math
-            "_CEIL", "_ROUND", "_PI", "_D2R", "_R2D",
-            // Built-in functions
-            "ABS", "ATN", "COS", "SIN", "TAN", "EXP", "LOG", "SQR", "INT", "RND",
-            "LEFT$", "RIGHT$", "MID$", "LEN", "CHR$", "ASC", "STR$", "VAL",
-            "INKEY$", "TIMER", "POINT", "PMAP", "EOF", "LOF", "FREEFILE",
-            "LBOUND", "UBOUND", "PEEK", "INP",
-        ]
-        .iter()
-        .map(|s| s.to_string())
-        .collect();
+        let mut seen = HashSet::new();
+        let mut items = Vec::new();
+
+        // Add keywords first
+        for kw in KEYWORDS.iter() {
+            if seen.insert(kw.clone()) {
+                items.push(kw.clone());
+            }
+        }
 
         // Add user-defined symbols
         for name in self.symbols.keys() {
-            if !items.contains(name) {
+            if seen.insert(name.clone()) {
                 items.push(name.clone());
             }
         }
@@ -241,8 +259,9 @@ impl SemanticAnalyzer {
     pub fn find_definition(&self, symbol: &str) -> Option<Location> {
         if let Some(infos) = self.symbols.get(symbol) {
             if let Some(info) = infos.first() {
+                let char_count = symbol.chars().count() as u32;
                 return Some(Location {
-                    uri: Url::parse("file:///internal").unwrap(), // will be overridden
+                    uri: INTERNAL_URI.clone(),
                     range: Range {
                         start: Position {
                             line: info.line,
@@ -250,7 +269,7 @@ impl SemanticAnalyzer {
                         },
                         end: Position {
                             line: info.line,
-                            character: info.character + symbol.len() as u32,
+                            character: info.character + char_count,
                         },
                     },
                 });
@@ -261,10 +280,11 @@ impl SemanticAnalyzer {
 
     pub fn find_references(&self, symbol: &str) -> Vec<Location> {
         let mut refs = Vec::new();
+        let char_count = symbol.chars().count() as u32;
         if let Some(infos) = self.symbols.get(symbol) {
             for info in infos {
                 refs.push(Location {
-                    uri: Url::parse("file:///internal").unwrap(), // will be overridden
+                    uri: INTERNAL_URI.clone(),
                     range: Range {
                         start: Position {
                             line: info.line,
@@ -272,7 +292,7 @@ impl SemanticAnalyzer {
                         },
                         end: Position {
                             line: info.line,
-                            character: info.character + symbol.len() as u32,
+                            character: info.character + char_count,
                         },
                     },
                 });
@@ -280,36 +300,38 @@ impl SemanticAnalyzer {
         }
         refs
     }
+}
 
-    pub fn get_symbol_at_position(&self, text: &str, line: u32, character: u32) -> Option<String> {
-        let lines: Vec<&str> = text.lines().collect();
-        let line_text = lines.get(line as usize)?;
+/// Extract the word at a given position in text. This is a free function
+/// that does not require a SemanticAnalyzer instance.
+pub fn get_symbol_at_position(text: &str, line: u32, character: u32) -> Option<String> {
+    let lines: Vec<&str> = text.lines().collect();
+    let line_text = lines.get(line as usize)?;
 
-        // Find the word at the given character position
-        let chars: Vec<char> = line_text.chars().collect();
-        let char_pos = character as usize;
-        if char_pos >= chars.len() {
-            return None;
-        }
-
-        // Find word boundaries
-        let mut start = char_pos;
-        while start > 0 && (chars[start - 1].is_ascii_alphanumeric() || chars[start - 1] == '_' || chars[start - 1] == '$') {
-            start -= 1;
-        }
-
-        let mut end = char_pos;
-        while end < chars.len() && (chars[end].is_ascii_alphanumeric() || chars[end] == '_' || chars[end] == '$') {
-            end += 1;
-        }
-
-        if start == end {
-            return None;
-        }
-
-        let word: String = chars[start..end].iter().collect();
-        Some(word)
+    // Find the word at the given character position
+    let chars: Vec<char> = line_text.chars().collect();
+    let char_pos = character as usize;
+    if char_pos >= chars.len() {
+        return None;
     }
+
+    // Find word boundaries
+    let mut start = char_pos;
+    while start > 0 && (chars[start - 1].is_ascii_alphanumeric() || chars[start - 1] == '_' || chars[start - 1] == '$') {
+        start -= 1;
+    }
+
+    let mut end = char_pos;
+    while end < chars.len() && (chars[end].is_ascii_alphanumeric() || chars[end] == '_' || chars[end] == '$') {
+        end += 1;
+    }
+
+    if start == end {
+        return None;
+    }
+
+    let word: String = chars[start..end].iter().collect();
+    Some(word)
 }
 
 fn get_builtin_hover(keyword: &str) -> Option<String> {

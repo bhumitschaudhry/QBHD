@@ -74,7 +74,6 @@ function App() {
     <div className="app">
       <Toolbar
         currentFile={currentFile}
-        code={code}
         setOutput={setOutput}
         onSave={handleSave}
         modified={modified}

@@ -55,6 +55,12 @@ impl<'a> Lexer<'a> {
         c
     }
 
+    /// Advance and return the character, or '\0' if at end.
+    /// Use this instead of `advance().unwrap()` for defensive safety.
+    fn advance_or_null(&mut self) -> char {
+        self.advance().unwrap_or('\0')
+    }
+
     fn skip_whitespace(&mut self) {
         while let Some(c) = self.current() {
             if c == ' ' || c == '\t' || c == '\r' {
@@ -147,7 +153,7 @@ impl<'a> Lexer<'a> {
                 self.advance();
                 // Handle optional sign in exponent
                 if self.current() == Some('+') || self.current() == Some('-') {
-                    num.push(self.advance().unwrap());
+                    num.push(self.advance_or_null());
                 }
             } else if c == '#' || c == '!' || c == '%' || c == '&' {
                 // Type suffixes for numbers
@@ -163,24 +169,24 @@ impl<'a> Lexer<'a> {
 
     fn read_hex_octal(&mut self) -> Token {
         let mut num = String::new();
-        num.push(self.advance().unwrap()); // &
+        num.push(self.advance_or_null()); // &
 
         match self.current() {
             Some('h') | Some('H') => {
-                num.push(self.advance().unwrap());
+                num.push(self.advance_or_null());
                 while let Some(c) = self.current() {
                     if c.is_ascii_hexdigit() {
-                        num.push(self.advance().unwrap());
+                        num.push(self.advance_or_null());
                     } else {
                         break;
                     }
                 }
             }
             Some('o') | Some('O') => {
-                num.push(self.advance().unwrap());
+                num.push(self.advance_or_null());
                 while let Some(c) = self.current() {
                     if c >= '0' && c <= '7' {
-                        num.push(self.advance().unwrap());
+                        num.push(self.advance_or_null());
                     } else {
                         break;
                     }
@@ -196,10 +202,10 @@ impl<'a> Lexer<'a> {
 
         // Check for QB64 underscore-prefixed keywords
         if self.current() == Some('_') {
-            id.push(self.advance().unwrap());
+            id.push(self.advance_or_null());
             while let Some(c) = self.current() {
                 if c.is_ascii_alphanumeric() || c == '_' {
-                    id.push(self.advance().unwrap());
+                    id.push(self.advance_or_null());
                 } else {
                     break;
                 }
@@ -213,7 +219,7 @@ impl<'a> Lexer<'a> {
 
         while let Some(c) = self.current() {
             if c.is_ascii_alphanumeric() || c == '_' {
-                id.push(self.advance().unwrap());
+                id.push(self.advance_or_null());
             } else {
                 break;
             }
@@ -222,7 +228,7 @@ impl<'a> Lexer<'a> {
         // Check for type suffix
         if let Some(suffix) = self.current() {
             if matches!(suffix, '$' | '%' | '!' | '#' | '&') {
-                id.push(self.advance().unwrap());
+                id.push(self.advance_or_null());
             }
         }
 

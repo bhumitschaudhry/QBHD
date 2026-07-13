@@ -1,51 +1,55 @@
 import { invoke } from '@tauri-apps/api/tauri';
 
-export default function Toolbar({ currentFile, code, setOutput, onSave, modified }) {
+/** Guard: returns true if no file is open (prints message to output). */
+function requireFile(currentFile, setOutput) {
+  if (!currentFile) {
+    setOutput(prev => prev + '\nNo file open. Open a .bas file first.\n');
+    return true;
+  }
+  return false;
+}
+
+/** Run a Tauri IPC command, appending output and handling errors. */
+async function runCommand(cmd, args, setOutput, prefix = '') {
+  try {
+    const result = await invoke(cmd, args);
+    setOutput(prev => prev + prefix + result + '\n');
+    return result;
+  } catch (e) {
+    setOutput(prev => prev + `\n${cmd} failed:\n${e}\n`);
+    return null;
+  }
+}
+
+export default function Toolbar({ currentFile, setOutput, onSave, modified }) {
   const handleCompile = async () => {
-    if (!currentFile) {
-      setOutput(prev => prev + '\nNo file open. Open a .bas file first.\n');
-      return;
-    }
+    if (requireFile(currentFile, setOutput)) return;
     setOutput(prev => prev + `\nBuilding ${currentFile}...\n`);
-    try {
-      const result = await invoke('compile_file', { path: currentFile });
-      setOutput(prev => prev + result + '\n');
-    } catch (e) {
-      setOutput(prev => prev + `\nBuild failed:\n${e}\n`);
-    }
+    await runCommand('compile_file', { path: currentFile }, setOutput);
   };
 
   const handleCheck = async () => {
-    if (!currentFile) {
-      setOutput(prev => prev + '\nNo file open. Open a .bas file first.\n');
-      return;
-    }
+    if (requireFile(currentFile, setOutput)) return;
     setOutput(prev => prev + `\nChecking ${currentFile}...\n`);
+    const result = await runCommand('check_file', { path: currentFile }, setOutput);
+    if (result === null) return;
     try {
-      const result = await invoke('check_file', { path: currentFile });
-      try {
-        const diags = JSON.parse(result);
-        if (diags.length === 0) {
-          setOutput(prev => prev + 'No issues found.\n');
-        } else {
-          const formatted = diags.map(d =>
-            `  ${d.severity}: ${d.message} (line ${d.line}, col ${d.column})`
-          ).join('\n');
-          setOutput(prev => prev + `Found ${diags.length} issue(s):\n${formatted}\n`);
-        }
-      } catch {
-        setOutput(prev => prev + result + '\n');
+      const diags = JSON.parse(result);
+      if (diags.length === 0) {
+        setOutput(prev => prev + 'No issues found.\n');
+      } else {
+        const formatted = diags.map(d =>
+          `  ${d.severity}: ${d.message} (line ${d.line}, col ${d.column})`
+        ).join('\n');
+        setOutput(prev => prev + `Found ${diags.length} issue(s):\n${formatted}\n`);
       }
-    } catch (e) {
-      setOutput(prev => prev + `\nCheck failed:\n${e}\n`);
+    } catch {
+      // Non-JSON output already printed by runCommand
     }
   };
 
   const handleRun = async () => {
-    if (!currentFile) {
-      setOutput(prev => prev + '\nNo file open. Open a .bas file first.\n');
-      return;
-    }
+    if (requireFile(currentFile, setOutput)) return;
 
     // Save first if modified
     if (modified && onSave) {
@@ -53,18 +57,11 @@ export default function Toolbar({ currentFile, code, setOutput, onSave, modified
     }
 
     setOutput(prev => prev + `\nBuilding and running...\n`);
-    try {
-      // Compile first
-      const compileResult = await invoke('compile_file', { path: currentFile });
-      setOutput(prev => prev + compileResult + '\n');
+    const compileResult = await runCommand('compile_file', { path: currentFile }, setOutput);
+    if (compileResult === null) return;
 
-      // Run the compiled binary
-      const runPath = currentFile.replace(/\.bas$/i, '');
-      const result = await invoke('run_file', { path: runPath });
-      setOutput(prev => prev + result + '\n');
-    } catch (e) {
-      setOutput(prev => prev + `\nRun failed:\n${e}\n`);
-    }
+    const runPath = currentFile.replace(/\.bas$/i, '');
+    await runCommand('run_file', { path: runPath }, setOutput);
   };
 
   const handleNewFile = async () => {
@@ -77,7 +74,6 @@ export default function Toolbar({ currentFile, code, setOutput, onSave, modified
       if (filePath) {
         const defaultCode = "' QBHD BASIC Program\n' Created with QBHD IDE\n\nPRINT \"Hello, World!\"\n";
         await invoke('save_file', { path: filePath, contents: defaultCode });
-        // Trigger file open
         const name = filePath.split(/[/\\]/).pop();
         window.dispatchEvent(new CustomEvent('qbhd-open-file', {
           detail: { path: filePath, name }

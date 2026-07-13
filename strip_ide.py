@@ -24,14 +24,12 @@ def strip_ide_code(input_file, output_file):
     skip_mode = False
     
     for i, line in enumerate(lines):
-        # Skip IDE include files
+        # Skip IDE include files entirely
         if "'$INCLUDE:'ide" in line.lower():
-            output_lines.append("' IDE INCLUDE REMOVED\n")
             continue
-        
+
         # Remove $SCREENHIDE
         if "$SCREENHIDE" in line:
-            output_lines.append(line.replace("$SCREENHIDE", "' $SCREENHIDE"))
             continue
         
         # Update branding

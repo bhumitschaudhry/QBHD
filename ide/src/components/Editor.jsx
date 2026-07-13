@@ -1,4 +1,4 @@
-import { useRef, useCallback } from 'react';
+import { useCallback } from 'react';
 import MonacoEditor from '@monaco-editor/react';
 
 // BASIC language definition for Monaco
@@ -119,11 +119,7 @@ const BASIC_THEME = {
 };
 
 export default function Editor({ code, setCode, onCursorChange, onSave }) {
-  const editorRef = useRef(null);
-
   const handleEditorDidMount = useCallback((editor, monaco) => {
-    editorRef.current = editor;
-
     // Register BASIC language
     monaco.languages.register({ id: 'basic' });
     monaco.languages.setMonarchTokensProvider('basic', BASIC_LANG);
