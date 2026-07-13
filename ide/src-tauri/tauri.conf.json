@@ -14,11 +14,27 @@
       "all": false,
       "shell": {
         "all": false,
-        "open": true
+        "open": true,
+        "execute": true,
+        "scope": [
+          {
+            "name": "qbhd",
+            "cmd": "qbhd",
+            "args": true
+          },
+          {
+            "name": "qbhd-run",
+            "cmd": "qbhd-run",
+            "args": true
+          }
+        ]
       },
       "fs": {
         "all": true,
         "scope": ["**"]
+      },
+      "dialog": {
+        "all": true
       }
     },
     "windows": [
@@ -26,6 +42,8 @@
         "title": "QBHD IDE",
         "width": 1200,
         "height": 800,
+        "minWidth": 800,
+        "minHeight": 600,
         "resizable": true,
         "fullscreen": false
       }
