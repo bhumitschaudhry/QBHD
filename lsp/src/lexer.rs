@@ -1,13 +1,27 @@
+/// Tokens produced by the BASIC lexer.
+///
+/// Each variant represents a distinct lexical unit in the BASIC language.
+/// The `String` payload in most variants contains the original text (or
+/// uppercased for keywords).
 #[derive(Debug, Clone, PartialEq)]
 pub enum Token {
+    /// A BASIC keyword (PRINT, IF, FOR, etc.) or QB64 keyword (_RGB, etc.)
     Keyword(String),
+    /// A user-defined identifier (variable name, label, etc.)
     Identifier(String),
+    /// A numeric literal (decimal, float, hex &H, octal &O)
     Number(String),
+    /// A string literal (between double quotes, with "" for escaped quotes)
     String(String),
+    /// An operator or delimiter (+, -, *, /, =, <, >, (, ), etc.)
     Operator(String),
+    /// A comment (after ' or REM keyword)
     Comment(String),
+    /// A colon (statement separator)
     Colon,
+    /// A newline character (\n or \r\n)
     Newline,
+    /// End of input
     Eof,
 }
 

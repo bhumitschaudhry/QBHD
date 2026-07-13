@@ -1,39 +1,75 @@
 use crate::lexer::{Lexer, Token};
 
+/// Statement AST nodes for the BASIC parser.
+///
+/// Represents all supported BASIC statement types. Each variant contains
+/// the statement's operands and nested blocks where applicable.
 #[derive(Debug, Clone)]
 pub enum Stmt {
+    /// `PRINT expr1; expr2, expr3` - Output to screen
     Print(Vec<Expr>),
+    /// `INPUT "prompt"; var1, var2` - Read user input
     Input(Option<Expr>, Vec<String>),
+    /// `DIM name AS type` - Variable declaration
     Dim(String, Option<String>),
-    ReDim(String, bool), // name, preserve
+    /// `REDIM [PRESERVE] name` - Array redeclaration
+    ReDim(String, bool),
+    /// `name = expr` - Variable assignment
     Assignment(String, Expr),
-    If(Expr, Vec<Stmt>, Option<Vec<Stmt>>), // condition, then-block, else-block
-    For(String, Expr, Expr, Option<Expr>),  // var, from, to, step
+    /// `IF cond THEN ... ELSE ... END IF` - Conditional
+    If(Expr, Vec<Stmt>, Option<Vec<Stmt>>),
+    /// `FOR var = from TO [STEP] ... NEXT` - Counter loop
+    For(String, Expr, Expr, Option<Expr>),
+    /// `WHILE cond ... WEND` - Pre-condition loop
     While(Expr, Vec<Stmt>),
+    /// `DO [WHILE|UNTIL] cond ... LOOP` - Flexible loop
     DoLoop(LoopCondition, Vec<Stmt>),
+    /// `SELECT CASE expr ... CASE ... END SELECT` - Multi-way branch
     Select(Expr, Vec<CaseBranch>),
+    /// `SUB name(params) ... END SUB` - Subroutine definition
     SubDef(String, Vec<String>, Vec<Stmt>),
+    /// `FUNCTION name(params) ... END FUNCTION` - Function definition
     FuncDef(String, Vec<String>, Vec<Stmt>),
+    /// `CALL name(args)` or `name(args)` - Subroutine call
     Call(String, Vec<Expr>),
+    /// `RETURN` - Return from GOSUB or procedure
     Return,
+    /// `GOTO label` - Unconditional jump
     Goto(String),
+    /// `GOSUB label` - Subroutine call (legacy)
     GoSub(String),
-    Exit(String), // EXIT SUB, EXIT FUNCTION, EXIT FOR, EXIT DO
+    /// `EXIT SUB|FUNCTION|FOR|DO` - Early exit from block
+    Exit(String),
+    /// `'comment` or `REM comment` - Comment text
     Rem(String),
+    /// `CLS` - Clear screen
     Cls,
+    /// `END` - End program
     End,
+    /// `LINE (x1,y1)-(x2,y2), color [,BF]` - Draw line/box
     Line(Vec<Expr>),
+    /// `CIRCLE (x,y), radius [,color]` - Draw circle
     Circle(Vec<Expr>),
+    /// `PSET (x,y), color` - Set pixel
     Pset(Vec<Expr>),
+    /// `SCREEN mode` - Set screen mode
     Screen(Vec<Expr>),
+    /// `COLOR fg [,bg]` - Set text colors
     Color(Vec<Expr>),
+    /// `LOCATE row, col` - Set cursor position
     Locate(Vec<Expr>),
+    /// `OPEN file FOR mode AS #n` - Open file
     Open(Vec<Expr>),
+    /// `CLOSE #n` - Close file
     Close(Vec<Expr>),
+    /// `GET #n, pos, var` - Read from file
     Get(Vec<Expr>),
+    /// `PUT #n, pos, var` - Write to file
     Put(Vec<Expr>),
+    /// Standalone expression (e.g., function call as statement)
     Expression(Expr),
-    Unknown, // fallback for unparsed lines
+    /// Fallback for unrecognized statements
+    Unknown,
 }
 
 #[derive(Debug, Clone)]
@@ -49,15 +85,27 @@ pub enum LoopCondition {
     None,
 }
 
+/// Expression AST nodes for the BASIC parser.
+///
+/// Represents all supported expression types. The Pratt parsing algorithm
+/// handles operator precedence for binary expressions.
 #[derive(Debug, Clone)]
 pub enum Expr {
+    /// Numeric literal (42, 3.14, &HFF, &O77)
     Number(String),
+    /// String literal ("hello")
     String(String),
+    /// Variable reference (x, name$)
     Var(String),
+    /// Binary operation (left op right), e.g., a + b, x AND y
     Binary(Box<Expr>, String, Box<Expr>),
+    /// Unary operation (op expr), e.g., -x, NOT flag
     Unary(String, Box<Expr>),
+    /// Function call (name(args)), e.g., ABS(x), SIN(angle)
     Call(String, Vec<Expr>),
+    /// Parenthesized expression ((expr))
     Paren(Box<Expr>),
+    /// Array element access (name(indices)), e.g., arr(i, j)
     ArrayAccess(String, Vec<Expr>),
 }
 

@@ -1,16 +1,33 @@
+//! Diagnostics bridge between the QBHD compiler and the LSP server.
+//!
+//! Runs `qbhd --json --check` as a subprocess and parses the JSON output
+//! into LSP Diagnostic objects.
+
 use std::process::Command;
 use serde::Deserialize;
 use tower_lsp::lsp_types::*;
 
+/// Diagnostic entry from `qbhd --json --check` output.
 #[derive(Debug, Deserialize)]
 struct QbhdDiagnostic {
+    /// Source file path
     file: String,
+    /// Line number (1-indexed)
     line: i32,
+    /// Column number (1-indexed)
     column: i32,
+    /// Severity level ("error", "warning", "info")
     severity: String,
+    /// Human-readable error message
     message: String,
 }
 
+/// Get diagnostics for a BASIC file by running the QBHD compiler.
+///
+/// Runs `qbhd --json --check {file_path}` as a subprocess and converts
+/// the JSON output into LSP Diagnostic objects.
+///
+/// Returns an empty vec if the compiler is not found or produces invalid output.
 pub fn get_diagnostics(file_path: &str) -> Vec<Diagnostic> {
     // Try to find qbhd binary in common locations
     let qbhd_cmd = find_qbhd_binary();

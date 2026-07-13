@@ -1,13 +1,25 @@
+//! In-memory document store for the LSP server.
+//!
+//! Tracks open documents by URI with their current text content and version numbers.
+
 use std::collections::HashMap;
 use tower_lsp::lsp_types::Url;
 
+/// A single open document.
 #[derive(Debug, Clone)]
 pub struct Document {
+    /// The document's URI (typically a file:// URL)
     pub uri: Url,
+    /// The full text content of the document
     pub text: String,
+    /// The document version number (incremented on each change)
     pub version: i32,
 }
 
+/// Thread-safe store for all open documents.
+///
+/// Documents are keyed by URI. The store supports open, change, close, and get operations.
+/// Thread safety is provided by the caller (typically via `Arc<Mutex<DocumentStore>>`).
 #[derive(Debug, Default)]
 pub struct DocumentStore {
     documents: HashMap<Url, Document>,

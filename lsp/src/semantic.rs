@@ -2,16 +2,32 @@ use crate::parser::{Stmt, Expr};
 use std::collections::HashMap;
 use tower_lsp::lsp_types::*;
 
+/// Semantic analyzer for QBHD BASIC.
+///
+/// Maintains a symbol table tracking all user-defined symbols (variables,
+/// functions, subs, parameters, labels) and provides:
+/// - Code completion (keywords + user symbols)
+/// - Hover documentation (built-in + user-defined)
+/// - Go-to-definition
+/// - Find references
+/// - Symbol lookup by position
 pub struct SemanticAnalyzer {
+    /// Symbol table: name -> list of definitions (may have multiple across scopes)
     symbols: HashMap<String, Vec<SymbolInfo>>,
 }
 
+/// Information about a symbol definition.
 #[derive(Debug, Clone)]
 pub struct SymbolInfo {
+    /// The symbol name as it appears in source
     pub name: String,
+    /// What kind of symbol this is (variable, function, etc.)
     pub kind: SymbolKind,
+    /// Line number where defined (0-indexed, approximate)
     pub line: u32,
+    /// Character position where defined (always 0 currently)
     pub character: u32,
+    /// Optional type annotation (e.g., "INTEGER", "STRING")
     pub type_name: Option<String>,
 }
 

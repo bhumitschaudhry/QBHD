@@ -1,3 +1,9 @@
+//! QBHD IDE Tauri backend.
+//!
+//! Provides IPC commands for the React frontend to interact with the
+//! filesystem and the QBHD compiler. Commands are invoked via
+//! `@tauri-apps/api/tauri`'s `invoke` function from JavaScript.
+
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 use std::fs;
@@ -5,20 +11,51 @@ use std::process::Command;
 use std::sync::Mutex;
 use tauri::State;
 
+/// Shared application state (currently unused by commands).
 struct AppState {
     output: Mutex<String>,
 }
 
+/// Read a file from disk and return its contents as a string.
+///
+/// # Arguments
+/// * `path` - Absolute or relative path to the file
+///
+/// # Returns
+/// The file contents as a UTF-8 string.
+///
+/// # Errors
+/// Returns an error message if the file cannot be read.
 #[tauri::command]
 fn read_file(path: String) -> Result<String, String> {
     fs::read_to_string(&path).map_err(|e| format!("Failed to read {}: {}", path, e))
 }
 
+/// Write a string to a file on disk, creating it if it doesn't exist.
+///
+/// # Arguments
+/// * `path` - Absolute or relative path to the file
+/// * `contents` - The text content to write
+///
+/// # Errors
+/// Returns an error message if the file cannot be written.
 #[tauri::command]
 fn save_file(path: String, contents: String) -> Result<(), String> {
     fs::write(&path, &contents).map_err(|e| format!("Failed to save {}: {}", path, e))
 }
 
+/// Compile a BASIC file using the QBHD compiler.
+///
+/// Runs `qbhd {path}` as a subprocess. Returns compilation output on success.
+///
+/// # Arguments
+/// * `path` - Path to the .bas file to compile
+///
+/// # Returns
+/// Compilation output with "Build succeeded." appended on success.
+///
+/// # Errors
+/// Returns stdout+stderr if compilation fails.
 #[tauri::command]
 fn compile_file(path: String) -> Result<String, String> {
     let output = Command::new("qbhd")
@@ -36,6 +73,18 @@ fn compile_file(path: String) -> Result<String, String> {
     }
 }
 
+/// Check a BASIC file for errors without compiling.
+///
+/// Runs `qbhd --json --check {path}` as a subprocess.
+///
+/// # Arguments
+/// * `path` - Path to the .bas file to check
+///
+/// # Returns
+/// JSON array of diagnostic objects on success.
+///
+/// # Errors
+/// Returns stderr if the compiler produces no JSON output.
 #[tauri::command]
 fn check_file(path: String) -> Result<String, String> {
     let output = Command::new("qbhd")

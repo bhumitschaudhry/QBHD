@@ -1,11 +1,17 @@
 #!/usr/bin/env python3
 """
 QBHD Compiler Extractor
-Phase 1, Task 1: Strip IDE code from QB64 to create compiler-only QBHD
-"""
 
-import re
-import sys
+Transforms the QB64 compiler+IDE source into a compiler-only QBHD version by:
+1. Removing IDE include directives
+2. Commenting out $SCREENHIDE
+3. Updating QB64 branding to QBHD
+4. Forcing compiler-only mode (NoIDEMode=1, ConsoleMode=1)
+
+Usage:
+    python3 strip_ide.py
+    # Reads source/qb64.bas, writes source/qbhd_compiler.bas
+"""
 
 def strip_ide_code(input_file, output_file):
     """Remove IDE-related code from QB64 source"""

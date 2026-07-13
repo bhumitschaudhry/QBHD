@@ -13,10 +13,18 @@ use tower_lsp::jsonrpc::Result;
 use tower_lsp::lsp_types::*;
 use tower_lsp::{Client, LanguageServer, LspService, Server};
 
+/// The main LSP server implementation for QBHD BASIC.
+///
+/// Provides IDE features (completion, hover, definition, references, rename)
+/// by combining a custom lexer/parser/semantic analyzer with external
+/// compiler diagnostics from `qbhd --json --check`.
 #[derive(Debug)]
 struct QbhdLsp {
+    /// LSP client for sending notifications to the editor.
     client: Client,
+    /// In-memory store of open document texts and versions.
     documents: Arc<Mutex<DocumentStore>>,
+    /// Symbol table and semantic analysis engine.
     analyzer: Arc<Mutex<SemanticAnalyzer>>,
 }
 
@@ -348,9 +356,16 @@ fn get_completion_detail(label: &str) -> Option<String> {
     }
 }
 
+/// Entry point for the QBHD LSP server.
+///
+/// Starts the language server on stdin/stdout using the LSP protocol.
+/// Logging is directed to stderr to avoid corrupting the JSON-RPC stream.
 #[tokio::main]
 async fn main() {
-    tracing_subscriber::fmt().init();
+    // IMPORTANT: Log to stderr, not stdout. stdout is used for LSP JSON-RPC messages.
+    tracing_subscriber::fmt()
+        .with_writer(std::io::stderr)
+        .init();
 
     let stdin = tokio::io::stdin();
     let stdout = tokio::io::stdout();
