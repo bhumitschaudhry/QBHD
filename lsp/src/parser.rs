@@ -3,10 +3,50 @@ use crate::lexer::{Lexer, Token};
 #[derive(Debug, Clone)]
 pub enum Stmt {
     Print(Vec<Expr>),
-    Dim(String),
+    Input(Option<Expr>, Vec<String>),
+    Dim(String, Option<String>),
+    ReDim(String, bool), // name, preserve
     Assignment(String, Expr),
-    If(Expr, Vec<Stmt>),
-    For(String, Expr, Expr),
+    If(Expr, Vec<Stmt>, Option<Vec<Stmt>>), // condition, then-block, else-block
+    For(String, Expr, Expr, Option<Expr>),  // var, from, to, step
+    While(Expr, Vec<Stmt>),
+    DoLoop(LoopCondition, Vec<Stmt>),
+    Select(Expr, Vec<CaseBranch>),
+    SubDef(String, Vec<String>, Vec<Stmt>),
+    FuncDef(String, Vec<String>, Vec<Stmt>),
+    Call(String, Vec<Expr>),
+    Return,
+    Goto(String),
+    GoSub(String),
+    Exit(String), // EXIT SUB, EXIT FUNCTION, EXIT FOR, EXIT DO
+    Rem(String),
+    Cls,
+    End,
+    Line(Vec<Expr>),
+    Circle(Vec<Expr>),
+    Pset(Vec<Expr>),
+    Screen(Vec<Expr>),
+    Color(Vec<Expr>),
+    Locate(Vec<Expr>),
+    Open(Vec<Expr>),
+    Close(Vec<Expr>),
+    Get(Vec<Expr>),
+    Put(Vec<Expr>),
+    Expression(Expr),
+    Unknown, // fallback for unparsed lines
+}
+
+#[derive(Debug, Clone)]
+pub struct CaseBranch {
+    pub values: Vec<Expr>,
+    pub body: Vec<Stmt>,
+}
+
+#[derive(Debug, Clone)]
+pub enum LoopCondition {
+    While(Expr),
+    Until(Expr),
+    None,
 }
 
 #[derive(Debug, Clone)]
@@ -15,6 +55,10 @@ pub enum Expr {
     String(String),
     Var(String),
     Binary(Box<Expr>, String, Box<Expr>),
+    Unary(String, Box<Expr>),
+    Call(String, Vec<Expr>),
+    Paren(Box<Expr>),
+    ArrayAccess(String, Vec<Expr>),
 }
 
 pub struct Parser<'a> {
@@ -33,57 +77,681 @@ impl<'a> Parser<'a> {
         self.current = self.lexer.next_token();
     }
 
+    fn skip_newlines(&mut self) {
+        while self.current == Token::Newline {
+            self.advance();
+        }
+    }
+
+    fn expect_keyword(&mut self, kw: &str) -> bool {
+        if let Token::Keyword(ref k) = self.current {
+            if k == kw {
+                self.advance();
+                return true;
+            }
+        }
+        false
+    }
+
+    fn current_is_keyword(&self, kw: &str) -> bool {
+        if let Token::Keyword(ref k) = self.current {
+            k == kw
+        } else {
+            false
+        }
+    }
+
+    fn current_is_operator(&self, op: &str) -> bool {
+        if let Token::Operator(ref o) = self.current {
+            o == op
+        } else {
+            false
+        }
+    }
+
     pub fn parse(&mut self) -> Vec<Stmt> {
         let mut stmts = Vec::new();
+        self.skip_newlines();
         while self.current != Token::Eof {
             if let Some(stmt) = self.parse_stmt() {
                 stmts.push(stmt);
             }
-            if self.current == Token::Newline {
-                self.advance();
-            }
+            // Consume newlines between statements
+            self.skip_newlines();
         }
         stmts
     }
 
     fn parse_stmt(&mut self) -> Option<Stmt> {
-        match &self.current {
-            Token::Keyword(kw) if kw == "PRINT" => {
+        match &self.current.clone() {
+            Token::Comment(text) => {
+                let t = text.clone();
                 self.advance();
-                Some(Stmt::Print(vec![self.parse_expr()?]))
+                Some(Stmt::Rem(t))
             }
-            Token::Keyword(kw) if kw == "DIM" => {
-                self.advance();
-                if let Token::Identifier(name) = &self.current {
-                    let n = name.clone();
+            Token::Keyword(kw) => match kw.as_str() {
+                "PRINT" | "?" => {
                     self.advance();
-                    Some(Stmt::Dim(n))
-                } else {
-                    None
+                    let mut args = Vec::new();
+                    if !self.is_line_end() {
+                        args.push(self.parse_expr()?);
+                        while self.current_is_operator(",") || self.current_is_operator(";") {
+                            self.advance();
+                            if !self.is_line_end() {
+                                args.push(self.parse_expr()?);
+                            }
+                        }
+                    }
+                    Some(Stmt::Print(args))
                 }
-            }
-            Token::Identifier(name) => {
-                let n = name.clone();
-                self.advance();
-                if let Token::Operator(op) = &self.current {
-                    if op == "=" {
+                "INPUT" => {
+                    self.advance();
+                    let prompt = if self.current_is_operator(";") || self.current_is_operator(",") {
+                        None
+                    } else {
+                        Some(self.parse_expr()?)
+                    };
+                    if self.current_is_operator(";") || self.current_is_operator(",") {
                         self.advance();
-                        Some(Stmt::Assignment(n, self.parse_expr()?))
+                    }
+                    let mut vars = Vec::new();
+                    if let Token::Identifier(name) = &self.current.clone() {
+                        vars.push(name.clone());
+                        self.advance();
+                        while self.current_is_operator(",") {
+                            self.advance();
+                            if let Token::Identifier(n) = &self.current.clone() {
+                                vars.push(n.clone());
+                                self.advance();
+                            }
+                        }
+                    }
+                    Some(Stmt::Input(prompt, vars))
+                }
+                "DIM" => {
+                    self.advance();
+                    if let Token::Identifier(name) = &self.current.clone() {
+                        let n = name.clone();
+                        self.advance();
+                        let mut type_name = None;
+                        if self.current_is_keyword("AS") {
+                            self.advance();
+                            if let Token::Keyword(t) = &self.current.clone() {
+                                type_name = Some(t.clone());
+                                self.advance();
+                            }
+                        }
+                        Some(Stmt::Dim(n, type_name))
                     } else {
                         None
                     }
-                } else {
-                    None
                 }
+                "REDIM" => {
+                    self.advance();
+                    let preserve = self.current_is_keyword("PRESERVE");
+                    if preserve {
+                        self.advance();
+                    }
+                    if let Token::Identifier(name) = &self.current.clone() {
+                        let n = name.clone();
+                        self.advance();
+                        Some(Stmt::ReDim(n, preserve))
+                    } else {
+                        None
+                    }
+                }
+                "IF" => {
+                    self.advance();
+                    let condition = self.parse_expr()?;
+                    let _ = self.expect_keyword("THEN");
+                    self.skip_newlines();
+                    let then_block = self.parse_block_until_else_or_end();
+                    let else_block = if self.current_is_keyword("ELSE") {
+                        self.advance();
+                        self.skip_newlines();
+                        Some(self.parse_block_until_end_if())
+                    } else {
+                        None
+                    };
+                    let _ = self.expect_keyword("END");
+                    let _ = self.expect_keyword("IF");
+                    Some(Stmt::If(condition, then_block, else_block))
+                }
+                "FOR" => {
+                    self.advance();
+                    let var = if let Token::Identifier(name) = &self.current.clone() {
+                        let n = name.clone();
+                        self.advance();
+                        n
+                    } else {
+                        return None;
+                    };
+                    let _ = self.expect_keyword("TO") || self.current_is_operator("=");
+                    if self.current_is_operator("=") {
+                        self.advance();
+                    }
+                    let from = self.parse_expr()?;
+                    let _ = self.expect_keyword("TO");
+                    let to = self.parse_expr()?;
+                    let step = if self.current_is_keyword("STEP") {
+                        self.advance();
+                        Some(self.parse_expr()?)
+                    } else {
+                        None
+                    };
+                    self.skip_newlines();
+                    let body = self.parse_block_until("NEXT");
+                    let _ = self.expect_keyword("NEXT");
+                    // Optionally consume the variable name after NEXT
+                    if let Token::Identifier(_) = &self.current {
+                        self.advance();
+                    }
+                    Some(Stmt::For(var, from, to, step))
+                }
+                "WHILE" => {
+                    self.advance();
+                    let condition = self.parse_expr()?;
+                    self.skip_newlines();
+                    let body = self.parse_block_until("WEND");
+                    let _ = self.expect_keyword("WEND");
+                    Some(Stmt::While(condition, body))
+                }
+                "DO" => {
+                    self.advance();
+                    let condition = if self.current_is_keyword("WHILE") {
+                        self.advance();
+                        LoopCondition::While(self.parse_expr()?)
+                    } else if self.current_is_keyword("UNTIL") {
+                        self.advance();
+                        LoopCondition::Until(self.parse_expr()?)
+                    } else {
+                        LoopCondition::None
+                    };
+                    self.skip_newlines();
+                    let body = self.parse_block_until("LOOP");
+                    let _ = self.expect_keyword("LOOP");
+                    // Post-condition
+                    let _condition = if self.current_is_keyword("WHILE") {
+                        self.advance();
+                        Some(LoopCondition::While(self.parse_expr()?))
+                    } else if self.current_is_keyword("UNTIL") {
+                        self.advance();
+                        Some(LoopCondition::Until(self.parse_expr()?))
+                    } else {
+                        None
+                    };
+                    Some(Stmt::DoLoop(condition, body))
+                }
+                "SELECT" => {
+                    self.advance();
+                    let _ = self.expect_keyword("CASE");
+                    let expr = self.parse_expr()?;
+                    self.skip_newlines();
+                    let mut branches = Vec::new();
+                    while self.current_is_keyword("CASE") {
+                        self.advance();
+                        let mut values = Vec::new();
+                        values.push(self.parse_expr()?);
+                        while self.current_is_operator(",") {
+                            self.advance();
+                            values.push(self.parse_expr()?);
+                        }
+                        self.skip_newlines();
+                        let body = self.parse_block_until_select_case();
+                        branches.push(CaseBranch { values, body });
+                    }
+                    let _ = self.expect_keyword("END");
+                    let _ = self.expect_keyword("SELECT");
+                    Some(Stmt::Select(expr, branches))
+                }
+                "SUB" => {
+                    self.advance();
+                    let name = if let Token::Identifier(n) = &self.current.clone() {
+                        let n = n.clone();
+                        self.advance();
+                        n
+                    } else {
+                        return None;
+                    };
+                    let mut params = Vec::new();
+                    if self.current_is_operator("(") {
+                        self.advance();
+                        while !self.current_is_operator(")") && self.current != Token::Eof {
+                            if let Token::Identifier(p) = &self.current.clone() {
+                                params.push(p.clone());
+                                self.advance();
+                            }
+                            if self.current_is_operator(",") {
+                                self.advance();
+                            }
+                        }
+                        if self.current_is_operator(")") {
+                            self.advance();
+                        }
+                    }
+                    self.skip_newlines();
+                    let body = self.parse_block_until("END");
+                    let _ = self.expect_keyword("END");
+                    let _ = self.expect_keyword("SUB");
+                    Some(Stmt::SubDef(name, params, body))
+                }
+                "FUNCTION" => {
+                    self.advance();
+                    let name = if let Token::Identifier(n) = &self.current.clone() {
+                        let n = n.clone();
+                        self.advance();
+                        n
+                    } else {
+                        return None;
+                    };
+                    let mut params = Vec::new();
+                    if self.current_is_operator("(") {
+                        self.advance();
+                        while !self.current_is_operator(")") && self.current != Token::Eof {
+                            if let Token::Identifier(p) = &self.current.clone() {
+                                params.push(p.clone());
+                                self.advance();
+                            }
+                            if self.current_is_operator(",") {
+                                self.advance();
+                            }
+                        }
+                        if self.current_is_operator(")") {
+                            self.advance();
+                        }
+                    }
+                    self.skip_newlines();
+                    let body = self.parse_block_until("END");
+                    let _ = self.expect_keyword("END");
+                    let _ = self.expect_keyword("FUNCTION");
+                    Some(Stmt::FuncDef(name, params, body))
+                }
+                "CALL" => {
+                    self.advance();
+                    if let Token::Identifier(name) = &self.current.clone() {
+                        let n = name.clone();
+                        self.advance();
+                        let mut args = Vec::new();
+                        if self.current_is_operator("(") {
+                            self.advance();
+                            while !self.current_is_operator(")") && self.current != Token::Eof {
+                                args.push(self.parse_expr()?);
+                                if self.current_is_operator(",") {
+                                    self.advance();
+                                }
+                            }
+                            if self.current_is_operator(")") {
+                                self.advance();
+                            }
+                        }
+                        Some(Stmt::Call(n, args))
+                    } else {
+                        None
+                    }
+                }
+                "RETURN" => {
+                    self.advance();
+                    Some(Stmt::Return)
+                }
+                "GOTO" => {
+                    self.advance();
+                    if let Token::Identifier(label) = &self.current.clone() {
+                        let l = label.clone();
+                        self.advance();
+                        Some(Stmt::Goto(l))
+                    } else {
+                        None
+                    }
+                }
+                "GOSUB" => {
+                    self.advance();
+                    if let Token::Identifier(label) = &self.current.clone() {
+                        let l = label.clone();
+                        self.advance();
+                        Some(Stmt::GoSub(l))
+                    } else {
+                        None
+                    }
+                }
+                "EXIT" => {
+                    self.advance();
+                    if let Token::Keyword(kw) = &self.current.clone() {
+                        let what = kw.clone();
+                        self.advance();
+                        Some(Stmt::Exit(what))
+                    } else {
+                        Some(Stmt::Exit(String::new()))
+                    }
+                }
+                "END" => {
+                    self.advance();
+                    Some(Stmt::End)
+                }
+                "CLS" => {
+                    self.advance();
+                    Some(Stmt::Cls)
+                }
+                "SCREEN" => {
+                    self.advance();
+                    let mut args = Vec::new();
+                    while !self.is_line_end() {
+                        args.push(self.parse_expr()?);
+                        if self.current_is_operator(",") {
+                            self.advance();
+                        }
+                    }
+                    Some(Stmt::Screen(args))
+                }
+                "COLOR" => {
+                    self.advance();
+                    let mut args = Vec::new();
+                    while !self.is_line_end() {
+                        args.push(self.parse_expr()?);
+                        if self.current_is_operator(",") {
+                            self.advance();
+                        }
+                    }
+                    Some(Stmt::Color(args))
+                }
+                "LOCATE" => {
+                    self.advance();
+                    let mut args = Vec::new();
+                    while !self.is_line_end() {
+                        args.push(self.parse_expr()?);
+                        if self.current_is_operator(",") {
+                            self.advance();
+                        }
+                    }
+                    Some(Stmt::Locate(args))
+                }
+                "LINE" => {
+                    self.advance();
+                    let mut args = Vec::new();
+                    while !self.is_line_end() {
+                        args.push(self.parse_expr()?);
+                        if self.current_is_operator(",") || self.current_is_operator(";") {
+                            self.advance();
+                        }
+                    }
+                    Some(Stmt::Line(args))
+                }
+                "CIRCLE" => {
+                    self.advance();
+                    let mut args = Vec::new();
+                    while !self.is_line_end() {
+                        args.push(self.parse_expr()?);
+                        if self.current_is_operator(",") {
+                            self.advance();
+                        }
+                    }
+                    Some(Stmt::Circle(args))
+                }
+                "PSET" | "PRESET" => {
+                    self.advance();
+                    let mut args = Vec::new();
+                    while !self.is_line_end() {
+                        args.push(self.parse_expr()?);
+                        if self.current_is_operator(",") {
+                            self.advance();
+                        }
+                    }
+                    Some(Stmt::Pset(args))
+                }
+                "OPEN" => {
+                    self.advance();
+                    let mut args = Vec::new();
+                    while !self.is_line_end() {
+                        args.push(self.parse_expr()?);
+                        if self.current_is_operator(",") || self.current_is_operator(";") {
+                            self.advance();
+                        }
+                    }
+                    Some(Stmt::Open(args))
+                }
+                "CLOSE" => {
+                    self.advance();
+                    let mut args = Vec::new();
+                    while !self.is_line_end() {
+                        args.push(self.parse_expr()?);
+                        if self.current_is_operator(",") {
+                            self.advance();
+                        }
+                    }
+                    Some(Stmt::Close(args))
+                }
+                "GET" => {
+                    self.advance();
+                    let mut args = Vec::new();
+                    while !self.is_line_end() {
+                        args.push(self.parse_expr()?);
+                        if self.current_is_operator(",") {
+                            self.advance();
+                        }
+                    }
+                    Some(Stmt::Get(args))
+                }
+                "PUT" => {
+                    self.advance();
+                    let mut args = Vec::new();
+                    while !self.is_line_end() {
+                        args.push(self.parse_expr()?);
+                        if self.current_is_operator(",") {
+                            self.advance();
+                        }
+                    }
+                    Some(Stmt::Put(args))
+                }
+                "LET" => {
+                    self.advance();
+                    self.parse_assignment_or_call()
+                }
+                "STOP" => {
+                    self.advance();
+                    Some(Stmt::End)
+                }
+                _ => {
+                    self.advance();
+                    Some(Stmt::Unknown)
+                }
+            },
+            Token::Identifier(_) => self.parse_assignment_or_call(),
+            Token::Newline => {
+                self.advance();
+                None
             }
             _ => {
                 self.advance();
-                None
+                Some(Stmt::Unknown)
             }
         }
     }
 
+    fn parse_assignment_or_call(&mut self) -> Option<Stmt> {
+        if let Token::Identifier(name) = &self.current.clone() {
+            let n = name.clone();
+            self.advance();
+
+            // Array access
+            if self.current_is_operator("(") {
+                self.advance();
+                let mut indices = Vec::new();
+                while !self.current_is_operator(")") && self.current != Token::Eof {
+                    indices.push(self.parse_expr()?);
+                    if self.current_is_operator(",") {
+                        self.advance();
+                    }
+                }
+                if self.current_is_operator(")") {
+                    self.advance();
+                }
+                // Check for assignment
+                if self.current_is_operator("=") {
+                    self.advance();
+                    let value = self.parse_expr()?;
+                    Some(Stmt::Assignment(n, value))
+                } else {
+                    // Array access as expression statement
+                    Some(Stmt::Expression(Expr::ArrayAccess(n, indices)))
+                }
+            } else if self.current_is_operator("=") {
+                // Simple assignment
+                self.advance();
+                let value = self.parse_expr()?;
+                Some(Stmt::Assignment(n, value))
+            } else {
+                // Could be a SUB call without CALL keyword
+                let mut args = Vec::new();
+                if self.current_is_operator("(") {
+                    self.advance();
+                    while !self.current_is_operator(")") && self.current != Token::Eof {
+                        args.push(self.parse_expr()?);
+                        if self.current_is_operator(",") {
+                            self.advance();
+                        }
+                    }
+                    if self.current_is_operator(")") {
+                        self.advance();
+                    }
+                }
+                if args.is_empty() {
+                    Some(Stmt::Expression(Expr::Var(n)))
+                } else {
+                    Some(Stmt::Call(n, args))
+                }
+            }
+        } else {
+            self.advance();
+            Some(Stmt::Unknown)
+        }
+    }
+
+    fn is_line_end(&self) -> bool {
+        matches!(
+            self.current,
+            Token::Newline | Token::Eof | Token::Comment(_)
+        )
+    }
+
+    fn parse_block_until_else_or_end(&mut self) -> Vec<Stmt> {
+        let mut stmts = Vec::new();
+        self.skip_newlines();
+        while !self.current_is_keyword("ELSE")
+            && !self.current_is_keyword("ELSEIF")
+            && !self.current_is_keyword("END")
+            && self.current != Token::Eof
+        {
+            if let Some(stmt) = self.parse_stmt() {
+                stmts.push(stmt);
+            }
+            self.skip_newlines();
+        }
+        stmts
+    }
+
+    fn parse_block_until_end_if(&mut self) -> Vec<Stmt> {
+        let mut stmts = Vec::new();
+        self.skip_newlines();
+        while !self.current_is_keyword("END") && self.current != Token::Eof {
+            if let Some(stmt) = self.parse_stmt() {
+                stmts.push(stmt);
+            }
+            self.skip_newlines();
+        }
+        stmts
+    }
+
+    fn parse_block_until(&mut self, keyword: &str) -> Vec<Stmt> {
+        let mut stmts = Vec::new();
+        self.skip_newlines();
+        while !self.current_is_keyword(keyword) && self.current != Token::Eof {
+            if let Some(stmt) = self.parse_stmt() {
+                stmts.push(stmt);
+            }
+            self.skip_newlines();
+        }
+        stmts
+    }
+
+    fn parse_block_until_select_case(&mut self) -> Vec<Stmt> {
+        let mut stmts = Vec::new();
+        self.skip_newlines();
+        while !self.current_is_keyword("CASE") && !self.current_is_keyword("END") && self.current != Token::Eof {
+            if let Some(stmt) = self.parse_stmt() {
+                stmts.push(stmt);
+            }
+            self.skip_newlines();
+        }
+        stmts
+    }
+
+    // Expression parsing with operator precedence (Pratt parsing)
     fn parse_expr(&mut self) -> Option<Expr> {
+        self.parse_binary_expr(0)
+    }
+
+    fn parse_binary_expr(&mut self, min_prec: u8) -> Option<Expr> {
+        let mut left = self.parse_unary()?;
+
+        loop {
+            let prec = self.get_operator_precedence();
+            if prec < min_prec || prec == 0 {
+                break;
+            }
+
+            let op = match &self.current {
+                Token::Operator(o) => o.clone(),
+                Token::Keyword(k) if k == "AND" || k == "OR" || k == "XOR" || k == "MOD" => k.clone(),
+                Token::Keyword(k) if k == "IS" => {
+                    // IS comparison in SELECT CASE
+                    self.advance();
+                    let right = self.parse_binary_expr(prec + 1)?;
+                    left = Expr::Binary(Box::new(left), "IS".to_string(), Box::new(right));
+                    continue;
+                }
+                _ => break,
+            };
+            self.advance();
+
+            let right = self.parse_binary_expr(prec + 1)?;
+            left = Expr::Binary(Box::new(left), op, Box::new(right));
+        }
+
+        Some(left)
+    }
+
+    fn get_operator_precedence(&self) -> u8 {
+        match &self.current {
+            Token::Keyword(k) if k == "OR" || k == "XOR" => 1,
+            Token::Keyword(k) if k == "AND" => 2,
+            Token::Keyword(k) if k == "NOT" => 3,
+            Token::Operator(o) if o == "=" || o == "<>" || o == "<" || o == ">" || o == "<=" || o == ">=" => 4,
+            Token::Keyword(k) if k == "IS" => 4,
+            Token::Operator(o) if o == "+" || o == "-" || o == "&" => 5,
+            Token::Operator(o) if o == "*" || o == "/" || o == "\\" => 6,
+            Token::Keyword(k) if k == "MOD" => 6,
+            Token::Operator(o) if o == "^" => 7,
+            _ => 0,
+        }
+    }
+
+    fn parse_unary(&mut self) -> Option<Expr> {
+        match &self.current.clone() {
+            Token::Operator(o) if o == "-" || o == "+" => {
+                let op = o.clone();
+                self.advance();
+                let expr = self.parse_unary()?;
+                Some(Expr::Unary(op, Box::new(expr)))
+            }
+            Token::Keyword(k) if k == "NOT" => {
+                self.advance();
+                let expr = self.parse_unary()?;
+                Some(Expr::Unary("NOT".to_string(), Box::new(expr)))
+            }
+            _ => self.parse_atom(),
+        }
+    }
+
+    fn parse_atom(&mut self) -> Option<Expr> {
         match &self.current.clone() {
             Token::Number(n) => {
                 let num = n.clone();
@@ -95,12 +763,68 @@ impl<'a> Parser<'a> {
                 self.advance();
                 Some(Expr::String(str))
             }
+            Token::Operator(o) if o == "(" => {
+                self.advance();
+                let expr = self.parse_expr()?;
+                if self.current_is_operator(")") {
+                    self.advance();
+                }
+                Some(Expr::Paren(Box::new(expr)))
+            }
             Token::Identifier(id) => {
                 let name = id.clone();
                 self.advance();
-                Some(Expr::Var(name))
+                // Check for function call
+                if self.current_is_operator("(") {
+                    self.advance();
+                    let mut args = Vec::new();
+                    while !self.current_is_operator(")") && self.current != Token::Eof {
+                        args.push(self.parse_expr()?);
+                        if self.current_is_operator(",") {
+                            self.advance();
+                        }
+                    }
+                    if self.current_is_operator(")") {
+                        self.advance();
+                    }
+                    Some(Expr::Call(name, args))
+                } else {
+                    Some(Expr::Var(name))
+                }
+            }
+            Token::Keyword(k) if is_builtin_function(k) => {
+                let name = k.clone();
+                self.advance();
+                if self.current_is_operator("(") {
+                    self.advance();
+                    let mut args = Vec::new();
+                    while !self.current_is_operator(")") && self.current != Token::Eof {
+                        args.push(self.parse_expr()?);
+                        if self.current_is_operator(",") {
+                            self.advance();
+                        }
+                    }
+                    if self.current_is_operator(")") {
+                        self.advance();
+                    }
+                    Some(Expr::Call(name, args))
+                } else {
+                    Some(Expr::Var(name))
+                }
             }
             _ => None,
         }
     }
+}
+
+fn is_builtin_function(kw: &str) -> bool {
+    matches!(
+        kw,
+        "ABS" | "ATN" | "COS" | "SIN" | "TAN" | "EXP" | "LOG" | "SQR" | "INT" | "RND"
+            | "LEN" | "ASC" | "VAL" | "TIMER" | "POINT" | "PMAP"
+            | "EOF" | "LOF" | "FREEFILE"
+            | "LBOUND" | "UBOUND"
+            | "PEEK" | "INP"
+            | "SCREEN"
+    )
 }
